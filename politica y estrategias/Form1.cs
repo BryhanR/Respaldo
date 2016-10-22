@@ -18,7 +18,7 @@ namespace politica_y_estrategias
     public partial class Form1 : Form
     {
         //-------- Variables ---------------------------------------
-        String ConexionOracle = "User id= System; Password=root; Data Source= XE;"; //////cambiar password
+        String ConexionOracle = "User id= System; Password=admin123; Data Source= XE;"; //////cambiar password
         Server g = new Server();
         OracleConnection con = new OracleConnection();
         private readonly SynchronizationContext syncC;
@@ -112,6 +112,7 @@ namespace politica_y_estrategias
             string baseDatos = "";
 
             //Auxiliares para crear Politica
+            string nom_P_Server = "";
             string nomP = "";
             List<string>frecuencia = new List<string>();
            DateTime fecha;
@@ -167,6 +168,7 @@ namespace politica_y_estrategias
                     
                 }
                 if (contenido == "&&") {
+                    nom_P_Server = leido.ReadLine();
                     nomP = leido.ReadLine();
                     int a = int.Parse(leido.ReadLine());
                     for (int i = 0; i < a; i++)
@@ -182,7 +184,7 @@ namespace politica_y_estrategias
                     int seg= int.Parse(leido.ReadLine());
                     fecha = new DateTime(anno,mes,dia,hora,min,seg);
                      repeti = int.Parse(leido.ReadLine());
-                    Politica pol = new Politica(nomP, frecuencia, fecha, repeti);
+                     Politica pol = new Politica(nom_P_Server, nomP, frecuencia, fecha, repeti);
                     politicas.Add(pol);
                 }
             }
@@ -280,15 +282,84 @@ namespace politica_y_estrategias
           //  Console.WriteLine("Valores "+servidores.get.ToString());
         }
 
-        public List<Estrategia> getEstrategiasServer() {
+       
+        public List<Estrategia> getEstrategiasServer()
+        {
             List<Estrategia> estra = new List<Estrategia>();
             estrategias.ForEach(delegate(Estrategia e)
             {
-                if (e.getServer() == label15.Text.Substring(10, label15.Text.Count() - 10)) {
+                if (e.getServer() == getServer())
+                {
                     estra.Add(e);
                 }
             });
             return estra;
+        }
+
+        public List<Politica> getPoliticasServer()
+        {
+            List<Politica> poli = new List<Politica>();
+            politicas.ForEach(delegate(Politica p)
+            {
+                if (p.getServer() == getServer())
+                {
+                    poli.Add(p);
+                }
+            });
+            return poli;
+        }
+
+        private void llenarCheckedList_Estretegias()
+        {
+            List<Estrategia> le = getEstrategiasServer();
+            checkedList_Estrategias.Items.Clear();
+
+            le.ForEach(delegate(Estrategia e)
+            {
+                checkedList_Estrategias.Items.Add(e.getNombre());
+            });
+
+            checkedList_Estrategias.HorizontalScrollbar = true;
+
+        }
+
+        private void llenarCheckedList_Politicas()
+        {
+            List<Politica> lp = getPoliticasServer();
+            checkedList_Politicas.Items.Clear();
+
+            lp.ForEach(delegate(Politica p)
+            {
+                checkedList_Politicas.Items.Add(p.getNombre());
+            });
+
+            checkedList_Politicas.HorizontalScrollbar = true;
+
+        }
+
+        public string getServer()
+        {
+            return label15.Text.Substring(10, label15.Text.Count() - 10);
+        }
+
+        public void add_Check_Estrategia(string nom_Estrategia)
+        {
+            checkedList_Estrategias.Items.Add(nom_Estrategia);
+        }
+
+        public void add_Check_Politica(string nom_Politica)
+        {
+            checkedList_Politicas.Items.Add(nom_Politica);
+        }
+
+        public void addEstrategias(Estrategia e)
+        {
+            estrategias.Add(e);
+        }
+
+        public void addPolitica(Politica p)
+        {
+            politicas.Add(p);
         }
 
 
@@ -312,8 +383,7 @@ namespace politica_y_estrategias
 
         private void button2_Click(object sender, EventArgs e)
         {
-            String nom_server = label15.Text.Substring(10, label15.Text.Count() - 10);
-            Estrategias m = new Estrategias(nom_server);
+            Estrategias m = new Estrategias(this);
             m.Show();
 
            /* Console.WriteLine(label15.Text.Substring(0,9));
@@ -326,7 +396,7 @@ namespace politica_y_estrategias
 
         private void button2_Click_1(object sender, EventArgs e)
         {
-            Politicas p = new Politicas();
+            Politicas p = new Politicas(this);
             p.Show();
         }
 
@@ -376,6 +446,10 @@ namespace politica_y_estrategias
                 panel2.Enabled = false;
                 panel4.Enabled = false;
 
+                //---- Se vacia el checkList de Estretagias
+                checkedList_Estrategias.Items.Clear();
+                checkedList_Politicas.Items.Clear();
+
             }
 
             else
@@ -384,6 +458,9 @@ namespace politica_y_estrategias
                 panel1.Enabled = true;
                 panel2.Enabled = true;
                 panel4.Enabled = true;
+                 //-- Se colocan las estretegias de un server especifico ---
+                llenarCheckedList_Estretegias();
+                llenarCheckedList_Politicas();
 
             }
             /*  else
