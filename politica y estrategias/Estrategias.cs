@@ -68,9 +68,9 @@ namespace politica_y_estrategias
             if (radioButton5.Checked)
                 modoRes = 2;
 
-
+            StreamWriter escrito = new StreamWriter(Path.GetFullPath("Servidores.txt"), true); // escribe al final de Servidores.txt
             Estrategia estrategia = new Estrategia(nom_Server,nombre, tipoRes, modoRes, tablespaces, plus);
-            estrategia.Guardar_Estrategia(estrategia);
+            estrategia.Guardar_Estrategia(escrito);
         }
        
 
