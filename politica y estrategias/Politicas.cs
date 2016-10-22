@@ -9,45 +9,52 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
 using Logic;
+using politica_y_estrategias;
 
 namespace politica_y_estrategias
 {
     public partial class Politicas : Form
     {
-        public Politicas()
+        private Form1 principal;
+        // private string nom_Server;
+
+        public Politicas(Form1 p)
         {
             InitializeComponent();
             this.CenterToScreen();
+            principal = p;
         }
 
-        private DateTime getDate() { 
-                int d = dateTimePicker1.Value.Day;
-                int mes = dateTimePicker1.Value.Month;
-                int a = dateTimePicker1.Value.Year;
-                int h = (int)num_Hora.Value;
-                int m = (int)num_Minutos.Value;
-                int s = (int)num_Segundos.Value;
-                return new DateTime(a,mes,d,h,m,s);
+        private DateTime getDate()
+        {
+            int d = dateTimePicker1.Value.Day;
+            int mes = dateTimePicker1.Value.Month;
+            int a = dateTimePicker1.Value.Year;
+            int h = (int)num_Hora.Value;
+            int m = (int)num_Minutos.Value;
+            int s = (int)num_Segundos.Value;
+            return new DateTime(a, mes, d, h, m, s);
         }
 
         //------ METODOS -------//
         private void Guardar_Politica()
         {
             Politica p = new Politica();
-           
-            p.setNombre(this.nom_Politica.Text);
-     
+
+            p.setServer(principal.getServer());
+            p.setNombre(this.nom_Politica.Text.ToUpper());
+
             // La frecuencia
             foreach (object itemChecked in checkedList_Dias.CheckedItems)
             {
-                p.addFrecuencia(itemChecked.ToString());
+                p.addFrecuencia(itemChecked.ToString().ToUpper());
             }
 
             p.setFecha(getDate());
 
             // Repeticion
             if (radioB_30.Checked)
-               p.setRepeticion(30);
+                p.setRepeticion(30);
             if (radioB_60.Checked)
                 p.setRepeticion(60);
             if (radioB_120.Checked)
@@ -57,7 +64,9 @@ namespace politica_y_estrategias
 
             //Abrimos el archivo txt
             StreamWriter escrito = new StreamWriter(Path.GetFullPath("Servidores.txt"), true); // escribe al final de Servidores.txt
+            principal.addPolitica(p);
             p.guardar_Politica(escrito);
+            principal.add_Check_Politica(p.getNombre());
         }
 
         //------ EVENTOS--------//
