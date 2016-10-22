@@ -53,6 +53,8 @@
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.button3 = new System.Windows.Forms.Button();
+            this.checkedList_Estrategias = new System.Windows.Forms.CheckedListBox();
+            this.checkedList_Politicas = new System.Windows.Forms.CheckedListBox();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel7.SuspendLayout();
@@ -195,6 +197,7 @@
             // 
             // panel2
             // 
+            this.panel2.Controls.Add(this.checkedList_Politicas);
             this.panel2.Controls.Add(this.label12);
             this.panel2.Location = new System.Drawing.Point(172, 12);
             this.panel2.Name = "panel2";
@@ -232,6 +235,7 @@
             // 
             // panel3
             // 
+            this.panel3.Controls.Add(this.checkedList_Estrategias);
             this.panel3.Controls.Add(this.label3);
             this.panel3.Location = new System.Drawing.Point(13, 12);
             this.panel3.Name = "panel3";
@@ -281,6 +285,22 @@
             this.button3.TabIndex = 27;
             this.button3.UseVisualStyleBackColor = true;
             this.button3.Click += new System.EventHandler(this.button3_Click);
+            // 
+            // checkedList_Estrategias
+            // 
+            this.checkedList_Estrategias.FormattingEnabled = true;
+            this.checkedList_Estrategias.Location = new System.Drawing.Point(12, 32);
+            this.checkedList_Estrategias.Name = "checkedList_Estrategias";
+            this.checkedList_Estrategias.Size = new System.Drawing.Size(120, 154);
+            this.checkedList_Estrategias.TabIndex = 34;
+            // 
+            // checkedList_Politicas
+            // 
+            this.checkedList_Politicas.FormattingEnabled = true;
+            this.checkedList_Politicas.Location = new System.Drawing.Point(18, 32);
+            this.checkedList_Politicas.Name = "checkedList_Politicas";
+            this.checkedList_Politicas.Size = new System.Drawing.Size(120, 154);
+            this.checkedList_Politicas.TabIndex = 24;
             // 
             // Form1
             // 
@@ -340,6 +360,8 @@
         private System.Windows.Forms.TextBox textBox3;
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.CheckedListBox checkedList_Politicas;
+        private System.Windows.Forms.CheckedListBox checkedList_Estrategias;
     }
 }
 
