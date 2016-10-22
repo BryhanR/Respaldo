@@ -135,14 +135,16 @@ namespace Logic
 
     public class Estrategia
     {
+        string nom_Server;
         string nombre;
         int tipoRes;
         int modoRes;
         List<string> tablespaces;
         int[] plus;
 
-        public Estrategia(string n, int tr, int mr, List<string> t, int[] p)
+        public Estrategia(string ns, string n, int tr, int mr, List<string> t, int[] p)
         {
+            nom_Server = ns;
             nombre = n;
             tipoRes = tr;
             modoRes = mr;
@@ -152,6 +154,7 @@ namespace Logic
 
         public Estrategia()
         {
+            nom_Server = "";
             nombre = "";
             tipoRes = 0;
             modoRes = 0;
@@ -184,6 +187,10 @@ namespace Logic
             tablespaces.Add(t);
         }
 
+        public string getServer() {
+            return nom_Server;
+        }
+
         public void Guardar_Estrategia(Estrategia e)
         {
 
@@ -194,6 +201,7 @@ namespace Logic
 
             //escribimos. 
             escrito.WriteLineAsync("##");//PAra saber que es una estrategia
+            escrito.WriteLine(e.nom_Server); // Nombre del servidor que lo creo
             escrito.WriteLine(e.nombre);
             escrito.WriteLine(e.tipoRes);
             escrito.WriteLine(e.modoRes);
@@ -213,9 +221,10 @@ namespace Logic
         }
 
         public void toString() {
-            Console.WriteLine("Nombre:"+nombre);
-            Console.WriteLine("tipo:" + tipoRes);
-            Console.WriteLine("modo:" + modoRes);
+            Console.WriteLine("Server: " + nom_Server);
+            Console.WriteLine("Nombre: "+nombre);
+            Console.WriteLine("tipo: " + tipoRes);
+            Console.WriteLine("modo: " + modoRes);
         }
     }
        

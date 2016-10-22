@@ -19,8 +19,12 @@ namespace politica_y_estrategias
         String ConexionOracle = "User id= System; Password=admin123; Data Source= XE;"; //////cambiar password
         //Server g = new Server();
         OracleConnection con = new OracleConnection();
-        public Estrategias()
+
+        String nom_Server = "";
+
+        public Estrategias(string nom)
         {
+            nom_Server = nom;
             con.ConnectionString = ConexionOracle;
             InitializeComponent();
             this.CenterToScreen();
@@ -29,6 +33,7 @@ namespace politica_y_estrategias
         //------ METODOS---------//
         private void Guardar_Estrategia()
         {
+            
             string nombre;
             int tipoRes = 0;
             int modoRes = 0;
@@ -64,7 +69,7 @@ namespace politica_y_estrategias
                 modoRes = 2;
 
 
-            Estrategia estrategia = new Estrategia(nombre, tipoRes, modoRes, tablespaces, plus);
+            Estrategia estrategia = new Estrategia(nom_Server,nombre, tipoRes, modoRes, tablespaces, plus);
             estrategia.Guardar_Estrategia(estrategia);
         }
        
