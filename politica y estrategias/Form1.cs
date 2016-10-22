@@ -18,7 +18,7 @@ namespace politica_y_estrategias
     public partial class Form1 : Form
     {
         //-------- Variables ---------------------------------------
-        String ConexionOracle = "User id= System; Password=admin123; Data Source= XE;"; //////cambiar password
+        String ConexionOracle = "User id= System; Password=root; Data Source= XE;"; //////cambiar password
         Server g = new Server();
         OracleConnection con = new OracleConnection();
         private readonly SynchronizationContext syncC;
@@ -104,7 +104,13 @@ namespace politica_y_estrategias
         {
               // Auxiliares para crear Server
             string nom_Server = "";
-            
+            string dbLink="";
+            string usuario = "";
+            string contrasenia = "";
+            string ip = "";
+            string puerto = "";
+            string baseDatos = "";
+
             //Auxiliares para crear Politica
             string nomP = "";
             List<string>frecuencia = new List<string>();
@@ -131,8 +137,14 @@ namespace politica_y_estrategias
             {
                 if (contenido == "%%") {
                     nom_Server = leido.ReadLine();
-                    Server ser = new Server(nom_Server);
-                    servidores.Add(ser);
+                    dbLink = leido.ReadLine();
+                    usuario = leido.ReadLine();
+                    contrasenia = leido.ReadLine();
+                    ip = leido.ReadLine();
+                    puerto = leido.ReadLine();
+                    baseDatos = leido.ReadLine();
+                    Server ser = new Server(nom_Server,dbLink,usuario,contrasenia,ip,puerto,baseDatos);
+                   servidores.Add(ser);
                 }
                 if (contenido == "##")
                 {
@@ -179,24 +191,7 @@ namespace politica_y_estrategias
           
         }
       
-       /* public void bajarBase() {
-            con.Open();
-            String sql = "shutdown";
-            OracleDataAdapter datos = new OracleDataAdapter(sql, con);
-          
-            sql=  "startup mount";
-            datos = new OracleDataAdapter(sql, con);
-           
-            sql = "commit";
-            datos = new OracleDataAdapter(sql, con);
-           
-            sql = "alter system checkpoint; ";
-            datos = new OracleDataAdapter(sql, con);
-           
-            sql = "alter system switch logfile;";
-            datos = new OracleDataAdapter(sql, con);
-
-        }*/
+     
         public string elementosBackup(int []p) { //Hace las sentencias para le backup de archivelog, controlfile e init(falta)
             string salida = "";
             if (p[0] == 1)
@@ -207,6 +202,7 @@ namespace politica_y_estrategias
                 salida +="";
             return salida;
         }
+
         //Recibe el nombe de la estrategia a buscar y devuelve las sentencias correspondientes
         public string restaurarEstrategia( string nom) {
             string comandos="";
@@ -246,8 +242,24 @@ namespace politica_y_estrategias
             return comandos;
         }
 
-    
 
+        //Creación del databaseLink
+        private void crearDatabaseLink(string nomS) {
+        
+            Server s = servidores.Find(x => x.getNombre() == nomS);
+
+            string DBLink = "CREATE DATABASE LINK" + s.getDBLink() + " CONNECT TO "+s.getUsuario()+" IDENTIFIED BY";
+            DBLink += s.getContrasenia() +" USING '(DESCRIPTION =(ADDRESS = (PROTOCOL = TCP)(HOST =" + s.getIP()+")(PORT =";
+            DBLink += s.getPuerto() + "))(CONNECT_DATA = (SERVER = DEDICATED)(SERVICE_NAME =" +s.getNomBase()+")))';";
+
+            //NOTA: La sentencia del databaselink si sirve pero no se si desde aqui se ejecuta bien xq no puedo 
+            //ver la respuesta de la base
+          /*  con.Open();
+            string sql = DBLink;
+            OracleDataAdapter datos = new OracleDataAdapter(sql, con);
+            con.Close();*/
+
+        }
     
 
         private void cargarNomServidores() {
@@ -295,7 +307,7 @@ namespace politica_y_estrategias
             {
                 tables.toString();
             });
-            restaurarEstrategia("estra02");
+           
         }
 
         private void button2_Click(object sender, EventArgs e)

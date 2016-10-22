@@ -8,15 +8,63 @@ namespace Logic
     public class Server
     {
         private string nombre;
+        string databaseLink;
+        string usuario;
+        string contrasenia;
+        string ip;
+        string puerto;
+        string baseDatos;
+
         public Server()
         {
             nombre = "";
+            databaseLink = "";
+            usuario = "";
+            contrasenia = "";
+            ip = "";
+            puerto = "";
+            baseDatos = "";
             Console.Out.WriteLine("Logic creado");
         }
 
-        public Server(string nom) {
+        public Server(string nom,string dbLink,string u, string c, string numip,string p, string nbase) {
             this.nombre = nom;
+            this.databaseLink = dbLink;
+            this.usuario = u;
+            this.contrasenia = c;
+            this.ip = numip;
+            this.puerto = p;
+            this.baseDatos = nbase;
         }
+
+        public string getNombre() {
+            return this.nombre;
+        }
+        public string getDBLink()
+        {
+            return this.databaseLink;
+        }
+        public string getUsuario()
+        {
+            return this.usuario;
+        }
+        public string getContrasenia()
+        {
+            return this.contrasenia;
+        }
+        public string getIP()
+        {
+            return this.ip;
+        }
+        public string getPuerto()
+        {
+            return this.puerto;
+        }
+        public string getNomBase()
+        {
+            return this.baseDatos;
+        }
+
 
         public string ToString() {
             return nombre;
@@ -24,20 +72,23 @@ namespace Logic
 
         public void guardar_Server(StreamWriter es)
         {
-            //escribimos. 
             // Para saber que lo que viene es un server
             es.WriteLine("%%");
-            // Nombre de la politica
+      
             es.WriteLine(nombre);
-            // Antes de guardar la frecuencia (los dias) 
-            //vamos a guardar la cantidad de items con check
-          
+            es.WriteLine(databaseLink);
+            es.WriteLine(usuario);
+            es.WriteLine(contrasenia);
+            es.WriteLine(ip);
+            es.WriteLine(puerto);
+            es.WriteLine(baseDatos);
+
+
 
             es.Flush();
             //Cerramos
             es.Close();
-            //Vaciamos
-            //   textBox1.Text = "";
+           
         }
     }
 
@@ -191,28 +242,28 @@ namespace Logic
             return nom_Server;
         }
 
-        public void Guardar_Estrategia(Estrategia e)
+        public void Guardar_Estrategia(StreamWriter escrito)
         {
 
             //Fijar donde se guardara el archivo txt
 
-            StreamWriter escrito = new StreamWriter(Path.GetFullPath("Servidores.txt"), true); // escribe al final de Servidores.txt
+          
 
 
             //escribimos. 
             escrito.WriteLineAsync("##");//PAra saber que es una estrategia
-            escrito.WriteLine(e.nom_Server); // Nombre del servidor que lo creo
-            escrito.WriteLine(e.nombre);
-            escrito.WriteLine(e.tipoRes);
-            escrito.WriteLine(e.modoRes);
-            escrito.WriteLine(e.tablespaces.Count);
-            e.tablespaces.ForEach(delegate (String tables)
+            escrito.WriteLine(nom_Server); // Nombre del servidor que lo creo
+            escrito.WriteLine(nombre);
+            escrito.WriteLine(tipoRes);
+            escrito.WriteLine(modoRes);
+            escrito.WriteLine(tablespaces.Count);
+            tablespaces.ForEach(delegate (String tables)
             {
                 escrito.WriteLine(tables);
             });
-            escrito.WriteLine(e.plus[0]);
-            escrito.WriteLine(e.plus[1]);
-            escrito.WriteLine(e.plus[2]);
+            escrito.WriteLine(plus[0]);
+            escrito.WriteLine(plus[1]);
+            escrito.WriteLine(plus[2]);
             escrito.Flush();
             //Cerramos
             escrito.Close();

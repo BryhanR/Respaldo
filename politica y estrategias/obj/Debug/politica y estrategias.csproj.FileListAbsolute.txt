@@ -61,3 +61,16 @@ C:\Users\Usuario\Desktop\Respaldo\politica y estrategias\obj\Debug\politica_y_es
 C:\Users\Usuario\Desktop\Respaldo\politica y estrategias\obj\Debug\politica_y_estrategias.Properties.Resources.resources
 C:\Users\Usuario\Desktop\Respaldo\politica y estrategias\obj\Debug\politica_y_estrategias.Servidores.resources
 C:\Users\Usuario\Desktop\Respaldo\politica y estrategias\obj\Debug\politica y estrategias.csproj.GenerateResource.Cache
+C:\Users\Alexandra\Desktop\Respaldo\politica y estrategias\bin\Debug\politica y estrategias.exe.config
+C:\Users\Alexandra\Desktop\Respaldo\politica y estrategias\bin\Debug\politica y estrategias.exe
+C:\Users\Alexandra\Desktop\Respaldo\politica y estrategias\bin\Debug\politica y estrategias.pdb
+C:\Users\Alexandra\Desktop\Respaldo\politica y estrategias\bin\Debug\Oracle.DataAccess.dll
+C:\Users\Alexandra\Desktop\Respaldo\politica y estrategias\obj\Debug\politica y estrategias.csprojResolveAssemblyReference.cache
+C:\Users\Alexandra\Desktop\Respaldo\politica y estrategias\obj\Debug\politica_y_estrategias.Estrategias.resources
+C:\Users\Alexandra\Desktop\Respaldo\politica y estrategias\obj\Debug\politica_y_estrategias.Form1.resources
+C:\Users\Alexandra\Desktop\Respaldo\politica y estrategias\obj\Debug\politica_y_estrategias.Politicas.resources
+C:\Users\Alexandra\Desktop\Respaldo\politica y estrategias\obj\Debug\politica_y_estrategias.Properties.Resources.resources
+C:\Users\Alexandra\Desktop\Respaldo\politica y estrategias\obj\Debug\politica_y_estrategias.Servidores.resources
+C:\Users\Alexandra\Desktop\Respaldo\politica y estrategias\obj\Debug\politica y estrategias.csproj.GenerateResource.Cache
+C:\Users\Alexandra\Desktop\Respaldo\politica y estrategias\obj\Debug\politica y estrategias.exe
+C:\Users\Alexandra\Desktop\Respaldo\politica y estrategias\obj\Debug\politica y estrategias.pdb
