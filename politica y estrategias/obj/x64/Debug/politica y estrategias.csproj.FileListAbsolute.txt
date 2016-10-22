@@ -22,3 +22,15 @@ C:\Users\Alexandra\Desktop\politica y estrategias\politica y estrategias\bin\x64
 C:\Users\Alexandra\Desktop\politica y estrategias\politica y estrategias\obj\x64\Debug\politica y estrategias.exe
 C:\Users\Alexandra\Desktop\politica y estrategias\politica y estrategias\obj\x64\Debug\politica y estrategias.pdb
 C:\Users\Usuario\Desktop\politica y estrategias\politica y estrategias\obj\x64\Debug\politica_y_estrategias.Servidores.resources
+C:\Users\Usuario\Desktop\Respaldo\politica y estrategias\bin\x64\Debug\politica y estrategias.exe.config
+C:\Users\Usuario\Desktop\Respaldo\politica y estrategias\obj\x64\Debug\politica y estrategias.exe
+C:\Users\Usuario\Desktop\Respaldo\politica y estrategias\obj\x64\Debug\politica y estrategias.pdb
+C:\Users\Usuario\Desktop\Respaldo\politica y estrategias\bin\x64\Debug\politica y estrategias.exe
+C:\Users\Usuario\Desktop\Respaldo\politica y estrategias\bin\x64\Debug\politica y estrategias.pdb
+C:\Users\Usuario\Desktop\Respaldo\politica y estrategias\obj\x64\Debug\politica y estrategias.csprojResolveAssemblyReference.cache
+C:\Users\Usuario\Desktop\Respaldo\politica y estrategias\obj\x64\Debug\politica_y_estrategias.Estrategias.resources
+C:\Users\Usuario\Desktop\Respaldo\politica y estrategias\obj\x64\Debug\politica_y_estrategias.Form1.resources
+C:\Users\Usuario\Desktop\Respaldo\politica y estrategias\obj\x64\Debug\politica_y_estrategias.Politicas.resources
+C:\Users\Usuario\Desktop\Respaldo\politica y estrategias\obj\x64\Debug\politica_y_estrategias.Properties.Resources.resources
+C:\Users\Usuario\Desktop\Respaldo\politica y estrategias\obj\x64\Debug\politica_y_estrategias.Servidores.resources
+C:\Users\Usuario\Desktop\Respaldo\politica y estrategias\obj\x64\Debug\politica y estrategias.csproj.GenerateResource.Cache
