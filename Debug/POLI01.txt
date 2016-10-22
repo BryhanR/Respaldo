@@ -1,0 +1,16 @@
+Frecuencia
+Martes
+Sabado
+DIA
+19
+MES
+10
+ANNO
+2016
+HORA
+4
+MINUTOS
+31
+SEGUNDOS
+0
+}

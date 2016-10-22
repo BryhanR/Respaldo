@@ -1,0 +1,17 @@
+Frecuencia
+Jueves
+Domingo
+DIA
+18
+MES
+10
+ANNO
+2016
+HORA
+10
+MINUTOS
+55
+SEGUNDOS
+15
+REPETICION
+60
