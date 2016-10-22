@@ -27,7 +27,7 @@ namespace politica_y_estrategias
         List<Estrategia> estrategias = new List<Estrategia>();
         List<Politica> politicas = new List<Politica>();
         List<Server> servidores = new List<Server>();
-
+        List<Tarea> tareas = new List<Tarea>();
 
         //-------- METODOS DEL FORM1 ---------//
         public Form1()
@@ -128,6 +128,10 @@ namespace politica_y_estrategias
             p[0] = 0;
             p[1] = 0;
 
+            // Auxiliares para crear Tarea
+            string nom_T_Server = "";
+            string estra = "";
+            string poli = "";
         
 
          StreamReader leido = File.OpenText(Path.GetFullPath("Servidores.txt"));
@@ -186,6 +190,15 @@ namespace politica_y_estrategias
                      repeti = int.Parse(leido.ReadLine());
                      Politica pol = new Politica(nom_P_Server, nomP, frecuencia, fecha, repeti);
                     politicas.Add(pol);
+                }
+
+                if (contenido == "@@") {
+                    nom_T_Server = leido.ReadLine();
+                    estra = leido.ReadLine();
+                    poli = leido.ReadLine();
+
+                    Tarea tarea = new Tarea(nom_T_Server, estra, poli);
+                    tareas.Add(tarea);
                 }
             }
             leido.Close();
@@ -362,6 +375,11 @@ namespace politica_y_estrategias
             politicas.Add(p);
         }
 
+        private void guardar_Tarea() {
+            Tarea t = new Tarea(getServer(),nom_Estra.Text,nom_Poli.Text);
+            StreamWriter escrito = new StreamWriter(Path.GetFullPath("Servidores.txt"), true); // escribe al final de Servidores.txt
+            t.guardar_Tarea(escrito);
+        }
 
         //------ EVENTOS DEL FORM1 ------//
 
@@ -373,6 +391,7 @@ namespace politica_y_estrategias
 
         private void button1_Click(object sender, EventArgs e)
         {
+            guardar_Tarea();
             ResuperaServidorTxT();
             estrategias.ForEach(delegate(Estrategia tables)
             {
@@ -511,6 +530,31 @@ namespace politica_y_estrategias
             //  e.Node.Nodes.Add("Carro");
             //   treeView1.Nodes.Add("Carro");
 
+        }
+
+        private void checkedList_Estrategias_ItemCheck(object sender, ItemCheckEventArgs e)
+        {
+            
+            if (checkedList_Estrategias.GetItemChecked(e.Index) == false)
+            {
+                nom_Estra.Text = checkedList_Estrategias.Items[e.Index].ToString();
+            }
+            else {
+                nom_Estra.Text = "";
+            }
+           
+        }
+
+        private void checkedList_Politicas_ItemCheck(object sender, ItemCheckEventArgs e)
+        {
+            if (checkedList_Politicas.GetItemChecked(e.Index) == false)
+            {
+                nom_Poli.Text = checkedList_Politicas.Items[e.Index].ToString();
+            }
+            else
+            {
+                nom_Poli.Text = "";
+            }
         }
 
 

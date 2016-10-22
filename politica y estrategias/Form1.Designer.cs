@@ -29,14 +29,14 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("Servers");
+            System.Windows.Forms.TreeNode treeNode3 = new System.Windows.Forms.TreeNode("Servers");
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.treeView1 = new System.Windows.Forms.TreeView();
             this.label1 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.nom_Poli = new System.Windows.Forms.TextBox();
+            this.nom_Estra = new System.Windows.Forms.TextBox();
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
@@ -44,17 +44,17 @@
             this.label18 = new System.Windows.Forms.Label();
             this.label17 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.checkedList_Politicas = new System.Windows.Forms.CheckedListBox();
             this.label12 = new System.Windows.Forms.Label();
             this.panel7 = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.checkedList_Estrategias = new System.Windows.Forms.CheckedListBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.button3 = new System.Windows.Forms.Button();
-            this.checkedList_Estrategias = new System.Windows.Forms.CheckedListBox();
-            this.checkedList_Politicas = new System.Windows.Forms.CheckedListBox();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel7.SuspendLayout();
@@ -66,10 +66,10 @@
             // 
             this.treeView1.Location = new System.Drawing.Point(3, 39);
             this.treeView1.Name = "treeView1";
-            treeNode1.Name = "Nodo3";
-            treeNode1.Text = "Servers";
+            treeNode3.Name = "Nodo3";
+            treeNode3.Text = "Servers";
             this.treeView1.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode1});
+            treeNode3});
             this.treeView1.Size = new System.Drawing.Size(116, 390);
             this.treeView1.TabIndex = 0;
             this.treeView1.NodeMouseHover += new System.Windows.Forms.TreeNodeMouseHoverEventHandler(this.treeView1_NodeMouseHover);
@@ -98,8 +98,8 @@
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.textBox3);
-            this.panel1.Controls.Add(this.textBox2);
+            this.panel1.Controls.Add(this.nom_Poli);
+            this.panel1.Controls.Add(this.nom_Estra);
             this.panel1.Controls.Add(this.button2);
             this.panel1.Controls.Add(this.button1);
             this.panel1.Controls.Add(this.label2);
@@ -112,21 +112,21 @@
             this.panel1.Size = new System.Drawing.Size(528, 140);
             this.panel1.TabIndex = 23;
             // 
-            // textBox3
+            // nom_Poli
             // 
-            this.textBox3.Enabled = false;
-            this.textBox3.Location = new System.Drawing.Point(206, 66);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(148, 20);
-            this.textBox3.TabIndex = 34;
+            this.nom_Poli.Enabled = false;
+            this.nom_Poli.Location = new System.Drawing.Point(206, 66);
+            this.nom_Poli.Name = "nom_Poli";
+            this.nom_Poli.Size = new System.Drawing.Size(148, 20);
+            this.nom_Poli.TabIndex = 34;
             // 
-            // textBox2
+            // nom_Estra
             // 
-            this.textBox2.Enabled = false;
-            this.textBox2.Location = new System.Drawing.Point(206, 32);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(148, 20);
-            this.textBox2.TabIndex = 33;
+            this.nom_Estra.Enabled = false;
+            this.nom_Estra.Location = new System.Drawing.Point(206, 32);
+            this.nom_Estra.Name = "nom_Estra";
+            this.nom_Estra.Size = new System.Drawing.Size(148, 20);
+            this.nom_Estra.TabIndex = 33;
             // 
             // button2
             // 
@@ -204,6 +204,15 @@
             this.panel2.Size = new System.Drawing.Size(148, 199);
             this.panel2.TabIndex = 24;
             // 
+            // checkedList_Politicas
+            // 
+            this.checkedList_Politicas.FormattingEnabled = true;
+            this.checkedList_Politicas.Location = new System.Drawing.Point(18, 32);
+            this.checkedList_Politicas.Name = "checkedList_Politicas";
+            this.checkedList_Politicas.Size = new System.Drawing.Size(120, 154);
+            this.checkedList_Politicas.TabIndex = 24;
+            this.checkedList_Politicas.ItemCheck += new System.Windows.Forms.ItemCheckEventHandler(this.checkedList_Politicas_ItemCheck);
+            // 
             // label12
             // 
             this.label12.AutoSize = true;
@@ -241,6 +250,15 @@
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(148, 199);
             this.panel3.TabIndex = 25;
+            // 
+            // checkedList_Estrategias
+            // 
+            this.checkedList_Estrategias.FormattingEnabled = true;
+            this.checkedList_Estrategias.Location = new System.Drawing.Point(12, 32);
+            this.checkedList_Estrategias.Name = "checkedList_Estrategias";
+            this.checkedList_Estrategias.Size = new System.Drawing.Size(120, 154);
+            this.checkedList_Estrategias.TabIndex = 34;
+            this.checkedList_Estrategias.ItemCheck += new System.Windows.Forms.ItemCheckEventHandler(this.checkedList_Estrategias_ItemCheck);
             // 
             // label3
             // 
@@ -285,22 +303,6 @@
             this.button3.TabIndex = 27;
             this.button3.UseVisualStyleBackColor = true;
             this.button3.Click += new System.EventHandler(this.button3_Click);
-            // 
-            // checkedList_Estrategias
-            // 
-            this.checkedList_Estrategias.FormattingEnabled = true;
-            this.checkedList_Estrategias.Location = new System.Drawing.Point(12, 32);
-            this.checkedList_Estrategias.Name = "checkedList_Estrategias";
-            this.checkedList_Estrategias.Size = new System.Drawing.Size(120, 154);
-            this.checkedList_Estrategias.TabIndex = 34;
-            // 
-            // checkedList_Politicas
-            // 
-            this.checkedList_Politicas.FormattingEnabled = true;
-            this.checkedList_Politicas.Location = new System.Drawing.Point(18, 32);
-            this.checkedList_Politicas.Name = "checkedList_Politicas";
-            this.checkedList_Politicas.Size = new System.Drawing.Size(120, 154);
-            this.checkedList_Politicas.TabIndex = 24;
             // 
             // Form1
             // 
@@ -357,8 +359,8 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Panel panel4;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox nom_Poli;
+        private System.Windows.Forms.TextBox nom_Estra;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.CheckedListBox checkedList_Politicas;
         private System.Windows.Forms.CheckedListBox checkedList_Estrategias;

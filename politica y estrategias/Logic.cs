@@ -306,4 +306,68 @@ namespace Logic
         }
     }
 
+    public class Tarea
+    {
+        private string nom_Server;
+        private string estrategia;
+        private string politica;
+
+        public Tarea(string ns, string e, string p) {
+            this.nom_Server = ns;
+            this.estrategia = e;
+            this.politica = p;
+        }
+
+        public Tarea()
+        {
+            this.nom_Server = "";
+            this.estrategia = "";
+            this.politica = "";
+        }
+
+        public string getNom_Estrategia(){
+            return estrategia;
+        }
+        public string getNom_Politica()
+        {
+            return politica;
+        }
+        public string getNom_Server()
+        {
+            return nom_Server;
+        }
+
+
+        public void setNom_Estrategia(string e)
+        {
+            estrategia = e;
+        }
+        public void setNom_Politica(string p)
+        {
+            politica = p;
+        }
+        public void setNom_Server(string s)
+        {
+            nom_Server = s;
+        }
+
+        public void guardar_Tarea(StreamWriter es)
+        {
+            //escribimos. 
+            // Para saber que lo que viene es una Tarea
+            es.WriteLine("@@");
+            // Nombre del servidor
+            es.WriteLine(nom_Server);
+            // Nombre de la Estrategia
+            es.WriteLine(estrategia);
+            // 'Nombre de la politica
+            es.WriteLine(politica);
+           
+            es.Flush();
+
+            //Cerramos
+            es.Close();
+        }
+    }
+
 }
