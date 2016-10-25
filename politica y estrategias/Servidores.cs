@@ -42,10 +42,14 @@ namespace politica_y_estrategias
             s.guardar_Server(escrito);
             principal.addServer(s);
 
+            MessageBox.Show("Server " + s.getNombre() + " Creado Correctamente", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+
         }
         private void button1_Click(object sender, EventArgs e)
         {
             GuardarServer();
+            this.Close();
         }
     }
 }

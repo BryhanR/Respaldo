@@ -72,6 +72,9 @@ namespace politica_y_estrategias
             principal.addEstrategias(estrategia);
             estrategia.Guardar_Estrategia(estrategia);
             principal.add_Check_Estrategia(nombre);
+
+            MessageBox.Show("Estrategis " + estrategia.getNombre() + " Creada Correctamente", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
         }
 
 
@@ -161,6 +164,7 @@ namespace politica_y_estrategias
             Console.WriteLine("Estrategia creada");
             //  Recupear_Estrategia();
             Console.WriteLine("Estrategia recuperda");
+            this.Close();
         }
     }
 }
