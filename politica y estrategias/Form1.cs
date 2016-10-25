@@ -18,7 +18,7 @@ namespace politica_y_estrategias
     public partial class Form1 : Form
     {
         //-------- Variables ---------------------------------------
-        String ConexionOracle = "User id= System; Password=admin123; Data Source= XE;"; //////cambiar password
+       // String ConexionOracle = "User id= system; Password=1234; Data Source= XE;"; //////cambiar password
         Server g = new Server();
         OracleConnection con = new OracleConnection();
         private readonly SynchronizationContext syncC;
@@ -34,7 +34,7 @@ namespace politica_y_estrategias
         {
             InitializeComponent();
             this.CenterToScreen();
-            con.ConnectionString = ConexionOracle;
+            con.ConnectionString = Globals.ConexionOracle;//ConexionOracle;
             syncC = SynchronizationContext.Current; // obtiene el contexto de syncronizacion del hilo de ui
             
             ArchiveLog();

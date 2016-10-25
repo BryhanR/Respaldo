@@ -16,7 +16,7 @@ namespace politica_y_estrategias
 {
     public partial class Estrategias : Form
     {
-        String ConexionOracle = "User id= System; Password=admin123; Data Source= XE;"; //////cambiar password
+        //String ConexionOracle = "User id= System; Password=admin123; Data Source= XE;"; //////cambiar password
         //Server g = new Server();
         OracleConnection con = new OracleConnection();
 
@@ -24,7 +24,7 @@ namespace politica_y_estrategias
 
         public Estrategias(Form1 p)
         {
-            con.ConnectionString = ConexionOracle;
+            con.ConnectionString = Globals.ConexionOracle;//ConexionOracle;
             InitializeComponent();
             this.CenterToScreen();
             principal = p;

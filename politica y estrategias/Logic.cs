@@ -5,6 +5,11 @@ using System.IO;
 namespace Logic
 {
 
+    
+    public static class Globals
+    {
+        public static String ConexionOracle = "User id= system; Password=1234; Data Source= XE;"; //////cambiar password
+    }
     public class Server
     {
         private string nombre;
