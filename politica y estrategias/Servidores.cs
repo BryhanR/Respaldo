@@ -41,11 +41,12 @@ namespace politica_y_estrategias
             Server s = new Server(nom,datbalink,usuario,contra,ip,puerto,nomBase);
             s.guardar_Server(escrito);
             principal.addServer(s);
-
+            MessageBox.Show("Server "+ nom +" Creado Con Exito", "Success", MessageBoxButtons.OK);
         }
         private void button1_Click(object sender, EventArgs e)
         {
             GuardarServer();
+            
         }
     }
 }

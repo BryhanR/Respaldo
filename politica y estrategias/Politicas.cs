@@ -67,6 +67,9 @@ namespace politica_y_estrategias
             principal.addPolitica(p);
             p.guardar_Politica(escrito);
             principal.add_Check_Politica(p.getNombre());
+
+            MessageBox.Show("Politica " + p.getNombre() + " Creada Con Exito", "Success", MessageBoxButtons.OK);
+
         }
 
         //------ EVENTOS--------//
@@ -78,6 +81,7 @@ namespace politica_y_estrategias
         private void button2_Click(object sender, EventArgs e)
         {
             Guardar_Politica();
+           
         }
 
         private void Politicas_Load(object sender, EventArgs e)
