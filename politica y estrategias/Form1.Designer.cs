@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.TreeNode treeNode3 = new System.Windows.Forms.TreeNode("Servers");
+            System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("Servers");
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.treeView1 = new System.Windows.Forms.TreeView();
             this.label1 = new System.Windows.Forms.Label();
@@ -53,7 +53,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.estado = new System.Windows.Forms.TextBox();
             this.button3 = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -66,10 +66,10 @@
             // 
             this.treeView1.Location = new System.Drawing.Point(3, 39);
             this.treeView1.Name = "treeView1";
-            treeNode3.Name = "Nodo3";
-            treeNode3.Text = "Servers";
+            treeNode1.Name = "Nodo3";
+            treeNode1.Text = "Servers";
             this.treeView1.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode3});
+            treeNode1});
             this.treeView1.Size = new System.Drawing.Size(116, 390);
             this.treeView1.TabIndex = 0;
             this.treeView1.NodeMouseHover += new System.Windows.Forms.TreeNodeMouseHoverEventHandler(this.treeView1_NodeMouseHover);
@@ -284,15 +284,15 @@
             // 
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
-            // textBox1
+            // estado
             // 
-            this.textBox1.Enabled = false;
-            this.textBox1.ForeColor = System.Drawing.SystemColors.MenuHighlight;
-            this.textBox1.Location = new System.Drawing.Point(3, 491);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(153, 20);
-            this.textBox1.TabIndex = 26;
-            this.textBox1.Text = "Programa inicializado...";
+            this.estado.Enabled = false;
+            this.estado.ForeColor = System.Drawing.SystemColors.MenuHighlight;
+            this.estado.Location = new System.Drawing.Point(3, 491);
+            this.estado.Name = "estado";
+            this.estado.Size = new System.Drawing.Size(153, 20);
+            this.estado.TabIndex = 26;
+            this.estado.Text = "Programa inicializado...";
             // 
             // button3
             // 
@@ -312,7 +312,7 @@
             this.BackColor = System.Drawing.Color.LightGray;
             this.ClientSize = new System.Drawing.Size(668, 515);
             this.Controls.Add(this.button3);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.estado);
             this.Controls.Add(this.panel7);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.treeView1);
@@ -354,7 +354,7 @@
         private System.Windows.Forms.Button btn_CrearEstra;
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox estado;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Panel panel3;

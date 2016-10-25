@@ -20,6 +20,7 @@ namespace politica_y_estrategias
         {
             principal = p;
             InitializeComponent();
+            this.CenterToScreen();
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -46,7 +47,7 @@ namespace politica_y_estrategias
         private void button1_Click(object sender, EventArgs e)
         {
             GuardarServer();
-            
+            this.Close();
         }
     }
 }

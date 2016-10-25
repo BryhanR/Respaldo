@@ -52,11 +52,11 @@ namespace politica_y_estrategias
             }
 
             if (check_Archive.Checked)
-                plus[1] = 1;
+                plus[0] = 1;
             if (check_ControlF.Checked)
                 plus[1] = 1;
             if (checkBox2.Checked)
-                plus[0] = 1;
+                plus[2] = 1;
             if (radioButton1.Checked)
                 tipoRes = 1;
             if (radioButton2.Checked)
@@ -160,6 +160,7 @@ namespace politica_y_estrategias
         private void btn_CrearEstra_Click(object sender, EventArgs e)
         {
             Guardar_Estrategia();
+            this.Close();
             Console.WriteLine("Estrategia creada");
             //  Recupear_Estrategia();
             //Console.WriteLine("Estrategia recuperda");
