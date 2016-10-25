@@ -10,25 +10,30 @@ using System.Windows.Forms;
 using System.IO;
 using Oracle.DataAccess.Client;
 using Logic;
-
+using politica_y_estrategias;
 
 namespace politica_y_estrategias
 {
     public partial class Estrategias : Form
     {
-        String ConexionOracle = "User id= System; Password=admin123; Data Source= XE;"; //////cambiar password
+        //String ConexionOracle = "User id= System; Password=admin123; Data Source= XE;"; //////cambiar password
         //Server g = new Server();
         OracleConnection con = new OracleConnection();
-        public Estrategias()
+
+        private Form1 principal;
+
+        public Estrategias(Form1 p)
         {
-            con.ConnectionString = ConexionOracle;
+            con.ConnectionString = Globals.ConexionOracle;//ConexionOracle;
             InitializeComponent();
             this.CenterToScreen();
+            principal = p;
         }
 
         //------ METODOS---------//
         private void Guardar_Estrategia()
         {
+
             string nombre;
             int tipoRes = 0;
             int modoRes = 0;
@@ -38,7 +43,7 @@ namespace politica_y_estrategias
             plus[1] = 0;
             plus[2] = 0;
 
-            nombre = this.nom_estra.Text;
+            nombre = this.nom_estra.Text.ToUpper();
 
 
             foreach (object itemChecked in checkedList_Tablespaces.CheckedItems)
@@ -63,11 +68,12 @@ namespace politica_y_estrategias
             if (radioButton5.Checked)
                 modoRes = 2;
 
-
-            Estrategia estrategia = new Estrategia(nombre, tipoRes, modoRes, tablespaces, plus);
+            Estrategia estrategia = new Estrategia(principal.getServer(), nombre, tipoRes, modoRes, tablespaces, plus);
+            principal.addEstrategias(estrategia);
             estrategia.Guardar_Estrategia(estrategia);
+            principal.add_Check_Estrategia(nombre);
         }
-       
+
 
 
         private void llenarCheckedList_Tablespaces()
@@ -102,7 +108,7 @@ namespace politica_y_estrategias
             check_Archive.Checked = state2;
             checkBox2.Checked = state2;
             check_ControlF.Checked = state2;
-           // btn_Cancelar.Enabled = state2;
+            // btn_Cancelar.Enabled = state2;
         }
 
 
@@ -141,19 +147,19 @@ namespace politica_y_estrategias
             if (check_Tablespaces.Checked)
                 llenarCheckedList_Tablespaces();
             else
-                checkedList_Tablespaces.Items.Clear(); 
+                checkedList_Tablespaces.Items.Clear();
         }
 
         private void Estrategias_Load(object sender, EventArgs e)
         {
-          
+
         }
 
         private void btn_CrearEstra_Click(object sender, EventArgs e)
         {
             Guardar_Estrategia();
             Console.WriteLine("Estrategia creada");
-          //  Recupear_Estrategia();
+            //  Recupear_Estrategia();
             Console.WriteLine("Estrategia recuperda");
         }
     }

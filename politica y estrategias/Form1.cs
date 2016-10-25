@@ -17,16 +17,24 @@ namespace politica_y_estrategias
 {
     public partial class Form1 : Form
     {
-        String ConexionOracle = "User id= System; Password=admin123; Data Source= XE;"; //////cambiar password
+        //-------- Variables ---------------------------------------
+       // String ConexionOracle = "User id= system; Password=1234; Data Source= XE;"; //////cambiar password
         Server g = new Server();
         OracleConnection con = new OracleConnection();
         private readonly SynchronizationContext syncC;
 
+        //----- Lista de estrategias politicas y servidores 
+        List<Estrategia> estrategias = new List<Estrategia>();
+        List<Politica> politicas = new List<Politica>();
+        List<Server> servidores = new List<Server>();
+        List<Tarea> tareas = new List<Tarea>();
+
+        //-------- METODOS DEL FORM1 ---------//
         public Form1()
         {
             InitializeComponent();
             this.CenterToScreen();
-            con.ConnectionString = ConexionOracle;
+            con.ConnectionString = Globals.ConexionOracle;//ConexionOracle;
             syncC = SynchronizationContext.Current; // obtiene el contexto de syncronizacion del hilo de ui
             
             ArchiveLog();
@@ -92,149 +100,26 @@ namespace politica_y_estrategias
 
         }
 
-
-        
-        
-
-        private void treeView1_NodeMouseHover(object sender, TreeNodeMouseHoverEventArgs e)
-        {
-        }
-
-        private void Form1_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void treeView1_AfterSelect(object sender, TreeViewEventArgs e)
-        {
-
-        }
-
-        private void treeView1_NodeMouseClick(object sender, TreeNodeMouseClickEventArgs e)
-        {
-            if (e.Node.Name == "Nodo3")
-            {
-
-                label15.Text = "Seleccione Servidor";
-                panel1.Enabled = false;
-                panel2.Enabled = false;
-                panel4.Enabled = false;
-
-            }
-
-            else {
-                label15.Text = e.Node.Text;
-                panel1.Enabled = true;
-                panel2.Enabled = true;
-                panel4.Enabled = true;
-            
-            }
-          /*  else
-            if (e.Node.Name == "Nodo4") {
-
-                label15.Text = "Servidor 1";
-                panel1.Enabled = true;
-                panel2.Enabled = true;
-                panel4.Enabled = true;
-            }else
-                 if (e.Node.Name == "Nodo5") {
-
-                label15.Text = "Servidor 2";
-                panel1.Enabled = true;
-                panel2.Enabled = true;
-                panel4.Enabled = true;
-            }else
-                      if (e.Node.Name == "Nodo6") {
-
-                label15.Text = "Servidor 3";
-                panel1.Enabled = true;
-                panel2.Enabled = true;
-                panel4.Enabled = true;
-            }else
-                     if (e.Node.Name == "Nodo7") {
-
-                label15.Text = "Servidor 4";
-                panel1.Enabled = true;
-                panel2.Enabled = true;
-                panel4.Enabled = true;
-            }else 
-                   if (e.Node.Name == "Nodo8") {
-
-                label15.Text = "Servidor 5";
-                panel1.Enabled = true;
-                panel2.Enabled = true;
-                panel4.Enabled = true;
-            }
-                   else
-                       if (e.Node.Name == "Nodo11")
-                       {
-                           label15.Text = "ALL SERVERS";
-                           panel1.Enabled = true;
-                           panel2.Enabled = true;
-                           panel4.Enabled = true;
-                       }
-            */
-          //  e.Node.Nodes.Add("Carro");
-           //   treeView1.Nodes.Add("Carro");
-
-        }
-       
-
-   
-        private void button1_MouseClick(object sender, MouseEventArgs e)
-        {
-          
-              /*  startFull();
-                timer1.Enabled = true;
-            //    timer1.Interval = (int)num_Tiempo.Value * 60000;
-                timer1.Start();*/
-            
-        }
-
-        private void checkBox4_CheckedChanged(object sender, EventArgs e)
-        {
-            
-        }
-
-        private void timer1_Tick(object sender, EventArgs e)
-        {
-            startFull();
-        }
-
-        private void button2_Click(object sender, EventArgs e)
-        {
-    
-            Estrategias m = new Estrategias();
-            m.Show();
-        }
-
-        private void radioButton3_CheckedChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void button2_Click_1(object sender, EventArgs e)
-        {
-            Politicas p = new Politicas();
-            p.Show();
-        }
-
-        //Lista de estrategias y politicas
-        List<Estrategia> estrategias = new List<Estrategia>();
-        List<Politica> politicas = new List<Politica>();
-        List<Server> servidores = new List<Server>();
         public void ResuperaServidorTxT()
         {
               // Auxiliares para crear Server
             string nom_Server = "";
-            
+            string dbLink="";
+            string usuario = "";
+            string contrasenia = "";
+            string ip = "";
+            string puerto = "";
+            string baseDatos = "";
+
             //Auxiliares para crear Politica
+            string nom_P_Server = "";
             string nomP = "";
             List<string>frecuencia = new List<string>();
            DateTime fecha;
             int repeti = 0;
 
             //Auxiliares para crear Estrategia
+            string nom_E_Server = "";
             string nom = "";
             int tr = 0;
             int mr = 0;
@@ -243,6 +128,10 @@ namespace politica_y_estrategias
             p[0] = 0;
             p[1] = 0;
 
+            // Auxiliares para crear Tarea
+            string nom_T_Server = "";
+            string estra = "";
+            string poli = "";
         
 
          StreamReader leido = File.OpenText(Path.GetFullPath("Servidores.txt"));
@@ -253,11 +142,18 @@ namespace politica_y_estrategias
             {
                 if (contenido == "%%") {
                     nom_Server = leido.ReadLine();
-                    Server ser = new Server(nom_Server);
-                    servidores.Add(ser);
+                    dbLink = leido.ReadLine();
+                    usuario = leido.ReadLine();
+                    contrasenia = leido.ReadLine();
+                    ip = leido.ReadLine();
+                    puerto = leido.ReadLine();
+                    baseDatos = leido.ReadLine();
+                    Server ser = new Server(nom_Server,dbLink,usuario,contrasenia,ip,puerto,baseDatos);
+                   servidores.Add(ser);
                 }
                 if (contenido == "##")
                 {
+                    nom_E_Server = leido.ReadLine();
                     nom = leido.ReadLine();
                     tr = int.Parse(leido.ReadLine());
                     mr = int.Parse(leido.ReadLine());
@@ -271,10 +167,12 @@ namespace politica_y_estrategias
                     p[0] = int.Parse(leido.ReadLine());
                     p[1] = int.Parse(leido.ReadLine());
                     p[2] = int.Parse(leido.ReadLine());
-                    Estrategia est = new Estrategia(nom, tr, mr, ts, p);
+                    Estrategia est = new Estrategia(nom_E_Server,nom, tr, mr, ts, p);
                     estrategias.Add(est);
+                    
                 }
                 if (contenido == "&&") {
+                    nom_P_Server = leido.ReadLine();
                     nomP = leido.ReadLine();
                     int a = int.Parse(leido.ReadLine());
                     for (int i = 0; i < a; i++)
@@ -290,8 +188,17 @@ namespace politica_y_estrategias
                     int seg= int.Parse(leido.ReadLine());
                     fecha = new DateTime(anno,mes,dia,hora,min,seg);
                      repeti = int.Parse(leido.ReadLine());
-                    Politica pol = new Politica(nomP, frecuencia, fecha, repeti);
+                     Politica pol = new Politica(nom_P_Server, nomP, frecuencia, fecha, repeti);
                     politicas.Add(pol);
+                }
+
+                if (contenido == "@@") {
+                    nom_T_Server = leido.ReadLine();
+                    estra = leido.ReadLine();
+                    poli = leido.ReadLine();
+
+                    Tarea tarea = new Tarea(nom_T_Server, estra, poli);
+                    tareas.Add(tarea);
                 }
             }
             leido.Close();
@@ -299,24 +206,7 @@ namespace politica_y_estrategias
           
         }
       
-       /* public void bajarBase() {
-            con.Open();
-            String sql = "shutdown";
-            OracleDataAdapter datos = new OracleDataAdapter(sql, con);
-          
-            sql=  "startup mount";
-            datos = new OracleDataAdapter(sql, con);
-           
-            sql = "commit";
-            datos = new OracleDataAdapter(sql, con);
-           
-            sql = "alter system checkpoint; ";
-            datos = new OracleDataAdapter(sql, con);
-           
-            sql = "alter system switch logfile;";
-            datos = new OracleDataAdapter(sql, con);
-
-        }*/
+     
         public string elementosBackup(int []p) { //Hace las sentencias para le backup de archivelog, controlfile e init(falta)
             string salida = "";
             if (p[0] == 1)
@@ -327,6 +217,7 @@ namespace politica_y_estrategias
                 salida +="";
             return salida;
         }
+
         //Recibe el nombe de la estrategia a buscar y devuelve las sentencias correspondientes
         public string restaurarEstrategia( string nom) {
             string comandos="";
@@ -366,27 +257,25 @@ namespace politica_y_estrategias
             return comandos;
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-            
-            ResuperaServidorTxT();
-            estrategias.ForEach(delegate (Estrategia tables)
-            {
-                tables.toString();
-            });
-            restaurarEstrategia("estra02");
+
+        //Creación del databaseLink
+        private void crearDatabaseLink(string nomS) {
         
+            Server s = servidores.Find(x => x.getNombre() == nomS);
+
+            string DBLink = "CREATE DATABASE LINK" + s.getDBLink() + " CONNECT TO "+s.getUsuario()+" IDENTIFIED BY";
+            DBLink += s.getContrasenia() +" USING '(DESCRIPTION =(ADDRESS = (PROTOCOL = TCP)(HOST =" + s.getIP()+")(PORT =";
+            DBLink += s.getPuerto() + "))(CONNECT_DATA = (SERVER = DEDICATED)(SERVICE_NAME =" +s.getNomBase()+")))';";
+
+            //NOTA: La sentencia del databaselink si sirve pero no se si desde aqui se ejecuta bien xq no puedo 
+            //ver la respuesta de la base
+          /*  con.Open();
+            string sql = DBLink;
+            OracleDataAdapter datos = new OracleDataAdapter(sql, con);
+            con.Close();*/
 
         }
-
-        private void button3_Click(object sender, EventArgs e)
-        {
-           // e.Node.Nodes.Add("Carro");
-            Servidores s = new Servidores(this);
-            s.Show();
-            Console.WriteLine("Valor "+s.getNombre());
-            //treeView1.TopNode.Nodes.Add("Ver");
-        }
+    
 
         private void cargarNomServidores() {
             servidores.ForEach(delegate(Server name)
@@ -405,6 +294,270 @@ namespace politica_y_estrategias
             treeView1.TopNode.Nodes.Add(servidores[servidores.Count-1].ToString());
           //  Console.WriteLine("Valores "+servidores.get.ToString());
         }
+
+       
+        public List<Estrategia> getEstrategiasServer()
+        {
+            List<Estrategia> estra = new List<Estrategia>();
+            estrategias.ForEach(delegate(Estrategia e)
+            {
+                if (e.getServer() == getServer())
+                {
+                    estra.Add(e);
+                }
+            });
+            return estra;
+        }
+
+        public List<Politica> getPoliticasServer()
+        {
+            List<Politica> poli = new List<Politica>();
+            politicas.ForEach(delegate(Politica p)
+            {
+                if (p.getServer() == getServer())
+                {
+                    poli.Add(p);
+                }
+            });
+            return poli;
+        }
+
+        private void llenarCheckedList_Estretegias()
+        {
+            List<Estrategia> le = getEstrategiasServer();
+            checkedList_Estrategias.Items.Clear();
+
+            le.ForEach(delegate(Estrategia e)
+            {
+                checkedList_Estrategias.Items.Add(e.getNombre());
+            });
+
+            checkedList_Estrategias.HorizontalScrollbar = true;
+
+        }
+
+        private void llenarCheckedList_Politicas()
+        {
+            List<Politica> lp = getPoliticasServer();
+            checkedList_Politicas.Items.Clear();
+
+            lp.ForEach(delegate(Politica p)
+            {
+                checkedList_Politicas.Items.Add(p.getNombre());
+            });
+
+            checkedList_Politicas.HorizontalScrollbar = true;
+
+        }
+
+        public string getServer()
+        {
+            return label15.Text.Substring(10, label15.Text.Count() - 10);
+        }
+
+        public void add_Check_Estrategia(string nom_Estrategia)
+        {
+            checkedList_Estrategias.Items.Add(nom_Estrategia);
+        }
+
+        public void add_Check_Politica(string nom_Politica)
+        {
+            checkedList_Politicas.Items.Add(nom_Politica);
+        }
+
+        public void addEstrategias(Estrategia e)
+        {
+            estrategias.Add(e);
+        }
+
+        public void addPolitica(Politica p)
+        {
+            politicas.Add(p);
+        }
+
+        private void guardar_Tarea() {
+            Tarea t = new Tarea(getServer(),nom_Estra.Text,nom_Poli.Text);
+            StreamWriter escrito = new StreamWriter(Path.GetFullPath("Servidores.txt"), true); // escribe al final de Servidores.txt
+            t.guardar_Tarea(escrito);
+        }
+
+        //------ EVENTOS DEL FORM1 ------//
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            Servidores s = new Servidores(this);
+            s.Show();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            guardar_Tarea();
+            ResuperaServidorTxT();
+            estrategias.ForEach(delegate(Estrategia tables)
+            {
+                tables.toString();
+            });
+           
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            Estrategias m = new Estrategias(this);
+            m.Show();
+
+           /* Console.WriteLine(label15.Text.Substring(0,9));
+            Console.WriteLine(label15.Text.Count());
+            
+             Console.WriteLine();*/
+        }
+
+   
+
+        private void button2_Click_1(object sender, EventArgs e)
+        {
+            Politicas p = new Politicas(this);
+            p.Show();
+        }
+
+
+        private void button1_MouseClick(object sender, MouseEventArgs e)
+        {
+
+            /*  startFull();
+              timer1.Enabled = true;
+          //    timer1.Interval = (int)num_Tiempo.Value * 60000;
+              timer1.Start();*/
+
+        }
+
+        private void checkBox4_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            startFull();
+        }
+
+
+        private void treeView1_NodeMouseHover(object sender, TreeNodeMouseHoverEventArgs e)
+        {
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            cargarNomServidores();
+        }
+
+        private void treeView1_AfterSelect(object sender, TreeViewEventArgs e)
+        {
+
+        }
+
+        private void treeView1_NodeMouseClick(object sender, TreeNodeMouseClickEventArgs e)
+        {
+            if (e.Node.Name == "Nodo3")
+            {
+
+                label15.Text = "Seleccione Servidor";
+                panel1.Enabled = false;
+                panel2.Enabled = false;
+                panel4.Enabled = false;
+
+                //---- Se vacia el checkList de Estretagias
+                checkedList_Estrategias.Items.Clear();
+                checkedList_Politicas.Items.Clear();
+
+            }
+
+            else
+            {
+                label15.Text = "Servidor: "+e.Node.Text;
+                panel1.Enabled = true;
+                panel2.Enabled = true;
+                panel4.Enabled = true;
+                 //-- Se colocan las estretegias de un server especifico ---
+                llenarCheckedList_Estretegias();
+                llenarCheckedList_Politicas();
+
+            }
+            /*  else
+              if (e.Node.Name == "Nodo4") {
+
+                  label15.Text = "Servidor 1";
+                  panel1.Enabled = true;
+                  panel2.Enabled = true;
+                  panel4.Enabled = true;
+              }else
+                   if (e.Node.Name == "Nodo5") {
+
+                  label15.Text = "Servidor 2";
+                  panel1.Enabled = true;
+                  panel2.Enabled = true;
+                  panel4.Enabled = true;
+              }else
+                        if (e.Node.Name == "Nodo6") {
+
+                  label15.Text = "Servidor 3";
+                  panel1.Enabled = true;
+                  panel2.Enabled = true;
+                  panel4.Enabled = true;
+              }else
+                       if (e.Node.Name == "Nodo7") {
+
+                  label15.Text = "Servidor 4";
+                  panel1.Enabled = true;
+                  panel2.Enabled = true;
+                  panel4.Enabled = true;
+              }else 
+                     if (e.Node.Name == "Nodo8") {
+
+                  label15.Text = "Servidor 5";
+                  panel1.Enabled = true;
+                  panel2.Enabled = true;
+                  panel4.Enabled = true;
+              }
+                     else
+                         if (e.Node.Name == "Nodo11")
+                         {
+                             label15.Text = "ALL SERVERS";
+                             panel1.Enabled = true;
+                             panel2.Enabled = true;
+                             panel4.Enabled = true;
+                         }
+              */
+            //  e.Node.Nodes.Add("Carro");
+            //   treeView1.Nodes.Add("Carro");
+
+        }
+
+        private void checkedList_Estrategias_ItemCheck(object sender, ItemCheckEventArgs e)
+        {
+            
+            if (checkedList_Estrategias.GetItemChecked(e.Index) == false)
+            {
+                nom_Estra.Text = checkedList_Estrategias.Items[e.Index].ToString();
+            }
+            else {
+                nom_Estra.Text = "";
+            }
+           
+        }
+
+        private void checkedList_Politicas_ItemCheck(object sender, ItemCheckEventArgs e)
+        {
+            if (checkedList_Politicas.GetItemChecked(e.Index) == false)
+            {
+                nom_Poli.Text = checkedList_Politicas.Items[e.Index].ToString();
+            }
+            else
+            {
+                nom_Poli.Text = "";
+            }
+        }
+
+
     }
 
 }

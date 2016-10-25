@@ -27,16 +27,25 @@ namespace politica_y_estrategias
             this.Close();
         }
 
-        public string getNombre() {
-            return nombre_txt.Text;
-        }
+    
+        public void GuardarServer() {
+            string nom=nombre_txt.Text.ToUpper();
+            string datbalink = textBox1.Text.ToUpper();
+            string usuario = textBox2.Text.ToUpper();
+            string contra = textBox3.Text.ToUpper();
+            string ip = textBox4.Text.ToUpper();
+            string puerto = textBox5.Text.ToUpper();
+            string nomBase = textBox6.Text.ToUpper();
 
+            StreamWriter escrito = new StreamWriter(Path.GetFullPath("Servidores.txt"), true); // escribe al final de Servidores.txt
+            Server s = new Server(nom,datbalink,usuario,contra,ip,puerto,nomBase);
+            s.guardar_Server(escrito);
+            principal.addServer(s);
+
+        }
         private void button1_Click(object sender, EventArgs e)
         {
-            Server s = new Server(nombre_txt.Text);
-            principal.addServer(s);
-            StreamWriter escrito = new StreamWriter(Path.GetFullPath("Servidores.txt"), true); // escribe al final de Servidores.txt
-            s.guardar_Server(escrito);
+            GuardarServer();
         }
     }
 }
