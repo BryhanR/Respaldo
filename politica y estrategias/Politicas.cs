@@ -81,7 +81,7 @@ namespace politica_y_estrategias
         private void button2_Click(object sender, EventArgs e)
         {
             Guardar_Politica();
-           
+            this.Close();
         }
 
         private void Politicas_Load(object sender, EventArgs e)

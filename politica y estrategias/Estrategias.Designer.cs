@@ -83,7 +83,7 @@
             this.btn_Cancelar.Location = new System.Drawing.Point(264, 212);
             this.btn_Cancelar.Name = "btn_Cancelar";
             this.btn_Cancelar.Size = new System.Drawing.Size(75, 23);
-            this.btn_Cancelar.TabIndex = 31;
+            this.btn_Cancelar.TabIndex = 16;
             this.btn_Cancelar.Text = "Cancelar";
             this.btn_Cancelar.UseVisualStyleBackColor = true;
             this.btn_Cancelar.Click += new System.EventHandler(this.button1_Click);
@@ -94,7 +94,7 @@
             this.check_Tablespaces.Location = new System.Drawing.Point(293, 84);
             this.check_Tablespaces.Name = "check_Tablespaces";
             this.check_Tablespaces.Size = new System.Drawing.Size(87, 17);
-            this.check_Tablespaces.TabIndex = 30;
+            this.check_Tablespaces.TabIndex = 9;
             this.check_Tablespaces.Text = "Tablespaces";
             this.check_Tablespaces.UseVisualStyleBackColor = true;
             this.check_Tablespaces.CheckedChanged += new System.EventHandler(this.check_Tablespaces_CheckedChanged);
@@ -104,7 +104,7 @@
             this.btn_CrearEstra.Location = new System.Drawing.Point(144, 212);
             this.btn_CrearEstra.Name = "btn_CrearEstra";
             this.btn_CrearEstra.Size = new System.Drawing.Size(75, 23);
-            this.btn_CrearEstra.TabIndex = 29;
+            this.btn_CrearEstra.TabIndex = 15;
             this.btn_CrearEstra.Text = "Crear";
             this.btn_CrearEstra.UseVisualStyleBackColor = true;
             this.btn_CrearEstra.Click += new System.EventHandler(this.btn_CrearEstra_Click);
@@ -117,7 +117,7 @@
             this.panel5.Location = new System.Drawing.Point(429, 91);
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(88, 80);
-            this.panel5.TabIndex = 24;
+            this.panel5.TabIndex = 11;
             // 
             // check_Archive
             // 
@@ -125,7 +125,7 @@
             this.check_Archive.Location = new System.Drawing.Point(0, 4);
             this.check_Archive.Name = "check_Archive";
             this.check_Archive.Size = new System.Drawing.Size(85, 17);
-            this.check_Archive.TabIndex = 19;
+            this.check_Archive.TabIndex = 12;
             this.check_Archive.Text = "Achive Logs";
             this.check_Archive.UseVisualStyleBackColor = true;
             // 
@@ -135,7 +135,7 @@
             this.check_ControlF.Location = new System.Drawing.Point(0, 26);
             this.check_ControlF.Name = "check_ControlF";
             this.check_ControlF.Size = new System.Drawing.Size(78, 17);
-            this.check_ControlF.TabIndex = 21;
+            this.check_ControlF.TabIndex = 13;
             this.check_ControlF.Text = "Control File";
             this.check_ControlF.UseVisualStyleBackColor = true;
             // 
@@ -145,7 +145,7 @@
             this.checkBox2.Location = new System.Drawing.Point(0, 49);
             this.checkBox2.Name = "checkBox2";
             this.checkBox2.Size = new System.Drawing.Size(59, 17);
-            this.checkBox2.TabIndex = 20;
+            this.checkBox2.TabIndex = 14;
             this.checkBox2.Text = "Init File";
             this.checkBox2.UseVisualStyleBackColor = true;
             // 
@@ -156,7 +156,7 @@
             this.panel4.Location = new System.Drawing.Point(155, 91);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(104, 80);
-            this.panel4.TabIndex = 26;
+            this.panel4.TabIndex = 6;
             // 
             // radioButton5
             // 
@@ -164,7 +164,7 @@
             this.radioButton5.Location = new System.Drawing.Point(5, 48);
             this.radioButton5.Name = "radioButton5";
             this.radioButton5.Size = new System.Drawing.Size(49, 17);
-            this.radioButton5.TabIndex = 24;
+            this.radioButton5.TabIndex = 8;
             this.radioButton5.TabStop = true;
             this.radioButton5.Text = "Total";
             this.radioButton5.UseVisualStyleBackColor = true;
@@ -175,7 +175,7 @@
             this.radioButton6.Location = new System.Drawing.Point(4, 14);
             this.radioButton6.Name = "radioButton6";
             this.radioButton6.Size = new System.Drawing.Size(80, 17);
-            this.radioButton6.TabIndex = 23;
+            this.radioButton6.TabIndex = 7;
             this.radioButton6.TabStop = true;
             this.radioButton6.Text = "Incremental";
             this.radioButton6.UseVisualStyleBackColor = true;
@@ -188,7 +188,7 @@
             this.panel3.Location = new System.Drawing.Point(18, 91);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(104, 80);
-            this.panel3.TabIndex = 24;
+            this.panel3.TabIndex = 2;
             // 
             // radioButton3
             // 
@@ -196,7 +196,7 @@
             this.radioButton3.Location = new System.Drawing.Point(4, 49);
             this.radioButton3.Name = "radioButton3";
             this.radioButton3.Size = new System.Drawing.Size(81, 17);
-            this.radioButton3.TabIndex = 25;
+            this.radioButton3.TabIndex = 5;
             this.radioButton3.TabStop = true;
             this.radioButton3.Text = "Full Backup";
             this.radioButton3.UseVisualStyleBackColor = true;
@@ -208,7 +208,7 @@
             this.radioButton2.Location = new System.Drawing.Point(4, 26);
             this.radioButton2.Name = "radioButton2";
             this.radioButton2.Size = new System.Drawing.Size(80, 17);
-            this.radioButton2.TabIndex = 24;
+            this.radioButton2.TabIndex = 4;
             this.radioButton2.TabStop = true;
             this.radioButton2.Text = "Consistente";
             this.radioButton2.UseVisualStyleBackColor = true;
@@ -220,7 +220,7 @@
             this.radioButton1.Location = new System.Drawing.Point(4, 3);
             this.radioButton1.Name = "radioButton1";
             this.radioButton1.Size = new System.Drawing.Size(88, 17);
-            this.radioButton1.TabIndex = 23;
+            this.radioButton1.TabIndex = 3;
             this.radioButton1.TabStop = true;
             this.radioButton1.Text = "Inconsistente";
             this.radioButton1.UseVisualStyleBackColor = true;
@@ -259,7 +259,7 @@
             this.nom_estra.Location = new System.Drawing.Point(132, 36);
             this.nom_estra.Name = "nom_estra";
             this.nom_estra.Size = new System.Drawing.Size(154, 20);
-            this.nom_estra.TabIndex = 10;
+            this.nom_estra.TabIndex = 1;
             // 
             // label4
             // 
@@ -276,7 +276,7 @@
             this.checkedList_Tablespaces.Location = new System.Drawing.Point(287, 105);
             this.checkedList_Tablespaces.Name = "checkedList_Tablespaces";
             this.checkedList_Tablespaces.Size = new System.Drawing.Size(93, 79);
-            this.checkedList_Tablespaces.TabIndex = 7;
+            this.checkedList_Tablespaces.TabIndex = 10;
             // 
             // label2
             // 

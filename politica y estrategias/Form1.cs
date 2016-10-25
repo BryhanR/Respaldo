@@ -82,21 +82,19 @@ namespace politica_y_estrategias
             while (DateTime.Now.ToString("g").CompareTo(d.ToString("g")) < 0) System.Threading.Thread.Sleep(1000);
            // respaldar();
         }
+           
 
-        
-
-
-        private void respaldar()
+        private void respaldar(string backups)
         {
-            Process proc = new Process();   
-            proc.StartInfo.FileName = "rman.exe";   
-            proc.StartInfo.UseShellExecute = false; 
-            proc.StartInfo.RedirectStandardInput = true; 
+            Process proc = new Process();
+            proc.StartInfo.FileName = "rman.exe";
+            proc.StartInfo.UseShellExecute = false;
+            proc.StartInfo.RedirectStandardInput = true;
             proc.Start();
-            StreamWriter writter = proc.StandardInput; 
+            StreamWriter writter = proc.StandardInput;
             writter.WriteLine("connect target /;");
-            writter.WriteLine( "run {backup database;}");
-            writter.WriteLine("quit"); 
+            writter.WriteLine("run {" + backups + "}");
+            writter.WriteLine("quit");
 
         }
 
@@ -205,53 +203,77 @@ namespace politica_y_estrategias
           //  cargarNomServidores();
           
         }
-      
-     
-        public string elementosBackup(int []p) { //Hace las sentencias para le backup de archivelog, controlfile e init(falta)
+
+
+        public string elementosBackup(int[] p){ //Hace las sentencias para le backup de archivelog, controlfile e init(falta)
             string salida = "";
             if (p[0] == 1)
-                salida += "backup archivelog all;";
+                salida += "backup archivelog all;\n";
             if (p[1] == 1)
-                salida += "backup current controlfile;";
+                salida += "backup current controlfile;\n";
             if (p[2] == 1)
-                salida +="";
+                salida += "";
             return salida;
         }
 
+        private string modoRespaldo(int modo, List<string> tablespaces){ // Modo de respaldo (incremental, total)
+            string comandos = "";
+            if (modo == 1)      // FALTA son respaldos incrementales
+            {
+
+            }
+            else
+            {
+                tablespaces.ForEach(delegate(String table)
+                {
+                    comandos += "backup tablespace " + table + ";\n";
+                });
+            }
+            return comandos;
+        }
+
         //Recibe el nombe de la estrategia a buscar y devuelve las sentencias correspondientes
-        public string restaurarEstrategia( string nom) {
-            string comandos="";
-            Estrategia e = estrategias.Find(x => x.getNombre()==nom);
-            if (e != null) {
+        public string restaurarEstrategia(string nom)
+        {
+            /*
+             ##
+S
+POLI04
+2
+2
+2
+SYSTEM
+SYSAUX
+0
+0
+0
+             */
+            string comandos = "";
+            Estrategia e = estrategias.Find(x => x.getNombre() == nom);
+            if (e != null)
+            {
 
-                switch (e.getTipoRes()) {
+                switch (e.getTipoRes())
+                { // Tipo de respaldo (inconsistente = 1, consistente = 2, fullbackup = 3)
                     case 1:
-                        if (e.getModoRes() == 1) {
-
-                        }
-                        else {
-                            e.getTablespaces().ForEach(delegate (String table)
-                            {
-                                comandos += "backup tablespace " + table + " ;";
-                            });
-                        }
-                        comandos+= elementosBackup(e.getPlus());
-                       
+                        comandos += modoRespaldo(e.getModoRes(), e.getTablespaces());
+                        comandos += elementosBackup(e.getPlus());
                         break;
+
                     case 2:
-                        comandos = " backup database ; " + elementosBackup(e.getPlus());
+                        comandos = " backup database; \n" + elementosBackup(e.getPlus());
                         break;
 
                     case 3:
-                        comandos = " backup database ; "+elementosBackup(e.getPlus());
-                        
+                        comandos = " backup database; \n" + elementosBackup(e.getPlus());
+
                         break;
                     default:
                         break;
 
                 }
-             
-               
+
+
             }
             Console.Write(comandos);
             return comandos;
@@ -379,6 +401,16 @@ namespace politica_y_estrategias
             Tarea t = new Tarea(getServer(),nom_Estra.Text,nom_Poli.Text);
             StreamWriter escrito = new StreamWriter(Path.GetFullPath("Servidores.txt"), true); // escribe al final de Servidores.txt
             t.guardar_Tarea(escrito);
+            tareas.Add(t);
+        }
+
+        private void start()
+        {
+            DateTime d = politicas[0].getFecha();
+
+            while (DateTime.Now.ToString("g").CompareTo(d.ToString("g")) < 0) Thread.Sleep(1000);
+
+            respaldar(nom_Estra.Text);
         }
 
         //------ EVENTOS DEL FORM1 ------//
@@ -392,11 +424,15 @@ namespace politica_y_estrategias
         private void button1_Click(object sender, EventArgs e)
         {
             guardar_Tarea();
-            ResuperaServidorTxT();
-            estrategias.ForEach(delegate(Estrategia tables)
+            start();
+            estado.Text = "Respaldo Finalizado";
+           
+           // respaldar(restaurarEstrategia(nom_Estra.Text)); // Cambiar
+           // ResuperaServidorTxT();
+           /* estrategias.ForEach(delegate(Estrategia tables)
             {
                 tables.toString();
-            });
+            });*/
            
         }
 
