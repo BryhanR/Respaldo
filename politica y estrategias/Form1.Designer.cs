@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("Servers");
+            System.Windows.Forms.TreeNode treeNode2 = new System.Windows.Forms.TreeNode("Servers");
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.treeView1 = new System.Windows.Forms.TreeView();
             this.label1 = new System.Windows.Forms.Label();
@@ -66,10 +66,10 @@
             // 
             this.treeView1.Location = new System.Drawing.Point(3, 39);
             this.treeView1.Name = "treeView1";
-            treeNode1.Name = "Nodo3";
-            treeNode1.Text = "Servers";
+            treeNode2.Name = "Nodo3";
+            treeNode2.Text = "Servers";
             this.treeView1.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode1});
+            treeNode2});
             this.treeView1.Size = new System.Drawing.Size(116, 390);
             this.treeView1.TabIndex = 0;
             this.treeView1.NodeMouseHover += new System.Windows.Forms.TreeNodeMouseHoverEventHandler(this.treeView1_NodeMouseHover);
@@ -225,6 +225,7 @@
             // 
             // panel7
             // 
+            this.panel7.BackColor = System.Drawing.SystemColors.Control;
             this.panel7.Controls.Add(this.panel4);
             this.panel7.Controls.Add(this.label15);
             this.panel7.Controls.Add(this.panel1);
@@ -309,7 +310,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
-            this.BackColor = System.Drawing.Color.LightGray;
+            this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(668, 515);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.estado);
