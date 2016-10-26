@@ -8,8 +8,22 @@ namespace Logic
     
     public static class Globals
     {
-        public static String ConexionOracle = "User id= system; Password=admin123; Data Source= XE;"; //////cambiar password
+        public static String ConexionOracle = "User id= system; Password=root; Data Source= XE;"; //////cambiar password
     }
+
+
+    public class TransitionClass
+    {
+        public DateTime date;
+        public string text;
+        public TransitionClass(DateTime d, string txt)
+        {
+            date = d;
+            text = txt;
+        }
+    }
+
+
     public class Server
     {
         private string nombre;

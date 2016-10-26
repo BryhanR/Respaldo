@@ -86,6 +86,7 @@ namespace politica_y_estrategias
 
         private void respaldar(string backups)
         {
+            //Console.WriteLine("Respaldo ......\n" + backups);
             Process proc = new Process();
             proc.StartInfo.FileName = "rman.exe";
             proc.StartInfo.UseShellExecute = false;
@@ -93,7 +94,7 @@ namespace politica_y_estrategias
             proc.Start();
             StreamWriter writter = proc.StandardInput;
             writter.WriteLine("connect target /;");
-            writter.WriteLine("run {" + backups + "}");
+            writter.WriteLine("run {" + /*backups"*/"Backup database;" + "}");
             writter.WriteLine("quit");
 
         }
@@ -235,19 +236,6 @@ namespace politica_y_estrategias
         //Recibe el nombe de la estrategia a buscar y devuelve las sentencias correspondientes
         public string restaurarEstrategia(string nom)
         {
-            /*
-             ##
-S
-POLI04
-2
-2
-2
-SYSTEM
-SYSAUX
-0
-0
-0
-             */
             string comandos = "";
             Estrategia e = estrategias.Find(x => x.getNombre() == nom);
             if (e != null)
@@ -407,12 +395,19 @@ SYSAUX
         private void start()
         {
             DateTime d = politicas[0].getFecha();
-
-            while (DateTime.Now.ToString("g").CompareTo(d.ToString("g")) < 0) Thread.Sleep(1000);
-
-            respaldar(nom_Estra.Text);
+            Task.Factory.StartNew((t) => { TransitionClass tc = t as TransitionClass; startThread(tc); }, new TransitionClass(d, restaurarEstrategia(nom_Estra.Text)));
+            
+            
+            //respaldar(restaurarEstrategia(nom_Estra.Text));
         }
 
+        private void startThread(TransitionClass t)
+        {
+            while (DateTime.Now.ToString("g").CompareTo(t.date.ToString("g")) < 0) { Thread.Sleep(1000);
+            Console.WriteLine("Esperando");
+            }
+              respaldar(restaurarEstrategia(t.text));
+        }
         //------ EVENTOS DEL FORM1 ------//
 
         private void button3_Click(object sender, EventArgs e)
