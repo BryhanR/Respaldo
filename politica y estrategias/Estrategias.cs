@@ -76,8 +76,6 @@ namespace politica_y_estrategias
             MessageBox.Show("Estrategia " + nombre + " Creada Con Exito", "Success", MessageBoxButtons.OK);
         }
 
-
-
         private void llenarCheckedList_Tablespaces()
         {
             con.Open();
@@ -112,7 +110,6 @@ namespace politica_y_estrategias
             check_ControlF.Checked = state2;
             // btn_Cancelar.Enabled = state2;
         }
-
 
         //-------- EVENTOS----------//
         private void button1_Click(object sender, EventArgs e)
@@ -151,8 +148,7 @@ namespace politica_y_estrategias
             else
                 checkedList_Tablespaces.Items.Clear();
         }
-
-     
+ 
         private void btn_CrearEstra_Click(object sender, EventArgs e)
         {
             Guardar_Estrategia();
@@ -160,6 +156,7 @@ namespace politica_y_estrategias
             Console.WriteLine("Estrategia creada");
             //  Recupear_Estrategia();
             //Console.WriteLine("Estrategia recuperda");
+            Guardar_Politica();
             
         }
 
@@ -167,8 +164,69 @@ namespace politica_y_estrategias
         {
 
         }
+//-------------------------Politica---------------------------------
+        private DateTime getDate()
+        {
+            int d = dateTimePicker1.Value.Day;
+            int mes = dateTimePicker1.Value.Month;
+            int a = dateTimePicker1.Value.Year;
+            int h = (int)num_Hora.Value;
+            int m = (int)num_Minutos.Value;
+            int s = (int)num_Segundos.Value;
+            return new DateTime(a, mes, d, h, m, s);
+        }
 
+        //------ METODOS -------//
+        private void Guardar_Politica()
+        {
+            Politica p = new Politica();
 
-    
+            p.setServer(principal.getServer());
+            p.setNombre(this.nom_Politica.Text.ToUpper());
+
+            // La frecuencia
+            foreach (object itemChecked in checkedList_Dias.CheckedItems)
+            {
+                p.addFrecuencia(itemChecked.ToString().ToUpper());
+            }
+
+            p.setFecha(getDate());
+
+            // Repeticion
+            if (radioB_30.Checked)
+                p.setRepeticion(30);
+            if (radioB_60.Checked)
+                p.setRepeticion(60);
+            if (radioB_120.Checked)
+                p.setRepeticion(120);
+            if (radioB_Otro.Checked)
+                p.setRepeticion((int)num_Tiempo.Value);
+
+            //Abrimos el archivo txt
+            StreamWriter escrito = new StreamWriter(Path.GetFullPath("Servidores.txt"), true); // escribe al final de Servidores.txt
+            principal.addPolitica(p);
+            p.guardar_Politica(escrito);
+            principal.add_Check_Politica(p.getNombre());
+
+            MessageBox.Show("Politica " + p.getNombre() + " Creada Con Exito", "Success", MessageBoxButtons.OK);
+
+        }
+
+      /*  private void button1_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            Guardar_Politica();
+            this.Close();
+        }
+
+        private void Politicas_Load(object sender, EventArgs e)
+        {
+
+        }*/
+
     }
 }

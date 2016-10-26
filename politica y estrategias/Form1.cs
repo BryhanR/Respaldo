@@ -18,7 +18,7 @@ namespace politica_y_estrategias
     public partial class Form1 : Form
     {
         //-------- Variables ---------------------------------------
-       // String ConexionOracle = "User id= system; Password=1234; Data Source= XE;"; //////cambiar password
+        String ConexionOracle = "User id= system; Password=456456456; Data Source= XE;"; //////cambiar password
         Server g = new Server();
         OracleConnection con = new OracleConnection();
         private readonly SynchronizationContext syncC;
@@ -444,11 +444,7 @@ namespace politica_y_estrategias
 
    
 
-        private void button2_Click_1(object sender, EventArgs e)
-        {
-            Politicas p = new Politicas(this);
-            p.Show();
-        }
+      
 
 
         private void button1_MouseClick(object sender, MouseEventArgs e)
