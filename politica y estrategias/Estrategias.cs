@@ -152,11 +152,7 @@ namespace politica_y_estrategias
                 checkedList_Tablespaces.Items.Clear();
         }
 
-        private void Estrategias_Load(object sender, EventArgs e)
-        {
-
-        }
-
+     
         private void btn_CrearEstra_Click(object sender, EventArgs e)
         {
             Guardar_Estrategia();
@@ -166,5 +162,13 @@ namespace politica_y_estrategias
             //Console.WriteLine("Estrategia recuperda");
             
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+
+    
     }
 }
