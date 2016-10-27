@@ -14,15 +14,55 @@ using politica_y_estrategias;
 
 namespace politica_y_estrategias
 {
-    public partial class Estrategias : Form
+    public partial class Estrategias_Politicas : Form
     {
         //String ConexionOracle = "User id= System; Password=admin123; Data Source= XE;"; //////cambiar password
         //Server g = new Server();
         OracleConnection con = new OracleConnection();
 
-        private Form1 principal;
+        private ventanaPricipal principal;
 
-        public Estrategias(Form1 p)
+        public Estrategias_Politicas(ventanaPricipal p, Estrategia es, Politica po)
+        {
+            con.ConnectionString = Globals.ConexionOracle;//ConexionOracle;
+            InitializeComponent();
+            this.CenterToScreen();
+            principal = p;
+            llenarCampos(es,po);
+        }
+
+        private void llenarCampos(Estrategia es, Politica p) {
+            nom_estra.Text = es.getNombre();
+            marcarTipoRespaldo(es.getTipoRes());
+            if (es.getModoRes() == 1)
+                radioButton6.Checked = true;
+            else
+                radioButton5.Checked = true;
+            marcarTablespace(es.getTablespaces());
+        }
+        private void marcarTipoRespaldo(int op) {
+            switch (op) {
+                case 1: radioButton1.Checked = true; break;
+                case 2: radioButton2.Checked = true; break;
+                case 3: radioButton3.Checked = true; break;
+                default: MessageBox.Show("Error..."); break;    
+            }
+        }
+
+        private void marcarTablespace(List<string> l) { // Terminar
+            if (l.Count != 0) {
+                check_Tablespaces.Checked = true;
+            }
+          /*  for (int i =0; i< checkedList_Tablespaces.Items.Count; i++)
+            {
+                if (checList_Tablespaces[i].toString() == l.ToString()) { }
+                string e = l.Find(x => x == item.ToString());
+                if (e != null)
+               
+                tablespaces.Add(item.ToString());
+            }*/
+        }
+        public Estrategias_Politicas(ventanaPricipal p)
         {
             con.ConnectionString = Globals.ConexionOracle;//ConexionOracle;
             InitializeComponent();
@@ -149,16 +189,7 @@ namespace politica_y_estrategias
                 checkedList_Tablespaces.Items.Clear();
         }
  
-        private void btn_CrearEstra_Click(object sender, EventArgs e)
-        {
-            Guardar_Estrategia();
-            this.Close();
-            Console.WriteLine("Estrategia creada");
-            //  Recupear_Estrategia();
-            //Console.WriteLine("Estrategia recuperda");
-            Guardar_Politica();
-            
-        }
+     
 
         private void button2_Click(object sender, EventArgs e)
         {
@@ -206,12 +237,35 @@ namespace politica_y_estrategias
             StreamWriter escrito = new StreamWriter(Path.GetFullPath("Servidores.txt"), true); // escribe al final de Servidores.txt
             principal.addPolitica(p);
             p.guardar_Politica(escrito);
-            principal.add_Check_Politica(p.getNombre());
+           
 
             MessageBox.Show("Politica " + p.getNombre() + " Creada Con Exito", "Success", MessageBoxButtons.OK);
-
+            
         }
 
+        private void btn_CrearEstra_Click_1(object sender, EventArgs e)
+        {
+            Guardar_Estrategia();
+            Guardar_Politica();
+            Guardar_Tarea();
+           // MessageBox.Show("Creado... ");
+            this.Close();
+        }
+
+        private void Guardar_Tarea(){
+            Tarea t = new Tarea(principal.getServer(), nom_estra.Text, nom_Politica.Text,1);
+            StreamWriter escrito = new StreamWriter(Path.GetFullPath("Servidores.txt"), true); // escribe al final de Servidores.txt
+            t.guardar_Tarea(escrito);
+            principal.guardar_Tarea(t);
+        }
+
+        private void btn_CrearEstra_Click_2(object sender, EventArgs e)
+        {
+            Guardar_Estrategia();
+            Guardar_Politica();
+            Guardar_Tarea();
+            this.Close();
+        }
       /*  private void button1_Click(object sender, EventArgs e)
         {
             this.Close();

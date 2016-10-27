@@ -15,8 +15,8 @@ namespace politica_y_estrategias
 {
     public partial class Servidores : Form
     {
-        private Form1 principal; 
-        public Servidores(Form1 p)
+        private ventanaPricipal principal; 
+        public Servidores(ventanaPricipal p)
         {
             principal = p;
             InitializeComponent();

@@ -5,10 +5,9 @@ using System.IO;
 namespace Logic
 {
 
-    
     public static class Globals
     {
-        public static String ConexionOracle = "User id= system; Password=456456456; Data Source= XE;"; //////cambiar password
+        public static String ConexionOracle = "User id= system; Password=admin123; Data Source= XE;"; //////cambiar password
     }
 
 
@@ -330,11 +329,13 @@ namespace Logic
         private string nom_Server;
         private string estrategia;
         private string politica;
+        private int status;
 
-        public Tarea(string ns, string e, string p) {
+        public Tarea(string ns, string e, string p, int st) {
             this.nom_Server = ns;
             this.estrategia = e;
             this.politica = p;
+            this.status = st;
         }
 
         public Tarea()
@@ -342,6 +343,7 @@ namespace Logic
             this.nom_Server = "";
             this.estrategia = "";
             this.politica = "";
+            this.status = 0;
         }
 
         public string getNom_Estrategia(){
@@ -355,8 +357,12 @@ namespace Logic
         {
             return nom_Server;
         }
-
-
+        public int getStatus() {
+            return status;
+        }
+        public void setStatus(int st) {
+            status = st;
+        }
         public void setNom_Estrategia(string e)
         {
             estrategia = e;
@@ -381,9 +387,10 @@ namespace Logic
             es.WriteLine(estrategia);
             // 'Nombre de la politica
             es.WriteLine(politica);
-           
-            es.Flush();
+            // Guarda el status 0 no activo, 1 activo
+            es.WriteLine(status);
 
+            es.Flush();
             //Cerramos
             es.Close();
         }

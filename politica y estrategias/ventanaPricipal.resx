@@ -117,65 +117,28 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="button2.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
-        wgAADsIBFShKgAAAAu1JREFUOE91k31IU1Echi/9Wyah02HOmTlc+1Ar+8sgGQQSIpURhEVk5jJzlmW2
-        TFdafrth9EmW7G7OrbnKzLVJqCC5/E7dMqUvLRXKUkqpXPJ2Nu+Ugl54OOee3/scLhcu9W8UCmrF7VFB
-        iuHjHpNhfE+nYSKhXT8eX339zbo4pvL/GGcjDz6YSoR6VALlkA9UQyw3la8CUPsxHvXT+yY0U6ECpv53
-        jHNbCzTvY1Fu94HSwYbyZQCK7V6E1VCRvdLhjwoHC8aJfdB+E0Yz2mKqvwhi776ToMzuR0QOyh1ryRqM
-        sVkbhmcaUTjoTZ4D3ZQO+kI3vgtX7axVjE5R9KTkU/EAm1zAcePaq1/vgCeFAywiBrpnpfZAlA9yof0c
-        c9ctn3rE3nJ1ZDMKXwQROMjv9YOiZw1uDcUwOpDX7UXOWQR/FLl6fRzceLsF7gtKB0SZl3q5KOgNQll/
-        OKwfLqJxNBttk1cYHWh4nwXzqByWsVx4uhUOMaR32AIqv4tXdLE7BDkd/mifrGKU/6d2RIrczrW43MfD
-        EXXgNkrxnHcur4MHuY2DmuFU/F74hbn5r/jhnGEUYHZ+CnPOaTgXfkLVF4McWzAu9PCQVBWwkUozrdue
-        YwvDuWdhyGrjQtbqi7QWb5R0Ln+DY80rIWvxQQaZZbeFuLu5XfzFb+CK/PkG55lWPjxktqyHqmcnowMn
-        m7k43Rq2NHdxvkdgYXSKyuuPzMhsFsFDxlM+Cp5tZ3Qg1cohlwiX5pktImTZNvAYfTGn28Ob0pvEkDGk
-        WsibPI2CzCrGcatw6Ty9SYTs7k1pjPZ3UpvENw+b+UgxiyA1R0D6OBzSRrKSfYpZiMNP+Ehvjkhk6sux
-        WCyhJl29RFeti71WU6LKNu39nvwwCvsb+DhAOPowGgpj8thNTeUJrdoYZzLUS1wOo5MfyWgM12q1u2ma
-        PlRD1x7Xqe+l6+n78lp13dl7BD1dJ9fRBpmW1sk0Gk0S6SXo9foIiqKoP1OIJ2gqznE3AAAAAElFTkSu
-        QmCC
-</value>
-  </data>
-  <data name="btn_CrearEstra.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
-        wgAADsIBFShKgAAAAu1JREFUOE91k31IU1Echi/9Wyah02HOmTlc+1Ar+8sgGQQSIpURhEVk5jJzlmW2
-        TFdafrth9EmW7G7OrbnKzLVJqCC5/E7dMqUvLRXKUkqpXPJ2Nu+Ugl54OOee3/scLhcu9W8UCmrF7VFB
-        iuHjHpNhfE+nYSKhXT8eX339zbo4pvL/GGcjDz6YSoR6VALlkA9UQyw3la8CUPsxHvXT+yY0U6ECpv53
-        jHNbCzTvY1Fu94HSwYbyZQCK7V6E1VCRvdLhjwoHC8aJfdB+E0Yz2mKqvwhi776ToMzuR0QOyh1ryRqM
-        sVkbhmcaUTjoTZ4D3ZQO+kI3vgtX7axVjE5R9KTkU/EAm1zAcePaq1/vgCeFAywiBrpnpfZAlA9yof0c
-        c9ctn3rE3nJ1ZDMKXwQROMjv9YOiZw1uDcUwOpDX7UXOWQR/FLl6fRzceLsF7gtKB0SZl3q5KOgNQll/
-        OKwfLqJxNBttk1cYHWh4nwXzqByWsVx4uhUOMaR32AIqv4tXdLE7BDkd/mifrGKU/6d2RIrczrW43MfD
-        EXXgNkrxnHcur4MHuY2DmuFU/F74hbn5r/jhnGEUYHZ+CnPOaTgXfkLVF4McWzAu9PCQVBWwkUozrdue
-        YwvDuWdhyGrjQtbqi7QWb5R0Ln+DY80rIWvxQQaZZbeFuLu5XfzFb+CK/PkG55lWPjxktqyHqmcnowMn
-        m7k43Rq2NHdxvkdgYXSKyuuPzMhsFsFDxlM+Cp5tZ3Qg1cohlwiX5pktImTZNvAYfTGn28Ob0pvEkDGk
-        WsibPI2CzCrGcatw6Ty9SYTs7k1pjPZ3UpvENw+b+UgxiyA1R0D6OBzSRrKSfYpZiMNP+Ehvjkhk6sux
-        WCyhJl29RFeti71WU6LKNu39nvwwCvsb+DhAOPowGgpj8thNTeUJrdoYZzLUS1wOo5MfyWgM12q1u2ma
-        PlRD1x7Xqe+l6+n78lp13dl7BD1dJ9fRBpmW1sk0Gk0S6SXo9foIiqKoP1OIJ2gqznE3AAAAAElFTkSu
-        QmCC
-</value>
-  </data>
+  <metadata name="Column1.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="Column2.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="Column1.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="Column2.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="Column3.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="Column4.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="Column5.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <metadata name="timer1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
   </metadata>
-  <data name="button3.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
-        wwAADsMBx2+oZAAAAu1JREFUOE91k31IU1Echi/9Wyah02HOmTlc+1Ar+8sgGQQSIpURhEVk5jJzlmW2
-        TFdafrth9EmW7G7OrbnKzLVJqCC5/E7dMqUvLRXKUkqpXPJ2Nu+Ugl54OOee3/scLhcu9W8UCmrF7VFB
-        iuHjHpNhfE+nYSKhXT8eX339zbo4pvL/GGcjDz6YSoR6VALlkA9UQyw3la8CUPsxHvXT+yY0U6ECpv53
-        jHNbCzTvY1Fu94HSwYbyZQCK7V6E1VCRvdLhjwoHC8aJfdB+E0Yz2mKqvwhi776ToMzuR0QOyh1ryRqM
-        sVkbhmcaUTjoTZ4D3ZQO+kI3vgtX7axVjE5R9KTkU/EAm1zAcePaq1/vgCeFAywiBrpnpfZAlA9yof0c
-        c9ctn3rE3nJ1ZDMKXwQROMjv9YOiZw1uDcUwOpDX7UXOWQR/FLl6fRzceLsF7gtKB0SZl3q5KOgNQll/
-        OKwfLqJxNBttk1cYHWh4nwXzqByWsVx4uhUOMaR32AIqv4tXdLE7BDkd/mifrGKU/6d2RIrczrW43MfD
-        EXXgNkrxnHcur4MHuY2DmuFU/F74hbn5r/jhnGEUYHZ+CnPOaTgXfkLVF4McWzAu9PCQVBWwkUozrdue
-        YwvDuWdhyGrjQtbqi7QWb5R0Ln+DY80rIWvxQQaZZbeFuLu5XfzFb+CK/PkG55lWPjxktqyHqmcnowMn
-        m7k43Rq2NHdxvkdgYXSKyuuPzMhsFsFDxlM+Cp5tZ3Qg1cohlwiX5pktImTZNvAYfTGn28Ob0pvEkDGk
-        WsibPI2CzCrGcatw6Ty9SYTs7k1pjPZ3UpvENw+b+UgxiyA1R0D6OBzSRrKSfYpZiMNP+Ehvjkhk6sux
-        WCyhJl29RFeti71WU6LKNu39nvwwCvsb+DhAOPowGgpj8thNTeUJrdoYZzLUS1wOo5MfyWgM12q1u2ma
-        PlRD1x7Xqe+l6+n78lp13dl7BD1dJ9fRBpmW1sk0Gk0S6SXo9foIiqKoP1OIJ2gqznE3AAAAAElFTkSu
-        QmCC
-</value>
-  </data>
 </root>
