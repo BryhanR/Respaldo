@@ -266,21 +266,26 @@ namespace politica_y_estrategias
             Guardar_Tarea();
             this.Close();
         }
-      /*  private void button1_Click(object sender, EventArgs e)
+
+        private void groupBox4_Enter(object sender, EventArgs e)
         {
-            this.Close();
+
         }
+        /*  private void button1_Click(object sender, EventArgs e)
+ {
+     this.Close();
+ }
 
-        private void button2_Click(object sender, EventArgs e)
-        {
-            Guardar_Politica();
-            this.Close();
-        }
+ private void button2_Click(object sender, EventArgs e)
+ {
+     Guardar_Politica();
+     this.Close();
+ }
 
-        private void Politicas_Load(object sender, EventArgs e)
-        {
+ private void Politicas_Load(object sender, EventArgs e)
+ {
 
-        }*/
+ }*/
 
     }
 }

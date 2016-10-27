@@ -18,7 +18,7 @@ namespace politica_y_estrategias
     public partial class ventanaPricipal : Form
     {
         //-------- Variables ---------------------------------------
-        String ConexionOracle = "User id= system; Password=456456456; Data Source= XE;"; //////cambiar password
+        string ConexionOracle = "User id= system; Password=root; Data Source= XE;"; //////cambiar password
         Server g = new Server();
         OracleConnection con = new OracleConnection();
         private readonly SynchronizationContext syncC;
