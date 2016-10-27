@@ -1,6 +1,6 @@
 ﻿namespace politica_y_estrategias
 {
-    partial class Estrategias
+    partial class Estrategias_Politicas
     {
         /// <summary>
         /// Required designer variable.
@@ -30,10 +30,6 @@
         {
             this.panel1 = new System.Windows.Forms.Panel();
             this.check_Tablespaces = new System.Windows.Forms.CheckBox();
-            this.panel5 = new System.Windows.Forms.Panel();
-            this.check_Archive = new System.Windows.Forms.CheckBox();
-            this.check_ControlF = new System.Windows.Forms.CheckBox();
-            this.checkBox2 = new System.Windows.Forms.CheckBox();
             this.panel4 = new System.Windows.Forms.Panel();
             this.radioButton5 = new System.Windows.Forms.RadioButton();
             this.radioButton6 = new System.Windows.Forms.RadioButton();
@@ -41,11 +37,15 @@
             this.radioButton3 = new System.Windows.Forms.RadioButton();
             this.radioButton2 = new System.Windows.Forms.RadioButton();
             this.radioButton1 = new System.Windows.Forms.RadioButton();
+            this.checkedList_Tablespaces = new System.Windows.Forms.CheckedListBox();
             this.label11 = new System.Windows.Forms.Label();
+            this.panel5 = new System.Windows.Forms.Panel();
+            this.checkBox2 = new System.Windows.Forms.CheckBox();
+            this.check_Archive = new System.Windows.Forms.CheckBox();
+            this.check_ControlF = new System.Windows.Forms.CheckBox();
             this.label6 = new System.Windows.Forms.Label();
             this.nom_estra = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.checkedList_Tablespaces = new System.Windows.Forms.CheckedListBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
@@ -75,9 +75,9 @@
             this.label8 = new System.Windows.Forms.Label();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.panel1.SuspendLayout();
-            this.panel5.SuspendLayout();
             this.panel4.SuspendLayout();
             this.panel3.SuspendLayout();
+            this.panel5.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -118,49 +118,6 @@
             this.check_Tablespaces.Text = "Tablespaces";
             this.check_Tablespaces.UseVisualStyleBackColor = true;
             this.check_Tablespaces.CheckedChanged += new System.EventHandler(this.check_Tablespaces_CheckedChanged);
-            // 
-            // panel5
-            // 
-            this.panel5.Controls.Add(this.checkBox2);
-            this.panel5.Controls.Add(this.check_Archive);
-            this.panel5.Controls.Add(this.check_ControlF);
-            this.panel5.Location = new System.Drawing.Point(152, 163);
-            this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(316, 27);
-            this.panel5.TabIndex = 11;
-            // 
-            // check_Archive
-            // 
-            this.check_Archive.AutoSize = true;
-            this.check_Archive.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.check_Archive.Location = new System.Drawing.Point(4, 5);
-            this.check_Archive.Name = "check_Archive";
-            this.check_Archive.Size = new System.Drawing.Size(91, 19);
-            this.check_Archive.TabIndex = 12;
-            this.check_Archive.Text = "Achive Logs";
-            this.check_Archive.UseVisualStyleBackColor = true;
-            // 
-            // check_ControlF
-            // 
-            this.check_ControlF.AutoSize = true;
-            this.check_ControlF.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.check_ControlF.Location = new System.Drawing.Point(107, 5);
-            this.check_ControlF.Name = "check_ControlF";
-            this.check_ControlF.Size = new System.Drawing.Size(88, 19);
-            this.check_ControlF.TabIndex = 13;
-            this.check_ControlF.Text = "Control File";
-            this.check_ControlF.UseVisualStyleBackColor = true;
-            // 
-            // checkBox2
-            // 
-            this.checkBox2.AutoSize = true;
-            this.checkBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkBox2.Location = new System.Drawing.Point(202, 5);
-            this.checkBox2.Name = "checkBox2";
-            this.checkBox2.Size = new System.Drawing.Size(65, 19);
-            this.checkBox2.TabIndex = 14;
-            this.checkBox2.Text = "Init File";
-            this.checkBox2.UseVisualStyleBackColor = true;
             // 
             // panel4
             // 
@@ -244,6 +201,15 @@
             this.radioButton1.UseVisualStyleBackColor = true;
             this.radioButton1.CheckedChanged += new System.EventHandler(this.radioButton1_CheckedChanged);
             // 
+            // checkedList_Tablespaces
+            // 
+            this.checkedList_Tablespaces.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkedList_Tablespaces.FormattingEnabled = true;
+            this.checkedList_Tablespaces.Location = new System.Drawing.Point(259, 121);
+            this.checkedList_Tablespaces.Name = "checkedList_Tablespaces";
+            this.checkedList_Tablespaces.Size = new System.Drawing.Size(269, 36);
+            this.checkedList_Tablespaces.TabIndex = 10;
+            // 
             // label11
             // 
             this.label11.AutoSize = true;
@@ -253,6 +219,49 @@
             this.label11.Size = new System.Drawing.Size(45, 15);
             this.label11.TabIndex = 22;
             this.label11.Text = "Incluye\r\n";
+            // 
+            // panel5
+            // 
+            this.panel5.Controls.Add(this.checkBox2);
+            this.panel5.Controls.Add(this.check_Archive);
+            this.panel5.Controls.Add(this.check_ControlF);
+            this.panel5.Location = new System.Drawing.Point(152, 163);
+            this.panel5.Name = "panel5";
+            this.panel5.Size = new System.Drawing.Size(316, 27);
+            this.panel5.TabIndex = 11;
+            // 
+            // checkBox2
+            // 
+            this.checkBox2.AutoSize = true;
+            this.checkBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkBox2.Location = new System.Drawing.Point(202, 5);
+            this.checkBox2.Name = "checkBox2";
+            this.checkBox2.Size = new System.Drawing.Size(65, 19);
+            this.checkBox2.TabIndex = 14;
+            this.checkBox2.Text = "Init File";
+            this.checkBox2.UseVisualStyleBackColor = true;
+            // 
+            // check_Archive
+            // 
+            this.check_Archive.AutoSize = true;
+            this.check_Archive.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.check_Archive.Location = new System.Drawing.Point(4, 5);
+            this.check_Archive.Name = "check_Archive";
+            this.check_Archive.Size = new System.Drawing.Size(91, 19);
+            this.check_Archive.TabIndex = 12;
+            this.check_Archive.Text = "Achive Logs";
+            this.check_Archive.UseVisualStyleBackColor = true;
+            // 
+            // check_ControlF
+            // 
+            this.check_ControlF.AutoSize = true;
+            this.check_ControlF.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.check_ControlF.Location = new System.Drawing.Point(107, 5);
+            this.check_ControlF.Name = "check_ControlF";
+            this.check_ControlF.Size = new System.Drawing.Size(88, 19);
+            this.check_ControlF.TabIndex = 13;
+            this.check_ControlF.Text = "Control File";
+            this.check_ControlF.UseVisualStyleBackColor = true;
             // 
             // label6
             // 
@@ -266,9 +275,10 @@
             // 
             // nom_estra
             // 
+            this.nom_estra.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.nom_estra.Location = new System.Drawing.Point(152, 13);
             this.nom_estra.Name = "nom_estra";
-            this.nom_estra.Size = new System.Drawing.Size(316, 24);
+            this.nom_estra.Size = new System.Drawing.Size(316, 21);
             this.nom_estra.TabIndex = 1;
             // 
             // label4
@@ -280,15 +290,6 @@
             this.label4.Size = new System.Drawing.Size(49, 15);
             this.label4.TabIndex = 6;
             this.label4.Text = "Objetos";
-            // 
-            // checkedList_Tablespaces
-            // 
-            this.checkedList_Tablespaces.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkedList_Tablespaces.FormattingEnabled = true;
-            this.checkedList_Tablespaces.Location = new System.Drawing.Point(259, 121);
-            this.checkedList_Tablespaces.Name = "checkedList_Tablespaces";
-            this.checkedList_Tablespaces.Size = new System.Drawing.Size(269, 36);
-            this.checkedList_Tablespaces.TabIndex = 10;
             // 
             // label2
             // 
@@ -338,6 +339,7 @@
             this.btn_CrearEstra.TabIndex = 25;
             this.btn_CrearEstra.Text = "Crear";
             this.btn_CrearEstra.UseVisualStyleBackColor = true;
+            this.btn_CrearEstra.Click += new System.EventHandler(this.btn_CrearEstra_Click_2);
             // 
             // groupBox2
             // 
@@ -601,7 +603,7 @@
             this.dateTimePicker1.Size = new System.Drawing.Size(228, 21);
             this.dateTimePicker1.TabIndex = 14;
             // 
-            // Estrategias
+            // Estrategias_Politicas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -610,16 +612,16 @@
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.btn_Cancelar);
             this.Controls.Add(this.btn_CrearEstra);
-            this.Name = "Estrategias";
+            this.Name = "Estrategias_Politicas";
             this.Text = "Diseño de estrategia y politica";
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            this.panel5.ResumeLayout(false);
-            this.panel5.PerformLayout();
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
+            this.panel5.ResumeLayout(false);
+            this.panel5.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
             this.panel2.ResumeLayout(false);

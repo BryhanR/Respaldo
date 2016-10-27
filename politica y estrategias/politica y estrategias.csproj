@@ -69,17 +69,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Estrategias.cs">
+    <Compile Include="Estrategias_Politicas.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Estrategias.Designer.cs">
-      <DependentUpon>Estrategias.cs</DependentUpon>
+    <Compile Include="Estrategias_Politicas.Designer.cs">
+      <DependentUpon>Estrategias_Politicas.cs</DependentUpon>
     </Compile>
-    <Compile Include="Form1.cs">
+    <Compile Include="ventanaPricipal.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="ventanaPricipal.Designer.cs">
+      <DependentUpon>ventanaPricipal.cs</DependentUpon>
     </Compile>
     <Compile Include="Logic.cs" />
     <Compile Include="Program.cs" />
@@ -90,11 +90,11 @@
     <Compile Include="Servidores.Designer.cs">
       <DependentUpon>Servidores.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="Estrategias.resx">
-      <DependentUpon>Estrategias.cs</DependentUpon>
+    <EmbeddedResource Include="Estrategias_Politicas.resx">
+      <DependentUpon>Estrategias_Politicas.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Form1.resx">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <EmbeddedResource Include="ventanaPricipal.resx">
+      <DependentUpon>ventanaPricipal.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

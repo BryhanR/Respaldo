@@ -28,9 +28,6 @@ C:\Users\Usuario\Desktop\Respaldo\politica y estrategias\obj\x64\Debug\politica 
 C:\Users\Usuario\Desktop\Respaldo\politica y estrategias\bin\x64\Debug\politica y estrategias.exe
 C:\Users\Usuario\Desktop\Respaldo\politica y estrategias\bin\x64\Debug\politica y estrategias.pdb
 C:\Users\Usuario\Desktop\Respaldo\politica y estrategias\obj\x64\Debug\politica y estrategias.csprojResolveAssemblyReference.cache
-C:\Users\Usuario\Desktop\Respaldo\politica y estrategias\obj\x64\Debug\politica_y_estrategias.Estrategias.resources
-C:\Users\Usuario\Desktop\Respaldo\politica y estrategias\obj\x64\Debug\politica_y_estrategias.Form1.resources
-C:\Users\Usuario\Desktop\Respaldo\politica y estrategias\obj\x64\Debug\politica_y_estrategias.Politicas.resources
 C:\Users\Usuario\Desktop\Respaldo\politica y estrategias\obj\x64\Debug\politica_y_estrategias.Properties.Resources.resources
 C:\Users\Usuario\Desktop\Respaldo\politica y estrategias\obj\x64\Debug\politica_y_estrategias.Servidores.resources
 C:\Users\Usuario\Desktop\Respaldo\politica y estrategias\obj\x64\Debug\politica y estrategias.csproj.GenerateResource.Cache
@@ -57,3 +54,5 @@ C:\Users\Jose\Documents\GitHub\Respaldo\politica y estrategias\obj\x64\Debug\pol
 C:\Users\Jose\Documents\GitHub\Respaldo\politica y estrategias\obj\x64\Debug\politica_y_estrategias.Properties.Resources.resources
 C:\Users\Jose\Documents\GitHub\Respaldo\politica y estrategias\obj\x64\Debug\politica_y_estrategias.Servidores.resources
 C:\Users\Jose\Documents\GitHub\Respaldo\politica y estrategias\obj\x64\Debug\politica y estrategias.csproj.GenerateResource.Cache
+C:\Users\Usuario\Desktop\Respaldo\politica y estrategias\obj\x64\Debug\politica_y_estrategias.ventanaPricipal.resources
+C:\Users\Usuario\Desktop\Respaldo\politica y estrategias\obj\x64\Debug\politica_y_estrategias.Estrategias_Politicas.resources
