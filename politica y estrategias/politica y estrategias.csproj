@@ -75,11 +75,11 @@
     <Compile Include="Estrategias_Politicas.Designer.cs">
       <DependentUpon>Estrategias_Politicas.cs</DependentUpon>
     </Compile>
-    <Compile Include="ventanaPricipal.cs">
+    <Compile Include="ventanaPrincipal.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ventanaPricipal.Designer.cs">
-      <DependentUpon>ventanaPricipal.cs</DependentUpon>
+    <Compile Include="ventanaPrincipal.Designer.cs">
+      <DependentUpon>ventanaPrincipal.cs</DependentUpon>
     </Compile>
     <Compile Include="Logic.cs" />
     <Compile Include="Program.cs" />
@@ -93,8 +93,8 @@
     <EmbeddedResource Include="Estrategias_Politicas.resx">
       <DependentUpon>Estrategias_Politicas.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ventanaPricipal.resx">
-      <DependentUpon>ventanaPricipal.cs</DependentUpon>
+    <EmbeddedResource Include="ventanaPrincipal.resx">
+      <DependentUpon>ventanaPrincipal.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
