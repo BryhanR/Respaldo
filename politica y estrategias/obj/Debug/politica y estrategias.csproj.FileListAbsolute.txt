@@ -72,4 +72,4 @@ C:\Users\Alexandra\Desktop\Respaldo\politica y estrategias\obj\Debug\politica y 
 C:\Users\Alexandra\Desktop\Respaldo\politica y estrategias\obj\Debug\politica y estrategias.exe
 C:\Users\Alexandra\Desktop\Respaldo\politica y estrategias\obj\Debug\politica y estrategias.pdb
 C:\Users\Alexandra\Desktop\Respaldo\politica y estrategias\obj\Debug\politica_y_estrategias.Estrategias_Politicas.resources
-C:\Users\Alexandra\Desktop\Respaldo\politica y estrategias\obj\Debug\politica_y_estrategias.ventanaPricipal.resources
+C:\Users\Alexandra\Desktop\Respaldo\politica y estrategias\obj\Debug\politica_y_estrategias.ventanaPrincipal.resources

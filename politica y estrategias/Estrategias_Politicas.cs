@@ -20,9 +20,9 @@ namespace politica_y_estrategias
         //Server g = new Server();
         OracleConnection con = new OracleConnection();
 
-        private ventanaPricipal principal;
+        private ventanaPrincipal principal;
 
-        public Estrategias_Politicas(ventanaPricipal p, Estrategia es, Politica po)
+        public Estrategias_Politicas(ventanaPrincipal p, Estrategia es, Politica po)
         {
             con.ConnectionString = Globals.ConexionOracle;//ConexionOracle;
             InitializeComponent();
@@ -62,7 +62,7 @@ namespace politica_y_estrategias
                 tablespaces.Add(item.ToString());
             }*/
         }
-        public Estrategias_Politicas(ventanaPricipal p)
+        public Estrategias_Politicas(ventanaPrincipal p)
         {
             con.ConnectionString = Globals.ConexionOracle;//ConexionOracle;
             InitializeComponent();
@@ -271,21 +271,26 @@ namespace politica_y_estrategias
         {
 
         }
+
+        private void btn_Cancelar_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
         /*  private void button1_Click(object sender, EventArgs e)
- {
-     this.Close();
- }
+{
+this.Close();
+}
 
- private void button2_Click(object sender, EventArgs e)
- {
-     Guardar_Politica();
-     this.Close();
- }
+private void button2_Click(object sender, EventArgs e)
+{
+Guardar_Politica();
+this.Close();
+}
 
- private void Politicas_Load(object sender, EventArgs e)
- {
+private void Politicas_Load(object sender, EventArgs e)
+{
 
- }*/
+}*/
 
     }
 }

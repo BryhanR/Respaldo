@@ -1,6 +1,6 @@
 ﻿namespace politica_y_estrategias
 {
-    partial class ventanaPricipal
+    partial class ventanaPrincipal
     {
         /// <summary>
         /// Variable del diseñador requerida.
@@ -38,14 +38,15 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.button4 = new System.Windows.Forms.Button();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
-            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.button1 = new System.Windows.Forms.Button();
             this.groupBoxServer = new System.Windows.Forms.GroupBox();
             this.label15 = new System.Windows.Forms.Label();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.estado = new System.Windows.Forms.TextBox();
+            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column6 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.panel7.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -145,30 +146,13 @@
             this.dataGridView2.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column3,
             this.Column4,
-            this.Column5});
+            this.Column5,
+            this.Column6});
             this.dataGridView2.Location = new System.Drawing.Point(15, 29);
             this.dataGridView2.Name = "dataGridView2";
             this.dataGridView2.Size = new System.Drawing.Size(382, 94);
             this.dataGridView2.TabIndex = 0;
             this.dataGridView2.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView2_CellContentClick);
-            // 
-            // Column3
-            // 
-            this.Column3.HeaderText = "Estrategia";
-            this.Column3.Name = "Column3";
-            this.Column3.Width = 113;
-            // 
-            // Column4
-            // 
-            this.Column4.HeaderText = "Politica";
-            this.Column4.Name = "Column4";
-            this.Column4.Width = 113;
-            // 
-            // Column5
-            // 
-            this.Column5.HeaderText = "Activa";
-            this.Column5.Name = "Column5";
-            this.Column5.Width = 113;
             // 
             // button1
             // 
@@ -215,7 +199,31 @@
             this.estado.TabIndex = 26;
             this.estado.Text = "Programa inicializado...";
             // 
-            // ventanaPricipal
+            // Column3
+            // 
+            this.Column3.HeaderText = "Estrategia";
+            this.Column3.Name = "Column3";
+            this.Column3.Width = 85;
+            // 
+            // Column4
+            // 
+            this.Column4.HeaderText = "Politica";
+            this.Column4.Name = "Column4";
+            this.Column4.Width = 85;
+            // 
+            // Column5
+            // 
+            this.Column5.HeaderText = "Activa";
+            this.Column5.Name = "Column5";
+            this.Column5.Width = 84;
+            // 
+            // Column6
+            // 
+            this.Column6.HeaderText = "Seleccionar";
+            this.Column6.Name = "Column6";
+            this.Column6.Width = 84;
+            // 
+            // ventanaPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -224,7 +232,7 @@
             this.ClientSize = new System.Drawing.Size(512, 459);
             this.Controls.Add(this.estado);
             this.Controls.Add(this.panel7);
-            this.Name = "ventanaPricipal";
+            this.Name = "ventanaPrincipal";
             this.Text = "Sistema Automatizado de Respaldo ( GENERADOR DE ESTRATEGIAS)";
             this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
@@ -255,13 +263,14 @@
         private System.Windows.Forms.DataGridView dataGridView2;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private System.Windows.Forms.DataGridViewCheckBoxColumn Column2;
         private System.Windows.Forms.GroupBox groupBoxServer;
         private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn Column6;
     }
 }
 
