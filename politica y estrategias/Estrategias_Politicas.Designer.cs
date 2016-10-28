@@ -40,7 +40,7 @@
             this.checkedList_Tablespaces = new System.Windows.Forms.CheckedListBox();
             this.label11 = new System.Windows.Forms.Label();
             this.panel5 = new System.Windows.Forms.Panel();
-            this.checkBox2 = new System.Windows.Forms.CheckBox();
+            this.check_IniitF = new System.Windows.Forms.CheckBox();
             this.check_Archive = new System.Windows.Forms.CheckBox();
             this.check_ControlF = new System.Windows.Forms.CheckBox();
             this.label6 = new System.Windows.Forms.Label();
@@ -224,7 +224,7 @@
             // 
             // panel5
             // 
-            this.panel5.Controls.Add(this.checkBox2);
+            this.panel5.Controls.Add(this.check_IniitF);
             this.panel5.Controls.Add(this.check_Archive);
             this.panel5.Controls.Add(this.check_ControlF);
             this.panel5.Location = new System.Drawing.Point(152, 163);
@@ -232,16 +232,16 @@
             this.panel5.Size = new System.Drawing.Size(316, 27);
             this.panel5.TabIndex = 11;
             // 
-            // checkBox2
+            // check_IniitF
             // 
-            this.checkBox2.AutoSize = true;
-            this.checkBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkBox2.Location = new System.Drawing.Point(202, 6);
-            this.checkBox2.Name = "checkBox2";
-            this.checkBox2.Size = new System.Drawing.Size(65, 19);
-            this.checkBox2.TabIndex = 14;
-            this.checkBox2.Text = "Init File";
-            this.checkBox2.UseVisualStyleBackColor = true;
+            this.check_IniitF.AutoSize = true;
+            this.check_IniitF.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.check_IniitF.Location = new System.Drawing.Point(202, 6);
+            this.check_IniitF.Name = "check_IniitF";
+            this.check_IniitF.Size = new System.Drawing.Size(65, 19);
+            this.check_IniitF.TabIndex = 14;
+            this.check_IniitF.Text = "Init File";
+            this.check_IniitF.UseVisualStyleBackColor = true;
             // 
             // check_Archive
             // 
@@ -277,6 +277,7 @@
             // 
             // nom_estra
             // 
+            this.nom_estra.Enabled = false;
             this.nom_estra.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.nom_estra.Location = new System.Drawing.Point(152, 13);
             this.nom_estra.Name = "nom_estra";
@@ -593,6 +594,7 @@
             // 
             // nom_Politica
             // 
+            this.nom_Politica.Enabled = false;
             this.nom_Politica.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.nom_Politica.Location = new System.Drawing.Point(150, 25);
             this.nom_Politica.Name = "nom_Politica";
@@ -644,7 +646,7 @@
         private System.Windows.Forms.Panel panel5;
         private System.Windows.Forms.CheckBox check_Archive;
         private System.Windows.Forms.CheckBox check_ControlF;
-        private System.Windows.Forms.CheckBox checkBox2;
+        private System.Windows.Forms.CheckBox check_IniitF;
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.RadioButton radioButton5;
         private System.Windows.Forms.RadioButton radioButton6;

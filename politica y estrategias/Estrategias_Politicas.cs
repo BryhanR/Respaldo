@@ -32,15 +32,63 @@ namespace politica_y_estrategias
         }
 
         private void llenarCampos(Estrategia es, Politica p) {
-            nom_estra.Text = es.getNombre();
+            llenarCamposEstrategia(es);
+            llenarCamposPolitica(p);
+        }
+       private void  llenarCamposPolitica(Politica p){
+           nom_Politica.Text = p.getNombre();
+           dateTimePicker1.Value = p.getFecha();
+           num_Hora.Value = dateTimePicker1.Value.Hour;
+           num_Minutos.Value = dateTimePicker1.Value.Minute;
+           num_Segundos.Value = dateTimePicker1.Value.Second;
+           marcarRepeticion(p.getRepeticion());
+           marcarFrecuencia(p.getListFrecuencia());
+           // Terminar falta dias
+        }
+
+       private void marcarFrecuencia(List<string> l)
+       { // Terminar
+          
+           int j = 0; // Pensar que si asi o si un ciclo dentro de otro // Terminar
+           for (int i = 0; i < checkedList_Dias.Items.Count && j < l.Count; i++)
+           {
+               if (checkedList_Dias.Items[i].ToString().ToUpper() == l[j].ToString().ToUpper())
+               {
+                   checkedList_Dias.SetItemChecked(i, true);
+                   j++;
+               }
+           }
+       }
+
+       private void marcarRepeticion(int op) {
+           switch (op) {
+               case 30: radioB_30.Checked = true; break;
+               case 60: radioB_60.Checked = true; break;
+               case 120: radioB_120.Checked = true; break;
+               default: radioB_Otro.Checked = true; num_Tiempo.Value = op; break;
+           }
+       }
+        private void llenarCamposEstrategia(Estrategia es){
+              nom_estra.Text = es.getNombre();
             marcarTipoRespaldo(es.getTipoRes());
             if (es.getModoRes() == 1)
                 radioButton6.Checked = true;
             else
                 radioButton5.Checked = true;
             marcarTablespace(es.getTablespaces());
+            marcarIncuir(es.getPlus());
+            // Terminar falta tablespaces
         }
-        private void marcarTipoRespaldo(int op) {
+        private void marcarIncuir(int[] op) {
+            if (op[0] == 1)
+                check_Archive.Checked = true;
+            if (op[1] == 1)
+                check_ControlF.Checked = true;
+            if (op[2] == 1)
+                check_IniitF.Checked = true;
+        }
+        private void marcarTipoRespaldo(int op)
+        {
             switch (op) {
                 case 1: radioButton1.Checked = true; break;
                 case 2: radioButton2.Checked = true; break;
@@ -53,14 +101,15 @@ namespace politica_y_estrategias
             if (l.Count != 0) {
                 check_Tablespaces.Checked = true;
             }
-          /*  for (int i =0; i< checkedList_Tablespaces.Items.Count; i++)
-            {
-                if (checList_Tablespaces[i].toString() == l.ToString()) { }
-                string e = l.Find(x => x == item.ToString());
-                if (e != null)
-               
-                tablespaces.Add(item.ToString());
-            }*/
+            int j = 0; // Pensar que si asi o si un ciclo dentro de otro // Terminar
+              for (int i =0; i< checkedList_Tablespaces.Items.Count && j< l.Count; i++)
+              {
+                  if (checkedList_Tablespaces.Items[i].ToString().ToUpper() == l[j].ToString().ToUpper())
+                  { 
+                     checkedList_Tablespaces.SetItemChecked(i, true);
+                     j++;
+                 }
+             }
         }
         public Estrategias_Politicas(ventanaPrincipal p)
         {
@@ -68,6 +117,8 @@ namespace politica_y_estrategias
             InitializeComponent();
             this.CenterToScreen();
             principal = p;
+            nom_estra.Text = p.getServer()+"E"+p.getEstrategiasServer().Count;
+            nom_Politica.Text = p.getServer() + "P" + p.getPoliticasServer().Count;
         }
 
         //------ METODOS---------//
@@ -95,7 +146,7 @@ namespace politica_y_estrategias
                 plus[0] = 1;
             if (check_ControlF.Checked)
                 plus[1] = 1;
-            if (checkBox2.Checked)
+            if (check_IniitF.Checked)
                 plus[2] = 1;
             if (radioButton1.Checked)
                 tipoRes = 1;
@@ -146,7 +197,7 @@ namespace politica_y_estrategias
             }
             checkedList_Tablespaces.Enabled = state1;
             check_Archive.Checked = state2;
-            checkBox2.Checked = state2;
+            check_IniitF.Checked = state2;
             check_ControlF.Checked = state2;
             // btn_Cancelar.Enabled = state2;
         }
