@@ -7,7 +7,7 @@ namespace Logic
 
     public static class Globals
     {
-        public static String ConexionOracle = "User id= system; Password=root; Data Source= XE;"; //////cambiar password
+        public static String ConexionOracle = "User id= system; Password=admin123; Data Source= XE;"; //////cambiar password
     }
 
 
