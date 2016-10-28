@@ -53,27 +53,27 @@
             this.btn_CrearEstra = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.nom_Politica = new System.Windows.Forms.TextBox();
-            this.label19 = new System.Windows.Forms.Label();
-            this.num_Segundos = new System.Windows.Forms.NumericUpDown();
-            this.num_Minutos = new System.Windows.Forms.NumericUpDown();
-            this.num_Hora = new System.Windows.Forms.NumericUpDown();
-            this.label14 = new System.Windows.Forms.Label();
-            this.label13 = new System.Windows.Forms.Label();
-            this.panel6 = new System.Windows.Forms.Panel();
+            this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.checkedList_Dias = new System.Windows.Forms.CheckedListBox();
+            this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.radioB_30 = new System.Windows.Forms.RadioButton();
             this.panel8 = new System.Windows.Forms.Panel();
             this.label16 = new System.Windows.Forms.Label();
             this.num_Tiempo = new System.Windows.Forms.NumericUpDown();
-            this.radioB_Otro = new System.Windows.Forms.RadioButton();
-            this.radioB_120 = new System.Windows.Forms.RadioButton();
             this.radioB_60 = new System.Windows.Forms.RadioButton();
-            this.radioB_30 = new System.Windows.Forms.RadioButton();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
-            this.checkedList_Dias = new System.Windows.Forms.CheckedListBox();
-            this.label8 = new System.Windows.Forms.Label();
+            this.radioB_120 = new System.Windows.Forms.RadioButton();
+            this.radioB_Otro = new System.Windows.Forms.RadioButton();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.num_Segundos = new System.Windows.Forms.NumericUpDown();
+            this.label10 = new System.Windows.Forms.Label();
+            this.label13 = new System.Windows.Forms.Label();
+            this.num_Minutos = new System.Windows.Forms.NumericUpDown();
+            this.label14 = new System.Windows.Forms.Label();
+            this.num_Hora = new System.Windows.Forms.NumericUpDown();
+            this.label19 = new System.Windows.Forms.Label();
+            this.nom_Politica = new System.Windows.Forms.TextBox();
+            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.panel1.SuspendLayout();
             this.panel4.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -81,12 +81,14 @@
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.panel2.SuspendLayout();
+            this.groupBox5.SuspendLayout();
+            this.groupBox4.SuspendLayout();
+            this.panel8.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.num_Tiempo)).BeginInit();
+            this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.num_Segundos)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.num_Minutos)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.num_Hora)).BeginInit();
-            this.panel6.SuspendLayout();
-            this.panel8.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.num_Tiempo)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -144,7 +146,7 @@
             // 
             this.radioButton6.AutoSize = true;
             this.radioButton6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radioButton6.Location = new System.Drawing.Point(3, 3);
+            this.radioButton6.Location = new System.Drawing.Point(0, 3);
             this.radioButton6.Name = "radioButton6";
             this.radioButton6.Size = new System.Drawing.Size(90, 19);
             this.radioButton6.TabIndex = 7;
@@ -192,7 +194,7 @@
             // 
             this.radioButton1.AutoSize = true;
             this.radioButton1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radioButton1.Location = new System.Drawing.Point(4, 3);
+            this.radioButton1.Location = new System.Drawing.Point(0, 4);
             this.radioButton1.Name = "radioButton1";
             this.radioButton1.Size = new System.Drawing.Size(97, 19);
             this.radioButton1.TabIndex = 3;
@@ -234,7 +236,7 @@
             // 
             this.checkBox2.AutoSize = true;
             this.checkBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkBox2.Location = new System.Drawing.Point(202, 5);
+            this.checkBox2.Location = new System.Drawing.Point(202, 6);
             this.checkBox2.Name = "checkBox2";
             this.checkBox2.Size = new System.Drawing.Size(65, 19);
             this.checkBox2.TabIndex = 14;
@@ -245,7 +247,7 @@
             // 
             this.check_Archive.AutoSize = true;
             this.check_Archive.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.check_Archive.Location = new System.Drawing.Point(4, 5);
+            this.check_Archive.Location = new System.Drawing.Point(0, 5);
             this.check_Archive.Name = "check_Archive";
             this.check_Archive.Size = new System.Drawing.Size(91, 19);
             this.check_Archive.TabIndex = 12;
@@ -267,7 +269,7 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(11, 13);
+            this.label6.Location = new System.Drawing.Point(11, 19);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(126, 15);
             this.label6.TabIndex = 9;
@@ -278,14 +280,14 @@
             this.nom_estra.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.nom_estra.Location = new System.Drawing.Point(152, 13);
             this.nom_estra.Name = "nom_estra";
-            this.nom_estra.Size = new System.Drawing.Size(316, 21);
+            this.nom_estra.Size = new System.Drawing.Size(195, 21);
             this.nom_estra.TabIndex = 1;
             // 
             // label4
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(12, 121);
+            this.label4.Location = new System.Drawing.Point(12, 122);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(49, 15);
             this.label4.TabIndex = 6;
@@ -295,7 +297,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(11, 47);
+            this.label2.Location = new System.Drawing.Point(11, 50);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(105, 15);
             this.label2.TabIndex = 3;
@@ -305,7 +307,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(11, 89);
+            this.label3.Location = new System.Drawing.Point(12, 87);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(113, 15);
             this.label3.TabIndex = 4;
@@ -317,7 +319,7 @@
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(643, 241);
+            this.groupBox1.Size = new System.Drawing.Size(655, 241);
             this.groupBox1.TabIndex = 23;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Estrategia";
@@ -330,6 +332,7 @@
             this.btn_Cancelar.TabIndex = 26;
             this.btn_Cancelar.Text = "Cancelar";
             this.btn_Cancelar.UseVisualStyleBackColor = true;
+            this.btn_Cancelar.Click += new System.EventHandler(this.btn_Cancelar_Click);
             // 
             // btn_CrearEstra
             // 
@@ -347,225 +350,33 @@
             this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox2.Location = new System.Drawing.Point(12, 272);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(643, 281);
+            this.groupBox2.Size = new System.Drawing.Size(655, 264);
             this.groupBox2.TabIndex = 27;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Politica";
             // 
             // panel2
             // 
-            this.panel2.Controls.Add(this.nom_Politica);
+            this.panel2.Controls.Add(this.groupBox5);
+            this.panel2.Controls.Add(this.groupBox4);
+            this.panel2.Controls.Add(this.groupBox3);
             this.panel2.Controls.Add(this.label19);
-            this.panel2.Controls.Add(this.num_Segundos);
-            this.panel2.Controls.Add(this.num_Minutos);
-            this.panel2.Controls.Add(this.num_Hora);
-            this.panel2.Controls.Add(this.label14);
-            this.panel2.Controls.Add(this.label13);
-            this.panel2.Controls.Add(this.panel6);
-            this.panel2.Controls.Add(this.label7);
-            this.panel2.Controls.Add(this.label10);
-            this.panel2.Controls.Add(this.label9);
-            this.panel2.Controls.Add(this.checkedList_Dias);
-            this.panel2.Controls.Add(this.label8);
-            this.panel2.Controls.Add(this.dateTimePicker1);
+            this.panel2.Controls.Add(this.nom_Politica);
             this.panel2.Location = new System.Drawing.Point(20, 23);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(580, 217);
+            this.panel2.Size = new System.Drawing.Size(617, 235);
             this.panel2.TabIndex = 26;
             // 
-            // nom_Politica
+            // groupBox5
             // 
-            this.nom_Politica.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.nom_Politica.Location = new System.Drawing.Point(118, 31);
-            this.nom_Politica.Name = "nom_Politica";
-            this.nom_Politica.Size = new System.Drawing.Size(112, 21);
-            this.nom_Politica.TabIndex = 31;
-            // 
-            // label19
-            // 
-            this.label19.AutoSize = true;
-            this.label19.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label19.Location = new System.Drawing.Point(11, 31);
-            this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(97, 15);
-            this.label19.TabIndex = 30;
-            this.label19.Text = "Nombre politica:";
-            // 
-            // num_Segundos
-            // 
-            this.num_Segundos.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.num_Segundos.Location = new System.Drawing.Point(288, 157);
-            this.num_Segundos.Maximum = new decimal(new int[] {
-            59,
-            0,
-            0,
-            0});
-            this.num_Segundos.Name = "num_Segundos";
-            this.num_Segundos.Size = new System.Drawing.Size(37, 21);
-            this.num_Segundos.TabIndex = 29;
-            // 
-            // num_Minutos
-            // 
-            this.num_Minutos.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.num_Minutos.Location = new System.Drawing.Point(221, 157);
-            this.num_Minutos.Maximum = new decimal(new int[] {
-            59,
-            0,
-            0,
-            0});
-            this.num_Minutos.Name = "num_Minutos";
-            this.num_Minutos.Size = new System.Drawing.Size(37, 21);
-            this.num_Minutos.TabIndex = 28;
-            // 
-            // num_Hora
-            // 
-            this.num_Hora.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.num_Hora.Location = new System.Drawing.Point(159, 157);
-            this.num_Hora.Maximum = new decimal(new int[] {
-            23,
-            0,
-            0,
-            0});
-            this.num_Hora.Name = "num_Hora";
-            this.num_Hora.Size = new System.Drawing.Size(37, 21);
-            this.num_Hora.TabIndex = 27;
-            // 
-            // label14
-            // 
-            this.label14.AutoSize = true;
-            this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label14.Location = new System.Drawing.Point(285, 128);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(63, 15);
-            this.label14.TabIndex = 26;
-            this.label14.Text = "Segundos";
-            // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label13.Location = new System.Drawing.Point(218, 128);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(51, 15);
-            this.label13.TabIndex = 25;
-            this.label13.Text = "Minutos";
-            // 
-            // panel6
-            // 
-            this.panel6.Controls.Add(this.panel8);
-            this.panel6.Controls.Add(this.radioB_Otro);
-            this.panel6.Controls.Add(this.radioB_120);
-            this.panel6.Controls.Add(this.radioB_60);
-            this.panel6.Controls.Add(this.radioB_30);
-            this.panel6.Location = new System.Drawing.Point(383, 73);
-            this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(163, 113);
-            this.panel6.TabIndex = 24;
-            // 
-            // panel8
-            // 
-            this.panel8.Controls.Add(this.label16);
-            this.panel8.Controls.Add(this.num_Tiempo);
-            this.panel8.Location = new System.Drawing.Point(58, 72);
-            this.panel8.Name = "panel8";
-            this.panel8.Size = new System.Drawing.Size(98, 30);
-            this.panel8.TabIndex = 4;
-            // 
-            // label16
-            // 
-            this.label16.AutoSize = true;
-            this.label16.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label16.Location = new System.Drawing.Point(3, 7);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(51, 15);
-            this.label16.TabIndex = 5;
-            this.label16.Text = "Minutos";
-            // 
-            // num_Tiempo
-            // 
-            this.num_Tiempo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.num_Tiempo.Location = new System.Drawing.Point(60, 5);
-            this.num_Tiempo.Name = "num_Tiempo";
-            this.num_Tiempo.Size = new System.Drawing.Size(36, 21);
-            this.num_Tiempo.TabIndex = 4;
-            // 
-            // radioB_Otro
-            // 
-            this.radioB_Otro.AutoSize = true;
-            this.radioB_Otro.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radioB_Otro.Location = new System.Drawing.Point(4, 72);
-            this.radioB_Otro.Name = "radioB_Otro";
-            this.radioB_Otro.Size = new System.Drawing.Size(48, 19);
-            this.radioB_Otro.TabIndex = 3;
-            this.radioB_Otro.TabStop = true;
-            this.radioB_Otro.Text = "Otro";
-            this.radioB_Otro.UseVisualStyleBackColor = true;
-            // 
-            // radioB_120
-            // 
-            this.radioB_120.AutoSize = true;
-            this.radioB_120.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radioB_120.Location = new System.Drawing.Point(3, 50);
-            this.radioB_120.Name = "radioB_120";
-            this.radioB_120.Size = new System.Drawing.Size(70, 19);
-            this.radioB_120.TabIndex = 2;
-            this.radioB_120.TabStop = true;
-            this.radioB_120.Text = "120 min";
-            this.radioB_120.UseVisualStyleBackColor = true;
-            // 
-            // radioB_60
-            // 
-            this.radioB_60.AutoSize = true;
-            this.radioB_60.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radioB_60.Location = new System.Drawing.Point(3, 27);
-            this.radioB_60.Name = "radioB_60";
-            this.radioB_60.Size = new System.Drawing.Size(63, 19);
-            this.radioB_60.TabIndex = 1;
-            this.radioB_60.TabStop = true;
-            this.radioB_60.Text = "60 min";
-            this.radioB_60.UseVisualStyleBackColor = true;
-            // 
-            // radioB_30
-            // 
-            this.radioB_30.AutoSize = true;
-            this.radioB_30.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radioB_30.Location = new System.Drawing.Point(3, 4);
-            this.radioB_30.Name = "radioB_30";
-            this.radioB_30.Size = new System.Drawing.Size(63, 19);
-            this.radioB_30.TabIndex = 0;
-            this.radioB_30.TabStop = true;
-            this.radioB_30.Text = "30 min";
-            this.radioB_30.UseVisualStyleBackColor = true;
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(11, 55);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(144, 15);
-            this.label7.TabIndex = 11;
-            this.label7.Text = "Frecuencia de aplicación";
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(162, 128);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(34, 15);
-            this.label10.TabIndex = 18;
-            this.label10.Text = "Hora";
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(399, 55);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(69, 15);
-            this.label9.TabIndex = 16;
-            this.label9.Text = "Repetición ";
+            this.groupBox5.Controls.Add(this.checkedList_Dias);
+            this.groupBox5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox5.Location = new System.Drawing.Point(3, 74);
+            this.groupBox5.Name = "groupBox5";
+            this.groupBox5.Size = new System.Drawing.Size(152, 147);
+            this.groupBox5.TabIndex = 34;
+            this.groupBox5.TabStop = false;
+            this.groupBox5.Text = "Frecuencia de aplicación";
             // 
             // checkedList_Dias
             // 
@@ -579,35 +390,220 @@
             "Viernes",
             "Sabado",
             "Domingo"});
-            this.checkedList_Dias.Location = new System.Drawing.Point(15, 78);
+            this.checkedList_Dias.Location = new System.Drawing.Point(6, 37);
             this.checkedList_Dias.Name = "checkedList_Dias";
             this.checkedList_Dias.Size = new System.Drawing.Size(123, 100);
             this.checkedList_Dias.TabIndex = 12;
             // 
-            // label8
+            // groupBox4
             // 
-            this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(218, 55);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(75, 15);
-            this.label8.TabIndex = 13;
-            this.label8.Text = "Día de inicio";
+            this.groupBox4.Controls.Add(this.radioB_30);
+            this.groupBox4.Controls.Add(this.panel8);
+            this.groupBox4.Controls.Add(this.radioB_60);
+            this.groupBox4.Controls.Add(this.radioB_120);
+            this.groupBox4.Controls.Add(this.radioB_Otro);
+            this.groupBox4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox4.Location = new System.Drawing.Point(433, 74);
+            this.groupBox4.Name = "groupBox4";
+            this.groupBox4.Size = new System.Drawing.Size(181, 147);
+            this.groupBox4.TabIndex = 33;
+            this.groupBox4.TabStop = false;
+            this.groupBox4.Text = "Repeticiones";
+            this.groupBox4.Enter += new System.EventHandler(this.groupBox4_Enter);
+            // 
+            // radioB_30
+            // 
+            this.radioB_30.AutoSize = true;
+            this.radioB_30.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.radioB_30.Location = new System.Drawing.Point(16, 37);
+            this.radioB_30.Name = "radioB_30";
+            this.radioB_30.Size = new System.Drawing.Size(63, 19);
+            this.radioB_30.TabIndex = 0;
+            this.radioB_30.TabStop = true;
+            this.radioB_30.Text = "30 min";
+            this.radioB_30.UseVisualStyleBackColor = true;
+            // 
+            // panel8
+            // 
+            this.panel8.Controls.Add(this.label16);
+            this.panel8.Controls.Add(this.num_Tiempo);
+            this.panel8.Location = new System.Drawing.Point(77, 105);
+            this.panel8.Name = "panel8";
+            this.panel8.Size = new System.Drawing.Size(98, 32);
+            this.panel8.TabIndex = 4;
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label16.Location = new System.Drawing.Point(3, 10);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(51, 15);
+            this.label16.TabIndex = 5;
+            this.label16.Text = "Minutos";
+            // 
+            // num_Tiempo
+            // 
+            this.num_Tiempo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.num_Tiempo.Location = new System.Drawing.Point(60, 5);
+            this.num_Tiempo.Name = "num_Tiempo";
+            this.num_Tiempo.Size = new System.Drawing.Size(36, 21);
+            this.num_Tiempo.TabIndex = 4;
+            // 
+            // radioB_60
+            // 
+            this.radioB_60.AutoSize = true;
+            this.radioB_60.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.radioB_60.Location = new System.Drawing.Point(16, 60);
+            this.radioB_60.Name = "radioB_60";
+            this.radioB_60.Size = new System.Drawing.Size(63, 19);
+            this.radioB_60.TabIndex = 1;
+            this.radioB_60.TabStop = true;
+            this.radioB_60.Text = "60 min";
+            this.radioB_60.UseVisualStyleBackColor = true;
+            // 
+            // radioB_120
+            // 
+            this.radioB_120.AutoSize = true;
+            this.radioB_120.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.radioB_120.Location = new System.Drawing.Point(16, 83);
+            this.radioB_120.Name = "radioB_120";
+            this.radioB_120.Size = new System.Drawing.Size(70, 19);
+            this.radioB_120.TabIndex = 2;
+            this.radioB_120.TabStop = true;
+            this.radioB_120.Text = "120 min";
+            this.radioB_120.UseVisualStyleBackColor = true;
+            // 
+            // radioB_Otro
+            // 
+            this.radioB_Otro.AutoSize = true;
+            this.radioB_Otro.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.radioB_Otro.Location = new System.Drawing.Point(17, 105);
+            this.radioB_Otro.Name = "radioB_Otro";
+            this.radioB_Otro.Size = new System.Drawing.Size(48, 19);
+            this.radioB_Otro.TabIndex = 3;
+            this.radioB_Otro.TabStop = true;
+            this.radioB_Otro.Text = "Otro";
+            this.radioB_Otro.UseVisualStyleBackColor = true;
+            // 
+            // groupBox3
+            // 
+            this.groupBox3.Controls.Add(this.dateTimePicker1);
+            this.groupBox3.Controls.Add(this.num_Segundos);
+            this.groupBox3.Controls.Add(this.label10);
+            this.groupBox3.Controls.Add(this.label13);
+            this.groupBox3.Controls.Add(this.num_Minutos);
+            this.groupBox3.Controls.Add(this.label14);
+            this.groupBox3.Controls.Add(this.num_Hora);
+            this.groupBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox3.Location = new System.Drawing.Point(161, 74);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(266, 147);
+            this.groupBox3.TabIndex = 32;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "Día de Inicio";
             // 
             // dateTimePicker1
             // 
             this.dateTimePicker1.CalendarTitleBackColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.dateTimePicker1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dateTimePicker1.Location = new System.Drawing.Point(152, 92);
+            this.dateTimePicker1.Location = new System.Drawing.Point(12, 37);
             this.dateTimePicker1.Name = "dateTimePicker1";
             this.dateTimePicker1.Size = new System.Drawing.Size(228, 21);
             this.dateTimePicker1.TabIndex = 14;
+            // 
+            // num_Segundos
+            // 
+            this.num_Segundos.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.num_Segundos.Location = new System.Drawing.Point(178, 105);
+            this.num_Segundos.Maximum = new decimal(new int[] {
+            59,
+            0,
+            0,
+            0});
+            this.num_Segundos.Name = "num_Segundos";
+            this.num_Segundos.Size = new System.Drawing.Size(37, 21);
+            this.num_Segundos.TabIndex = 29;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.Location = new System.Drawing.Point(14, 73);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(34, 15);
+            this.label10.TabIndex = 18;
+            this.label10.Text = "Hora";
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label13.Location = new System.Drawing.Point(96, 73);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(51, 15);
+            this.label13.TabIndex = 25;
+            this.label13.Text = "Minutos";
+            // 
+            // num_Minutos
+            // 
+            this.num_Minutos.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.num_Minutos.Location = new System.Drawing.Point(99, 105);
+            this.num_Minutos.Maximum = new decimal(new int[] {
+            59,
+            0,
+            0,
+            0});
+            this.num_Minutos.Name = "num_Minutos";
+            this.num_Minutos.Size = new System.Drawing.Size(37, 21);
+            this.num_Minutos.TabIndex = 28;
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label14.Location = new System.Drawing.Point(175, 73);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(63, 15);
+            this.label14.TabIndex = 26;
+            this.label14.Text = "Segundos";
+            // 
+            // num_Hora
+            // 
+            this.num_Hora.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.num_Hora.Location = new System.Drawing.Point(17, 103);
+            this.num_Hora.Maximum = new decimal(new int[] {
+            23,
+            0,
+            0,
+            0});
+            this.num_Hora.Name = "num_Hora";
+            this.num_Hora.Size = new System.Drawing.Size(37, 21);
+            this.num_Hora.TabIndex = 27;
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label19.Location = new System.Drawing.Point(12, 31);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(97, 15);
+            this.label19.TabIndex = 30;
+            this.label19.Text = "Nombre politica:";
+            // 
+            // nom_Politica
+            // 
+            this.nom_Politica.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.nom_Politica.Location = new System.Drawing.Point(150, 25);
+            this.nom_Politica.Name = "nom_Politica";
+            this.nom_Politica.Size = new System.Drawing.Size(196, 21);
+            this.nom_Politica.TabIndex = 31;
             // 
             // Estrategias_Politicas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(673, 638);
+            this.ClientSize = new System.Drawing.Size(681, 638);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.btn_Cancelar);
@@ -626,14 +622,17 @@
             this.groupBox2.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.num_Segundos)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.num_Minutos)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.num_Hora)).EndInit();
-            this.panel6.ResumeLayout(false);
-            this.panel6.PerformLayout();
+            this.groupBox5.ResumeLayout(false);
+            this.groupBox4.ResumeLayout(false);
+            this.groupBox4.PerformLayout();
             this.panel8.ResumeLayout(false);
             this.panel8.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.num_Tiempo)).EndInit();
+            this.groupBox3.ResumeLayout(false);
+            this.groupBox3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.num_Segundos)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.num_Minutos)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.num_Hora)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -672,7 +671,6 @@
         private System.Windows.Forms.NumericUpDown num_Hora;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.Panel panel6;
         private System.Windows.Forms.Panel panel8;
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.NumericUpDown num_Tiempo;
@@ -680,11 +678,12 @@
         private System.Windows.Forms.RadioButton radioB_120;
         private System.Windows.Forms.RadioButton radioB_60;
         private System.Windows.Forms.RadioButton radioB_30;
-        private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.Label label9;
         private System.Windows.Forms.CheckedListBox checkedList_Dias;
-        private System.Windows.Forms.Label label8;
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private System.Windows.Forms.GroupBox groupBox4;
+        private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.GroupBox groupBox5;
+        private System.ComponentModel.BackgroundWorker backgroundWorker1;
     }
 }

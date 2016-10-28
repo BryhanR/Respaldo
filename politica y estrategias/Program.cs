@@ -16,7 +16,7 @@ namespace politica_y_estrategias
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new ventanaPricipal());
+            Application.Run(new ventanaPrincipal());
         }
     }
 }

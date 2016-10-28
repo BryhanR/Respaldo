@@ -15,10 +15,10 @@ using Logic;
 
 namespace politica_y_estrategias
 {
-    public partial class ventanaPricipal : Form
+    public partial class ventanaPrincipal : Form
     {
         //-------- Variables ---------------------------------------
-        String ConexionOracle = "User id= system; Password=456456456; Data Source= XE;"; //////cambiar password
+        string ConexionOracle = "User id= system; Password=root; Data Source= XE;"; //////cambiar password
         Server g = new Server();
         OracleConnection con = new OracleConnection();
         private readonly SynchronizationContext syncC;
@@ -30,7 +30,7 @@ namespace politica_y_estrategias
         List<Tarea> tareas = new List<Tarea>();
 
         //-------- METODOS DEL FORM1 ---------//
-        public ventanaPricipal()
+        public ventanaPrincipal()
         {
             InitializeComponent();
             this.CenterToScreen();
@@ -622,6 +622,17 @@ namespace politica_y_estrategias
             }
         }
 
+        private void desmarcarEstrategiasPoliticas(int e)
+        {
+            foreach (DataGridViewRow fila in dataGridView2.Rows)
+            {
+                if (Convert.ToBoolean(fila.Cells["Column6"].Value) == true && e != fila.Index)
+                {
+                    fila.Cells["Column6"].Value = false;
+                }
+
+            }
+        }
 
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -683,35 +694,24 @@ namespace politica_y_estrategias
         
         private void button1_Click(object sender, EventArgs e)
         {
-            string be = dataGridView2.Rows[posRowsEstra].Cells["Column3"].Value.ToString();
-            MessageBox.Show("Estra "+be);
-            string bp = dataGridView2.Rows[posRowsEstra].Cells["Column4"].Value.ToString();
-            MessageBox.Show("Poli " + bp);
+            // Nombre de la estretegia seleccionada
+            string be = dataGridView2.CurrentRow.Cells["Column3"].Value.ToString();
+            // Nombre de la politica seleccionada
+            string bp = dataGridView2.CurrentRow.Cells["Column4"].Value.ToString();
             Estrategia es = getEstrategiasServer().Find(x => x.getNombre().ToUpper() == be.ToUpper());
             Politica po = getPoliticasServer().Find(x => x.getNombre().ToUpper() == bp.ToUpper());
-           // MessageBox.Show("Estra Estraegia " + es.getNombre());
-           // MessageBox.Show("Estra Politica " +po.getNombre());
+         
               Estrategias_Politicas ve = new Estrategias_Politicas(this, es, po);
               ve.Show();
-         /*   foreach (DataGridViewRow fila in dataGridView2.Rows)
-            {
-                if (Convert.ToBoolean(fila.Cells["Column2"].Value) == true)
-                {
-                    Estrategia e = estrategias.Find(x => x.getNombre() == nom);
-                    MessageBox.Show("Imprimir: " + Convert.ToBoolean(fila.Cells["Imprimir"].Value));
-                }
-                else
-                {
-                    MessageBox.Show("No Imprimir: " + Convert.ToBoolean(fila.Cells["Imprimir"].Value));
-                }
-            }
-                        Estrategias_Politicas ve = new Estrategias_Politicas(this, new Estrategia(), new Politica());
-            ve.Show();*/
+       
         }
 
         private void dataGridView2_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            posRowsEstra = e.RowIndex; // cambiar
+            desmarcarEstrategiasPoliticas(e.RowIndex);
+          
+            MessageBox.Show(dataGridView2.CurrentRow.Cells["Column3" ].Value.ToString());
+     
         }
     
         /*private void checkedList_Politicas_ItemCheck(object sender, ItemCheckEventArgs e)
