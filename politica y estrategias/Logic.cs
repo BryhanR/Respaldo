@@ -105,7 +105,7 @@ namespace Logic
 
             es.Flush();
             //Cerramos
-            es.Close();
+           // es.Close();
            
         }
     }
@@ -222,7 +222,7 @@ namespace Logic
             es.Flush();
 
             //Cerramos
-            es.Close();
+           // es.Close();
             //Vaciamos
             //   textBox1.Text = "";
         }
@@ -252,7 +252,7 @@ namespace Logic
             nombre = "";
             tipoRes = 0;
             modoRes = 0;
-            tablespaces = null;
+            tablespaces = new List<string>();
             plus = null;
         }
 
@@ -285,34 +285,44 @@ namespace Logic
         {
             return nom_Server;
         }
-
-        public void Guardar_Estrategia(Estrategia e)
+        public void setNombre(string nom){
+          nombre = nom;
+        }
+        public void setNomServer(string s) {
+            nom_Server = s;
+        }
+        public void setTipoRes(int re) {
+            tipoRes = re;
+        }
+        public void setModoRes(int m)
         {
-
-            //Fijar donde se guardara el archivo txt
-
-            StreamWriter escrito = new StreamWriter(Path.GetFullPath("Servidores.txt"), true); // escribe al final de Servidores.txt
-
+             modoRes = m;
+        }
+     
+        public void setPlus(int [] p)
+        {
+            plus = p;
+        }
+        public void Guardar_Estrategia(StreamWriter escrito)
+        {
 
             //escribimos. 
             escrito.WriteLineAsync("##");//PAra saber que es una estrategia
-            escrito.WriteLine(e.nom_Server); // Nombre del servidor que lo creo
-            escrito.WriteLine(e.nombre);
-            escrito.WriteLine(e.tipoRes);
-            escrito.WriteLine(e.modoRes);
-            escrito.WriteLine(e.tablespaces.Count);
-            e.tablespaces.ForEach(delegate(String tables)
+            escrito.WriteLine(nom_Server); // Nombre del servidor que lo creo
+            escrito.WriteLine(nombre);
+            escrito.WriteLine(tipoRes);
+            escrito.WriteLine(modoRes);
+            escrito.WriteLine(tablespaces.Count);
+            tablespaces.ForEach(delegate(String tables)
             {
                 escrito.WriteLine(tables);
             });
-            escrito.WriteLine(e.plus[0]);
-            escrito.WriteLine(e.plus[1]);
-            escrito.WriteLine(e.plus[2]);
+            escrito.WriteLine(plus[0]);
+            escrito.WriteLine(plus[1]);
+            escrito.WriteLine(plus[2]);
             escrito.Flush();
             //Cerramos
-            escrito.Close();
-            //Vaciamos
-            //   textBox1.Text = "";
+           
         }
 
         public void toString()
@@ -392,7 +402,7 @@ namespace Logic
 
             es.Flush();
             //Cerramos
-            es.Close();
+           // es.Close();
         }
     }
 

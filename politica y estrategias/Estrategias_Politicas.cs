@@ -43,21 +43,20 @@ namespace politica_y_estrategias
            num_Segundos.Value = dateTimePicker1.Value.Second;
            marcarRepeticion(p.getRepeticion());
            marcarFrecuencia(p.getListFrecuencia());
-           // Terminar falta dias
         }
 
        private void marcarFrecuencia(List<string> l)
        { // Terminar
-          
-           int j = 0; // Pensar que si asi o si un ciclo dentro de otro // Terminar
-           for (int i = 0; i < checkedList_Dias.Items.Count && j < l.Count; i++)
+           l.ForEach(delegate(String dia)
            {
-               if (checkedList_Dias.Items[i].ToString().ToUpper() == l[j].ToString().ToUpper())
+               int pos = checkedList_Dias.FindStringExact(dia);
+               if (pos != -1)
                {
-                   checkedList_Dias.SetItemChecked(i, true);
-                   j++;
+                   checkedList_Dias.SetItemChecked(pos, true);
                }
-           }
+           });
+          
+        
        }
 
        private void marcarRepeticion(int op) {
@@ -98,18 +97,20 @@ namespace politica_y_estrategias
         }
 
         private void marcarTablespace(List<string> l) { // Terminar
+
             if (l.Count != 0) {
                 check_Tablespaces.Checked = true;
             }
-            int j = 0; // Pensar que si asi o si un ciclo dentro de otro // Terminar
-              for (int i =0; i< checkedList_Tablespaces.Items.Count && j< l.Count; i++)
-              {
-                  if (checkedList_Tablespaces.Items[i].ToString().ToUpper() == l[j].ToString().ToUpper())
-                  { 
-                     checkedList_Tablespaces.SetItemChecked(i, true);
-                     j++;
-                 }
-             }
+
+            l.ForEach(delegate(String tablespace)
+            {
+                int pos = checkedList_Tablespaces.FindStringExact(tablespace);
+                if (pos != -1)
+                {
+                    checkedList_Tablespaces.SetItemChecked(pos, true);
+                }
+            });
+
         }
         public Estrategias_Politicas(ventanaPrincipal p)
         {
@@ -124,23 +125,22 @@ namespace politica_y_estrategias
         //------ METODOS---------//
         private void Guardar_Estrategia()
         {
+            
+            Estrategia estrategia = new Estrategia();
 
-            string nombre;
-            int tipoRes = 0;
-            int modoRes = 0;
-            List<string> tablespaces = new List<string>();
-            int[] plus = new int[3];
-            plus[0] = 0;
-            plus[1] = 0;
-            plus[2] = 0;
+            estrategia.setNomServer(principal.getServer());
 
-            nombre = this.nom_estra.Text.ToUpper();
+            estrategia.setNombre(this.nom_estra.Text.ToUpper());
 
 
             foreach (object itemChecked in checkedList_Tablespaces.CheckedItems)
             {
-                tablespaces.Add(itemChecked.ToString());
+                estrategia.addTablespace(itemChecked.ToString());
             }
+            int[] plus = new int[3];
+            plus[0] = 0;
+            plus[1] = 0;
+            plus[2] = 0;
 
             if (check_Archive.Checked)
                 plus[0] = 1;
@@ -148,23 +148,31 @@ namespace politica_y_estrategias
                 plus[1] = 1;
             if (check_IniitF.Checked)
                 plus[2] = 1;
+
+            estrategia.setPlus(plus);
+ 
             if (radioButton1.Checked)
-                tipoRes = 1;
+                estrategia.setTipoRes(1);
             if (radioButton2.Checked)
-                tipoRes = 2;
+                estrategia.setTipoRes(2);
             if (radioButton3.Checked)
-                tipoRes = 3;
+                estrategia.setTipoRes(3);
+            
             if (radioButton6.Checked)
-                modoRes = 1;
+                estrategia.setModoRes(1);
             if (radioButton5.Checked)
-                modoRes = 2;
+                estrategia.setModoRes(2);
 
-            Estrategia estrategia = new Estrategia(principal.getServer(), nombre, tipoRes, modoRes, tablespaces, plus);
+           
+           
+
+            StreamWriter escrito = new StreamWriter(Path.GetFullPath("Servidores.txt"), true); // escribe al final de Servidores.txt
+            estrategia.Guardar_Estrategia(escrito);
+            escrito.Close();
             principal.addEstrategias(estrategia);
-            estrategia.Guardar_Estrategia(estrategia);
-            principal.add_Check_Estrategia(nombre);
+            principal.add_Check_Estrategia(estrategia.getNombre());
 
-            MessageBox.Show("Estrategia " + nombre + " Creada Con Exito", "Success", MessageBoxButtons.OK);
+            MessageBox.Show("Estrategia " + estrategia.getNombre() + " Creada Con Exito", "Success", MessageBoxButtons.OK);
         }
 
         private void llenarCheckedList_Tablespaces()
@@ -275,25 +283,30 @@ namespace politica_y_estrategias
             p.setFecha(getDate());
 
             // Repeticion
-            if (radioB_30.Checked)
-                p.setRepeticion(30);
-            if (radioB_60.Checked)
-                p.setRepeticion(60);
-            if (radioB_120.Checked)
-                p.setRepeticion(120);
-            if (radioB_Otro.Checked)
-                p.setRepeticion((int)num_Tiempo.Value);
+            p.setRepeticion(getCanRepeticion());
+            
+        
 
             //Abrimos el archivo txt
             StreamWriter escrito = new StreamWriter(Path.GetFullPath("Servidores.txt"), true); // escribe al final de Servidores.txt
             principal.addPolitica(p);
             p.guardar_Politica(escrito);
-           
+            escrito.Close();
 
             MessageBox.Show("Politica " + p.getNombre() + " Creada Con Exito", "Success", MessageBoxButtons.OK);
             
         }
-
+        private int getCanRepeticion() { 
+         if (radioB_30.Checked)
+                return 30;
+            if (radioB_60.Checked)
+               return 60;
+            if (radioB_120.Checked)
+                return 120;
+            if (radioB_Otro.Checked)
+            return (int)num_Tiempo.Value;
+            return 0;
+        }
         private void btn_CrearEstra_Click_1(object sender, EventArgs e)
         {
             Guardar_Estrategia();
@@ -305,19 +318,47 @@ namespace politica_y_estrategias
 
         private void Guardar_Tarea(){
             Tarea t = new Tarea(principal.getServer(), nom_estra.Text, nom_Politica.Text,1);
-            StreamWriter escrito = new StreamWriter(Path.GetFullPath("Servidores.txt"), true); // escribe al final de Servidores.txt
+            StreamWriter escrito = new StreamWriter(Path.GetFullPath("Servidores.txt"),true); // escribe al final de Servidores.txt
             t.guardar_Tarea(escrito);
             principal.guardar_Tarea(t);
+            escrito.Close();
         }
 
         private void btn_CrearEstra_Click_2(object sender, EventArgs e)
         {
+            //crear_o_Modificar();
             Guardar_Estrategia();
             Guardar_Politica();
             Guardar_Tarea();
             this.Close();
         }
 
+        private void crear_o_Modificar() {
+           
+            
+          Politica existe = principal.getPoliticasServer().Find(x =>
+            {
+                if (x.getNombre() == nom_Politica.Text)
+                {
+                    x.setFecha(getDate());
+                    x.getListFrecuencia().Clear();
+                    // La frecuencia
+                    foreach (object itemChecked in checkedList_Dias.CheckedItems)
+                    {
+                        x.addFrecuencia(itemChecked.ToString().ToUpper());
+                    }
+                    // Repeticion
+                    x.setRepeticion(getCanRepeticion());
+                   principal.sobreescribirDocumento();
+                    return true;
+                }
+
+                return false;
+            });
+          if (existe != null) {
+              MessageBox.Show("Existe");
+          }
+        }
         private void groupBox4_Enter(object sender, EventArgs e)
         {
 
