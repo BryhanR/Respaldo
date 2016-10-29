@@ -106,7 +106,7 @@
             this.panel1.Controls.Add(this.label3);
             this.panel1.Location = new System.Drawing.Point(20, 23);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(580, 201);
+            this.panel1.Size = new System.Drawing.Size(580, 254);
             this.panel1.TabIndex = 24;
             // 
             // check_Tablespaces
@@ -209,14 +209,14 @@
             this.checkedList_Tablespaces.FormattingEnabled = true;
             this.checkedList_Tablespaces.Location = new System.Drawing.Point(259, 121);
             this.checkedList_Tablespaces.Name = "checkedList_Tablespaces";
-            this.checkedList_Tablespaces.Size = new System.Drawing.Size(269, 36);
+            this.checkedList_Tablespaces.Size = new System.Drawing.Size(269, 84);
             this.checkedList_Tablespaces.TabIndex = 10;
             // 
             // label11
             // 
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.Location = new System.Drawing.Point(11, 169);
+            this.label11.Location = new System.Drawing.Point(11, 217);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(45, 15);
             this.label11.TabIndex = 22;
@@ -227,7 +227,7 @@
             this.panel5.Controls.Add(this.check_IniitF);
             this.panel5.Controls.Add(this.check_Archive);
             this.panel5.Controls.Add(this.check_ControlF);
-            this.panel5.Location = new System.Drawing.Point(152, 163);
+            this.panel5.Location = new System.Drawing.Point(152, 211);
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(316, 27);
             this.panel5.TabIndex = 11;
@@ -320,14 +320,14 @@
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(655, 241);
+            this.groupBox1.Size = new System.Drawing.Size(655, 292);
             this.groupBox1.TabIndex = 23;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Estrategia";
             // 
             // btn_Cancelar
             // 
-            this.btn_Cancelar.Location = new System.Drawing.Point(364, 569);
+            this.btn_Cancelar.Location = new System.Drawing.Point(369, 594);
             this.btn_Cancelar.Name = "btn_Cancelar";
             this.btn_Cancelar.Size = new System.Drawing.Size(75, 23);
             this.btn_Cancelar.TabIndex = 26;
@@ -337,11 +337,11 @@
             // 
             // btn_CrearEstra
             // 
-            this.btn_CrearEstra.Location = new System.Drawing.Point(226, 569);
+            this.btn_CrearEstra.Location = new System.Drawing.Point(231, 594);
             this.btn_CrearEstra.Name = "btn_CrearEstra";
             this.btn_CrearEstra.Size = new System.Drawing.Size(75, 23);
             this.btn_CrearEstra.TabIndex = 25;
-            this.btn_CrearEstra.Text = "Crear";
+            this.btn_CrearEstra.Text = "Aceptar";
             this.btn_CrearEstra.UseVisualStyleBackColor = true;
             this.btn_CrearEstra.Click += new System.EventHandler(this.btn_CrearEstra_Click_2);
             // 
@@ -349,7 +349,7 @@
             // 
             this.groupBox2.Controls.Add(this.panel2);
             this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox2.Location = new System.Drawing.Point(12, 272);
+            this.groupBox2.Location = new System.Drawing.Point(12, 310);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(655, 264);
             this.groupBox2.TabIndex = 27;

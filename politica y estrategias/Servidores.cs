@@ -41,6 +41,7 @@ namespace politica_y_estrategias
             StreamWriter escrito = new StreamWriter(Path.GetFullPath("Servidores.txt"), true); // escribe al final de Servidores.txt
             Server s = new Server(nom,datbalink,usuario,contra,ip,puerto,nomBase);
             s.guardar_Server(escrito);
+            escrito.Close();
             principal.addServer(s);
             MessageBox.Show("Server "+ nom +" Creado Con Exito", "Success", MessageBoxButtons.OK);
         }
