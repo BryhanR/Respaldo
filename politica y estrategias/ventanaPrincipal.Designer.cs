@@ -236,6 +236,8 @@
             this.ClientSize = new System.Drawing.Size(512, 459);
             this.Controls.Add(this.estado);
             this.Controls.Add(this.panel7);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
             this.Name = "ventanaPrincipal";
             this.Text = "Sistema Automatizado de Respaldo ( GENERADOR DE ESTRATEGIAS)";
             this.Load += new System.EventHandler(this.Form1_Load);
