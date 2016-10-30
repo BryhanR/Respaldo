@@ -102,81 +102,51 @@ namespace politica_y_estrategias
 
         public void ResuperaServidorTxT()
         {
-              // Auxiliares para crear Server
-            string nom_Server = "";
-            string dbLink="";
-            string usuario = "";
-            string contrasenia = "";
-            string ip = "";
-            string puerto = "";
-            string baseDatos = "";
-
-            //Auxiliares para crear Politica
-            string nom_P_Server = "";
-            string nomP = "";
-            List<string>frecuencia = new List<string>();
-           DateTime fecha;
-            int repeti = 0;
-
-            //Auxiliares para crear Estrategia
-            string nom_E_Server = "";
-            string nom = "";
-            int tr = 0;
-            int mr = 0;
-            List<string> ts = new List<string>();
-            int[] p = new int[3];
-            p[0] = 0;
-            p[1] = 0;
-
-            // Auxiliares para crear Tarea
-            string nom_T_Server = "";
-            string estra = "";
-            string poli = "";
-            int sta = 0;
-        
-
          StreamReader leido = File.OpenText(Path.GetFullPath("Servidores.txt"));
             //Variable que contendrá el archivo
             string contenido = null;
+            
             //Leemos linea a linea hasta el final.
             while ((contenido = leido.ReadLine()) != null)
             {
                 if (contenido == "%%") {
-                    nom_Server = leido.ReadLine();
-                    dbLink = leido.ReadLine();
-                    usuario = leido.ReadLine();
-                    contrasenia = leido.ReadLine();
-                    ip = leido.ReadLine();
-                    puerto = leido.ReadLine();
-                    baseDatos = leido.ReadLine();
+                    // Auxiliares para crear Server
+                    string nom_Server = leido.ReadLine();
+                    string dbLink = leido.ReadLine();
+                    string usuario = leido.ReadLine();
+                    string contrasenia = leido.ReadLine();
+                    string ip = leido.ReadLine();
+                    string puerto = leido.ReadLine();
+                    string baseDatos = leido.ReadLine();
                     Server ser = new Server(nom_Server,dbLink,usuario,contrasenia,ip,puerto,baseDatos);
                    servidores.Add(ser);
                 }
                 if (contenido == "##")
                 {
-                    nom_E_Server = leido.ReadLine();
-                    nom = leido.ReadLine();
-                    tr = int.Parse(leido.ReadLine());
-                    mr = int.Parse(leido.ReadLine());
+                    //Auxiliares para crear Estrategia
+                    string nom_E_Server = leido.ReadLine();
+                    string nom = leido.ReadLine();
+                    int tr = int.Parse(leido.ReadLine());
+                    int mr = int.Parse(leido.ReadLine());
                     int a = int.Parse(leido.ReadLine());
-                    ts.Clear();
+                    List<string> ts = new List<string>(); ;
                     for (int i = 0; i < a; i++)
                     {
                         ts.Add(leido.ReadLine());
                     }
-                   
+                    int[] p = new int[3];
                     p[0] = int.Parse(leido.ReadLine());
                     p[1] = int.Parse(leido.ReadLine());
                     p[2] = int.Parse(leido.ReadLine());
                     Estrategia est = new Estrategia(nom_E_Server,nom, tr, mr, ts, p);
-                    estrategias.Add(est);
-                    
+                   addEstrategias(est);
                 }
                 if (contenido == "&&") {
-                    nom_P_Server = leido.ReadLine();
-                    nomP = leido.ReadLine();
+                    //Auxiliares para crear Politica
+                    string nom_P_Server = leido.ReadLine();
+                    string nomP = leido.ReadLine();
                     int a = int.Parse(leido.ReadLine());
-                    frecuencia.Clear();
+                    List<string> frecuencia = new List<string>();
                     for (int i = 0; i < a; i++)
                     {
                         frecuencia.Add(leido.ReadLine());
@@ -188,24 +158,24 @@ namespace politica_y_estrategias
                     int hora= int.Parse(leido.ReadLine());
                     int min= int.Parse(leido.ReadLine());
                     int seg= int.Parse(leido.ReadLine());
-                    fecha = new DateTime(anno,mes,dia,hora,min,seg);
-                     repeti = int.Parse(leido.ReadLine());
+                    DateTime fecha = new DateTime(anno, mes, dia, hora, min, seg);
+                    int repeti = int.Parse(leido.ReadLine());
                      Politica pol = new Politica(nom_P_Server, nomP, frecuencia, fecha, repeti);
-                     politicas.Add(pol); 
+                     politicas.Add(pol);
                 }
 
                 if (contenido == "@@") {
-                    nom_T_Server = leido.ReadLine();
-                    estra = leido.ReadLine();
-                    poli = leido.ReadLine();
-                    sta =  int.Parse(leido.ReadLine());
+                    // Auxiliares para crear Tarea
+                    string nom_T_Server = leido.ReadLine();
+                    string estra = leido.ReadLine();
+                    string  poli = leido.ReadLine();
+                    int  sta =  int.Parse(leido.ReadLine());
                     Tarea tarea = new Tarea(nom_T_Server, estra, poli,sta);
                     tareas.Add(tarea);
                 }
+                     
             }
             leido.Close();
-          //  cargarNomServidores();
-          
         }
 
 
@@ -312,9 +282,11 @@ namespace politica_y_estrategias
        
         public List<Estrategia> getEstrategiasServer()
         {
+           
             List<Estrategia> estra = new List<Estrategia>();
             estrategias.ForEach(delegate(Estrategia e)
             {
+              
                 if (e.getServer() == getServer())
                 {
                     estra.Add(e);
@@ -381,7 +353,7 @@ namespace politica_y_estrategias
         }*/
 
         public void addEstrategias(Estrategia e)
-        {
+        {  
             estrategias.Add(e);
         }
 
@@ -694,7 +666,7 @@ namespace politica_y_estrategias
         
         private void button1_Click(object sender, EventArgs e)
         {
-
+           
             // Nombre de la estretegia seleccionada
             string be = dataGridView2.CurrentRow.Cells["Column3"].Value.ToString();
             // Nombre de la politica seleccionada

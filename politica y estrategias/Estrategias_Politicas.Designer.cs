@@ -341,7 +341,7 @@
             this.btn_CrearEstra.Name = "btn_CrearEstra";
             this.btn_CrearEstra.Size = new System.Drawing.Size(75, 23);
             this.btn_CrearEstra.TabIndex = 25;
-            this.btn_CrearEstra.Text = "Aceptar";
+            this.btn_CrearEstra.Text = "Crear";
             this.btn_CrearEstra.UseVisualStyleBackColor = true;
             this.btn_CrearEstra.Click += new System.EventHandler(this.btn_CrearEstra_Click_2);
             // 
@@ -610,6 +610,8 @@
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.btn_Cancelar);
             this.Controls.Add(this.btn_CrearEstra);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
             this.Name = "Estrategias_Politicas";
             this.Text = "Diseño de estrategia y politica";
             this.panel1.ResumeLayout(false);

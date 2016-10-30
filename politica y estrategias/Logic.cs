@@ -181,6 +181,9 @@ namespace Logic
         {
             this.nom_Server = ns;
         }
+        public void setFrecuencia(List<string> newFrecuencia) {
+            this.frecuencia = newFrecuencia;
+        }
         public void addFrecuencia(String fre)
         {
             frecuencia.Add(fre);
@@ -302,6 +305,9 @@ namespace Logic
         public void setPlus(int [] p)
         {
             plus = p;
+        }
+        public void setTablespaces(List<string> newTablespaces) { 
+            tablespaces = newTablespaces;
         }
         public void Guardar_Estrategia(StreamWriter escrito)
         {
