@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ventanaPrincipal));
             this.btn_Server = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -47,16 +48,19 @@
             this.label15 = new System.Windows.Forms.Label();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.estado = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.panel7.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             this.groupBoxServer.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // btn_Server
             // 
-            this.btn_Server.Location = new System.Drawing.Point(342, 147);
+            this.btn_Server.Location = new System.Drawing.Point(342, 215);
             this.btn_Server.Name = "btn_Server";
             this.btn_Server.Size = new System.Drawing.Size(55, 24);
             this.btn_Server.TabIndex = 27;
@@ -75,7 +79,7 @@
             this.Column2});
             this.dataGridView1.Location = new System.Drawing.Point(15, 19);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(382, 117);
+            this.dataGridView1.Size = new System.Drawing.Size(382, 190);
             this.dataGridView1.TabIndex = 0;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
@@ -97,7 +101,7 @@
             // 
             this.btn_CrearEstra.Enabled = false;
             this.btn_CrearEstra.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_CrearEstra.Location = new System.Drawing.Point(211, 129);
+            this.btn_CrearEstra.Location = new System.Drawing.Point(211, 185);
             this.btn_CrearEstra.Name = "btn_CrearEstra";
             this.btn_CrearEstra.Size = new System.Drawing.Size(55, 25);
             this.btn_CrearEstra.TabIndex = 29;
@@ -107,13 +111,16 @@
             // 
             // panel7
             // 
+            this.panel7.AutoSize = true;
+            this.panel7.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.panel7.BackColor = System.Drawing.SystemColors.Control;
             this.panel7.Controls.Add(this.groupBox1);
             this.panel7.Controls.Add(this.groupBoxServer);
             this.panel7.Controls.Add(this.label15);
-            this.panel7.Location = new System.Drawing.Point(12, 11);
+            this.panel7.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel7.Location = new System.Drawing.Point(0, 0);
             this.panel7.Name = "panel7";
-            this.panel7.Size = new System.Drawing.Size(484, 406);
+            this.panel7.Size = new System.Drawing.Size(628, 594);
             this.panel7.TabIndex = 25;
             // 
             // groupBox1
@@ -122,9 +129,9 @@
             this.groupBox1.Controls.Add(this.dataGridView2);
             this.groupBox1.Controls.Add(this.btn_Modificar);
             this.groupBox1.Controls.Add(this.btn_CrearEstra);
-            this.groupBox1.Location = new System.Drawing.Point(27, 229);
+            this.groupBox1.Location = new System.Drawing.Point(27, 295);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(427, 163);
+            this.groupBox1.Size = new System.Drawing.Size(427, 229);
             this.groupBox1.TabIndex = 27;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Estrategias y politicas existentes:";
@@ -132,7 +139,7 @@
             // btn_Status
             // 
             this.btn_Status.Enabled = false;
-            this.btn_Status.Location = new System.Drawing.Point(342, 129);
+            this.btn_Status.Location = new System.Drawing.Point(342, 185);
             this.btn_Status.Name = "btn_Status";
             this.btn_Status.Size = new System.Drawing.Size(55, 25);
             this.btn_Status.TabIndex = 31;
@@ -153,7 +160,7 @@
             this.Column6});
             this.dataGridView2.Location = new System.Drawing.Point(15, 29);
             this.dataGridView2.Name = "dataGridView2";
-            this.dataGridView2.Size = new System.Drawing.Size(382, 94);
+            this.dataGridView2.Size = new System.Drawing.Size(382, 150);
             this.dataGridView2.TabIndex = 0;
             this.dataGridView2.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView2_CellContentClick);
             // 
@@ -184,7 +191,7 @@
             // btn_Modificar
             // 
             this.btn_Modificar.Enabled = false;
-            this.btn_Modificar.Location = new System.Drawing.Point(272, 129);
+            this.btn_Modificar.Location = new System.Drawing.Point(272, 185);
             this.btn_Modificar.Name = "btn_Modificar";
             this.btn_Modificar.Size = new System.Drawing.Size(64, 25);
             this.btn_Modificar.TabIndex = 30;
@@ -198,7 +205,7 @@
             this.groupBoxServer.Controls.Add(this.dataGridView1);
             this.groupBoxServer.Location = new System.Drawing.Point(27, 36);
             this.groupBoxServer.Name = "groupBoxServer";
-            this.groupBoxServer.Size = new System.Drawing.Size(427, 177);
+            this.groupBoxServer.Size = new System.Drawing.Size(427, 253);
             this.groupBoxServer.TabIndex = 26;
             this.groupBoxServer.TabStop = false;
             this.groupBoxServer.Text = "Servidores existentes";
@@ -206,10 +213,10 @@
             // label15
             // 
             this.label15.AutoSize = true;
-            this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label15.Location = new System.Drawing.Point(110, 0);
+            this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label15.Location = new System.Drawing.Point(29, 17);
             this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(258, 20);
+            this.label15.Size = new System.Drawing.Size(207, 15);
             this.label15.TabIndex = 25;
             this.label15.Text = "Seleccione Servidor a ejecutar ";
             // 
@@ -221,11 +228,32 @@
             // 
             this.estado.Enabled = false;
             this.estado.ForeColor = System.Drawing.SystemColors.MenuHighlight;
-            this.estado.Location = new System.Drawing.Point(0, 439);
+            this.estado.Location = new System.Drawing.Point(0, 569);
             this.estado.Name = "estado";
             this.estado.Size = new System.Drawing.Size(520, 20);
             this.estado.TabIndex = 26;
             this.estado.Text = "Programa inicializado...";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(29, 9);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(455, 24);
+            this.label1.TabIndex = 28;
+            this.label1.Text = "Creación de Politicas y Estrategias de Respaldo";
+            this.label1.Click += new System.EventHandler(this.label1_Click);
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(481, 9);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(135, 86);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 29;
+            this.pictureBox1.TabStop = false;
             // 
             // ventanaPrincipal
             // 
@@ -233,13 +261,17 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.BackColor = System.Drawing.SystemColors.Control;
-            this.ClientSize = new System.Drawing.Size(512, 459);
+            this.ClientSize = new System.Drawing.Size(628, 594);
+            this.Controls.Add(this.pictureBox1);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.estado);
             this.Controls.Add(this.panel7);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.Name = "ventanaPrincipal";
-            this.Text = "Sistema Automatizado de Respaldo ( GENERADOR DE ESTRATEGIAS)";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Sistema Automatizado de Respaldo";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.panel7.ResumeLayout(false);
@@ -247,6 +279,7 @@
             this.groupBox1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
             this.groupBoxServer.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -277,6 +310,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
         private System.Windows.Forms.DataGridViewCheckBoxColumn Column6;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }
 

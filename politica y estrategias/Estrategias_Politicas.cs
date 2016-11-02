@@ -381,6 +381,26 @@ namespace politica_y_estrategias
             this.Close();
         }
 
+        private void radioB_30_CheckedChanged(object sender, EventArgs e)
+        {
+            num_Tiempo.Enabled = false;
+        }
+
+        private void radioB_60_CheckedChanged(object sender, EventArgs e)
+        {
+            num_Tiempo.Enabled = false;
+        }
+
+        private void radioB_120_CheckedChanged(object sender, EventArgs e)
+        {
+            num_Tiempo.Enabled = false;
+        }
+
+        private void radioB_Otro_CheckedChanged(object sender, EventArgs e)
+        {
+            num_Tiempo.Enabled = true;
+        }
+
       
         /*  private void button1_Click(object sender, EventArgs e)
 {

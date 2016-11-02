@@ -765,6 +765,11 @@ namespace politica_y_estrategias
                 default: return -1;
             }
         }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
         /*private void checkedList_Politicas_ItemCheck(object sender, ItemCheckEventArgs e)
         {*/
             /*if (checkedList_Politicas.GetItemChecked(e.Index) == false)
