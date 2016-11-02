@@ -423,6 +423,7 @@
             this.radioB_30.TabStop = true;
             this.radioB_30.Text = "30 min";
             this.radioB_30.UseVisualStyleBackColor = true;
+            this.radioB_30.CheckedChanged += new System.EventHandler(this.radioB_30_CheckedChanged);
             // 
             // panel8
             // 
@@ -445,6 +446,7 @@
             // 
             // num_Tiempo
             // 
+            this.num_Tiempo.Enabled = false;
             this.num_Tiempo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.num_Tiempo.Location = new System.Drawing.Point(60, 5);
             this.num_Tiempo.Name = "num_Tiempo";
@@ -462,6 +464,7 @@
             this.radioB_60.TabStop = true;
             this.radioB_60.Text = "60 min";
             this.radioB_60.UseVisualStyleBackColor = true;
+            this.radioB_60.CheckedChanged += new System.EventHandler(this.radioB_60_CheckedChanged);
             // 
             // radioB_120
             // 
@@ -474,6 +477,7 @@
             this.radioB_120.TabStop = true;
             this.radioB_120.Text = "120 min";
             this.radioB_120.UseVisualStyleBackColor = true;
+            this.radioB_120.CheckedChanged += new System.EventHandler(this.radioB_120_CheckedChanged);
             // 
             // radioB_Otro
             // 
@@ -486,6 +490,7 @@
             this.radioB_Otro.TabStop = true;
             this.radioB_Otro.Text = "Otro";
             this.radioB_Otro.UseVisualStyleBackColor = true;
+            this.radioB_Otro.CheckedChanged += new System.EventHandler(this.radioB_Otro_CheckedChanged);
             // 
             // groupBox3
             // 
