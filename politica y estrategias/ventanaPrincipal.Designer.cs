@@ -60,9 +60,11 @@
             // 
             // btn_Server
             // 
+            this.btn_Server.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btn_Server.AutoSize = true;
             this.btn_Server.Location = new System.Drawing.Point(342, 215);
             this.btn_Server.Name = "btn_Server";
-            this.btn_Server.Size = new System.Drawing.Size(55, 24);
+            this.btn_Server.Size = new System.Drawing.Size(49, 23);
             this.btn_Server.TabIndex = 27;
             this.btn_Server.Text = "Nuevo";
             this.btn_Server.UseVisualStyleBackColor = true;
@@ -72,6 +74,11 @@
             // 
             this.dataGridView1.AllowUserToAddRows = false;
             this.dataGridView1.AllowUserToDeleteRows = false;
+            this.dataGridView1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataGridView1.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dataGridView1.BackgroundColor = System.Drawing.SystemColors.Control;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -87,7 +94,6 @@
             // 
             this.Column1.HeaderText = "Servidores";
             this.Column1.Name = "Column1";
-            this.Column1.Width = 169;
             // 
             // Column2
             // 
@@ -95,10 +101,11 @@
             this.Column2.Name = "Column2";
             this.Column2.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             this.Column2.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.Column2.Width = 169;
             // 
             // btn_CrearEstra
             // 
+            this.btn_CrearEstra.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btn_CrearEstra.AutoSize = true;
             this.btn_CrearEstra.Enabled = false;
             this.btn_CrearEstra.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btn_CrearEstra.Location = new System.Drawing.Point(211, 185);
@@ -111,20 +118,24 @@
             // 
             // panel7
             // 
+            this.panel7.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.panel7.AutoSize = true;
-            this.panel7.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.panel7.BackColor = System.Drawing.SystemColors.Control;
             this.panel7.Controls.Add(this.groupBox1);
             this.panel7.Controls.Add(this.groupBoxServer);
             this.panel7.Controls.Add(this.label15);
-            this.panel7.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel7.Location = new System.Drawing.Point(0, 0);
             this.panel7.Name = "panel7";
-            this.panel7.Size = new System.Drawing.Size(628, 594);
+            this.panel7.Size = new System.Drawing.Size(457, 527);
             this.panel7.TabIndex = 25;
             // 
             // groupBox1
             // 
+            this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox1.Controls.Add(this.btn_Status);
             this.groupBox1.Controls.Add(this.dataGridView2);
             this.groupBox1.Controls.Add(this.btn_Modificar);
@@ -138,6 +149,8 @@
             // 
             // btn_Status
             // 
+            this.btn_Status.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btn_Status.AutoSize = true;
             this.btn_Status.Enabled = false;
             this.btn_Status.Location = new System.Drawing.Point(342, 185);
             this.btn_Status.Name = "btn_Status";
@@ -151,6 +164,11 @@
             // 
             this.dataGridView2.AllowUserToAddRows = false;
             this.dataGridView2.AllowUserToDeleteRows = false;
+            this.dataGridView2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dataGridView2.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataGridView2.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dataGridView2.BackgroundColor = System.Drawing.SystemColors.Control;
             this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView2.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -168,28 +186,26 @@
             // 
             this.Column3.HeaderText = "Estrategia";
             this.Column3.Name = "Column3";
-            this.Column3.Width = 85;
             // 
             // Column4
             // 
             this.Column4.HeaderText = "Politica";
             this.Column4.Name = "Column4";
-            this.Column4.Width = 85;
             // 
             // Column5
             // 
             this.Column5.HeaderText = "Activa";
             this.Column5.Name = "Column5";
-            this.Column5.Width = 84;
             // 
             // Column6
             // 
             this.Column6.HeaderText = "Seleccionar";
             this.Column6.Name = "Column6";
-            this.Column6.Width = 84;
             // 
             // btn_Modificar
             // 
+            this.btn_Modificar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btn_Modificar.AutoSize = true;
             this.btn_Modificar.Enabled = false;
             this.btn_Modificar.Location = new System.Drawing.Point(272, 185);
             this.btn_Modificar.Name = "btn_Modificar";
@@ -201,6 +217,9 @@
             // 
             // groupBoxServer
             // 
+            this.groupBoxServer.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBoxServer.Controls.Add(this.btn_Server);
             this.groupBoxServer.Controls.Add(this.dataGridView1);
             this.groupBoxServer.Location = new System.Drawing.Point(27, 36);
@@ -226,6 +245,7 @@
             // 
             // estado
             // 
+            this.estado.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.estado.Enabled = false;
             this.estado.ForeColor = System.Drawing.SystemColors.MenuHighlight;
             this.estado.Location = new System.Drawing.Point(0, 569);
@@ -236,6 +256,8 @@
             // 
             // label1
             // 
+            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(29, 9);
@@ -247,6 +269,7 @@
             // 
             // pictureBox1
             // 
+            this.pictureBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
             this.pictureBox1.Location = new System.Drawing.Point(481, 9);
             this.pictureBox1.Name = "pictureBox1";
@@ -259,7 +282,9 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScroll = true;
             this.AutoSize = true;
+            this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(628, 594);
             this.Controls.Add(this.pictureBox1);
@@ -277,8 +302,10 @@
             this.panel7.ResumeLayout(false);
             this.panel7.PerformLayout();
             this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
             this.groupBoxServer.ResumeLayout(false);
+            this.groupBoxServer.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
