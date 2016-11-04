@@ -37,6 +37,7 @@
             this.btn_CrearEstra = new System.Windows.Forms.Button();
             this.panel7 = new System.Windows.Forms.Panel();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btn_ver = new System.Windows.Forms.Button();
             this.btn_Status = new System.Windows.Forms.Button();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
             this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -50,6 +51,8 @@
             this.estado = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.btn_Modi_Server = new System.Windows.Forms.Button();
+            this.btn_Ver_Server = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.panel7.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -62,7 +65,7 @@
             // 
             this.btn_Server.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btn_Server.AutoSize = true;
-            this.btn_Server.Location = new System.Drawing.Point(342, 215);
+            this.btn_Server.Location = new System.Drawing.Point(208, 215);
             this.btn_Server.Name = "btn_Server";
             this.btn_Server.Size = new System.Drawing.Size(49, 23);
             this.btn_Server.TabIndex = 27;
@@ -108,7 +111,7 @@
             this.btn_CrearEstra.AutoSize = true;
             this.btn_CrearEstra.Enabled = false;
             this.btn_CrearEstra.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_CrearEstra.Location = new System.Drawing.Point(211, 185);
+            this.btn_CrearEstra.Location = new System.Drawing.Point(154, 172);
             this.btn_CrearEstra.Name = "btn_CrearEstra";
             this.btn_CrearEstra.Size = new System.Drawing.Size(55, 25);
             this.btn_CrearEstra.TabIndex = 29;
@@ -136,23 +139,36 @@
             this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox1.Controls.Add(this.btn_ver);
             this.groupBox1.Controls.Add(this.btn_Status);
             this.groupBox1.Controls.Add(this.dataGridView2);
             this.groupBox1.Controls.Add(this.btn_Modificar);
             this.groupBox1.Controls.Add(this.btn_CrearEstra);
-            this.groupBox1.Location = new System.Drawing.Point(27, 295);
+            this.groupBox1.Location = new System.Drawing.Point(27, 311);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(427, 229);
+            this.groupBox1.Size = new System.Drawing.Size(427, 213);
             this.groupBox1.TabIndex = 27;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Estrategias y politicas existentes:";
+            // 
+            // btn_ver
+            // 
+            this.btn_ver.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btn_ver.Enabled = false;
+            this.btn_ver.Location = new System.Drawing.Point(215, 172);
+            this.btn_ver.Name = "btn_ver";
+            this.btn_ver.Size = new System.Drawing.Size(55, 24);
+            this.btn_ver.TabIndex = 32;
+            this.btn_ver.Text = "Ver";
+            this.btn_ver.UseVisualStyleBackColor = true;
+            this.btn_ver.Click += new System.EventHandler(this.btn_ver_Click);
             // 
             // btn_Status
             // 
             this.btn_Status.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btn_Status.AutoSize = true;
             this.btn_Status.Enabled = false;
-            this.btn_Status.Location = new System.Drawing.Point(342, 185);
+            this.btn_Status.Location = new System.Drawing.Point(342, 171);
             this.btn_Status.Name = "btn_Status";
             this.btn_Status.Size = new System.Drawing.Size(55, 25);
             this.btn_Status.TabIndex = 31;
@@ -178,7 +194,7 @@
             this.Column6});
             this.dataGridView2.Location = new System.Drawing.Point(15, 29);
             this.dataGridView2.Name = "dataGridView2";
-            this.dataGridView2.Size = new System.Drawing.Size(382, 150);
+            this.dataGridView2.Size = new System.Drawing.Size(382, 134);
             this.dataGridView2.TabIndex = 0;
             this.dataGridView2.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView2_CellContentClick);
             // 
@@ -207,7 +223,7 @@
             this.btn_Modificar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btn_Modificar.AutoSize = true;
             this.btn_Modificar.Enabled = false;
-            this.btn_Modificar.Location = new System.Drawing.Point(272, 185);
+            this.btn_Modificar.Location = new System.Drawing.Point(274, 171);
             this.btn_Modificar.Name = "btn_Modificar";
             this.btn_Modificar.Size = new System.Drawing.Size(64, 25);
             this.btn_Modificar.TabIndex = 30;
@@ -217,14 +233,15 @@
             // 
             // groupBoxServer
             // 
-            this.groupBoxServer.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
+            this.groupBoxServer.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBoxServer.Controls.Add(this.btn_Ver_Server);
+            this.groupBoxServer.Controls.Add(this.btn_Modi_Server);
             this.groupBoxServer.Controls.Add(this.btn_Server);
             this.groupBoxServer.Controls.Add(this.dataGridView1);
             this.groupBoxServer.Location = new System.Drawing.Point(27, 36);
             this.groupBoxServer.Name = "groupBoxServer";
-            this.groupBoxServer.Size = new System.Drawing.Size(427, 253);
+            this.groupBoxServer.Size = new System.Drawing.Size(427, 248);
             this.groupBoxServer.TabIndex = 26;
             this.groupBoxServer.TabStop = false;
             this.groupBoxServer.Text = "Servidores existentes";
@@ -265,7 +282,6 @@
             this.label1.Size = new System.Drawing.Size(455, 24);
             this.label1.TabIndex = 28;
             this.label1.Text = "Creación de Politicas y Estrategias de Respaldo";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // pictureBox1
             // 
@@ -277,6 +293,30 @@
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 29;
             this.pictureBox1.TabStop = false;
+            // 
+            // btn_Modi_Server
+            // 
+            this.btn_Modi_Server.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btn_Modi_Server.Enabled = false;
+            this.btn_Modi_Server.Location = new System.Drawing.Point(322, 215);
+            this.btn_Modi_Server.Name = "btn_Modi_Server";
+            this.btn_Modi_Server.Size = new System.Drawing.Size(75, 23);
+            this.btn_Modi_Server.TabIndex = 28;
+            this.btn_Modi_Server.Text = "Modificar";
+            this.btn_Modi_Server.UseVisualStyleBackColor = true;
+            this.btn_Modi_Server.Click += new System.EventHandler(this.btn_Modi_Server_Click);
+            // 
+            // btn_Ver_Server
+            // 
+            this.btn_Ver_Server.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btn_Ver_Server.Enabled = false;
+            this.btn_Ver_Server.Location = new System.Drawing.Point(263, 215);
+            this.btn_Ver_Server.Name = "btn_Ver_Server";
+            this.btn_Ver_Server.Size = new System.Drawing.Size(53, 23);
+            this.btn_Ver_Server.TabIndex = 29;
+            this.btn_Ver_Server.Text = "Ver";
+            this.btn_Ver_Server.UseVisualStyleBackColor = true;
+            this.btn_Ver_Server.Click += new System.EventHandler(this.btn_Ver_Server_Click);
             // 
             // ventanaPrincipal
             // 
@@ -339,6 +379,9 @@
         private System.Windows.Forms.DataGridViewCheckBoxColumn Column6;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Button btn_ver;
+        private System.Windows.Forms.Button btn_Ver_Server;
+        private System.Windows.Forms.Button btn_Modi_Server;
     }
 }
 

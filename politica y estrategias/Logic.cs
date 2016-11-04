@@ -7,7 +7,7 @@ namespace Logic
 
     public static class Globals
     {
-        public static String ConexionOracle = "User id= system; Password=456456456; Data Source= XE;"; //////cambiar password
+        public static String ConexionOracle = "User id= system; Password=admin123; Data Source= XE;"; //////cambiar password
     }
 
 
@@ -81,6 +81,35 @@ namespace Logic
         public string getNomBase()
         {
             return this.baseDatos;
+        }
+        
+        public void setNombre(string nom)
+        {
+            this.nombre = nom;
+        }
+        public void setDBLink(string dbl)
+        {
+            this.databaseLink = dbl;
+        }
+        public void setUsuario(string u)
+        {
+           this.usuario = u;
+        }
+        public void setContrasenia(string con)
+        {
+            this.contrasenia = con;
+        }
+        public void setIP(string newIp)
+        {
+            this.ip = newIp;
+        }
+        public void setPuerto(string p)
+        {
+            this.puerto = p;
+        }
+        public void setNomBase (string nomB)
+        {
+            this.baseDatos = nomB;
         }
 
 

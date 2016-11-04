@@ -22,14 +22,30 @@ namespace politica_y_estrategias
 
         private ventanaPrincipal principal;
 
-        public Estrategias_Politicas(ventanaPrincipal p, Estrategia es, Politica po)
+        public Estrategias_Politicas(ventanaPrincipal p, Estrategia es, Politica po, bool editable)
         {
             con.ConnectionString = Globals.ConexionOracle;//ConexionOracle;
             InitializeComponent();
             this.CenterToScreen();
             principal = p;
             llenarCampos(es,po);
-            btn_CrearEstra.Text = "Modificar";
+            bloqueo_Desbloqueo_Panel(editable);
+            nomBoton(editable);
+        }
+
+        private void nomBoton(bool editable) {
+            if (editable)
+                btn_CrearEstra.Text = "Modificar";
+            else
+            {
+                btn_CrearEstra.Visible = false;
+                btn_Cancelar.Text = "Cerrar";
+            }
+        }
+
+        private void bloqueo_Desbloqueo_Panel(bool editable) {
+            panel1.Enabled = editable;
+            panel2.Enabled = editable;    
         }
 
         private void llenarCampos(Estrategia es, Politica p) {
