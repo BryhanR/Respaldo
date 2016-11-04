@@ -18,7 +18,7 @@ namespace politica_y_estrategias
     public partial class ventanaPrincipal : Form
     {
         //-------- Variables ---------------------------------------
-        string ConexionOracle = "User id= system; Password=root; Data Source= XE;"; //////cambiar password
+       
         Server g = new Server();
         OracleConnection con = new OracleConnection();
         private readonly SynchronizationContext syncC;
@@ -34,10 +34,10 @@ namespace politica_y_estrategias
         {
             InitializeComponent();
             this.CenterToScreen();
-            con.ConnectionString = Globals.ConexionOracle;//ConexionOracle;
+           // con.ConnectionString = Globals.ConexionOracle;//ConexionOracle; // VER
             syncC = SynchronizationContext.Current; // obtiene el contexto de syncronizacion del hilo de ui
             
-            ArchiveLog();
+           // ArchiveLog();
           //  panel1.Enabled=false;
            // panel2.Enabled =false;
           //  panel4.Enabled = false;
@@ -279,6 +279,9 @@ namespace politica_y_estrategias
           //  Console.WriteLine("Valores "+servidores.get.ToString());
         }
 
+        public List<Server> getServidores() {
+            return servidores;
+        }
        
         public List<Estrategia> getEstrategiasServer()
         {
@@ -576,12 +579,13 @@ namespace politica_y_estrategias
            
         }
 
-        private void llenarTablaServidores() {
+        public void llenarTablaServidores() {
             dataGridView1.Rows.Clear();
             servidores.ForEach(delegate(Server s)
             {
                 dataGridView1.Rows.Add(s.getNombre());
             });
+            dataGridView2.Rows.Clear();
         }
 
         private void desmarcarTablesServer(int e) {
@@ -617,14 +621,16 @@ namespace politica_y_estrategias
                 label15.Text = "Servidor: " + dataGridView1.CurrentRow.Cells[e.ColumnIndex - 1].Value.ToString();
                 cargarTablaEstraPoli();
                 Modi_Status(false, true);
-                btn_Server.Enabled = false;
+                habilitarBtnServer(false,true);
+                
             }
 
             else {
                 dataGridView2.Rows.Clear();
                 label15.Text = "Seleccione Servidor a ejecutar";
                 Modi_Status(false, false);
-                btn_Server.Enabled = true;
+                habilitarBtnServer(true, false);
+              
             }
             
            
@@ -632,6 +638,12 @@ namespace politica_y_estrategias
            
             //e.RowIndex
               // sender.
+        }
+
+        private void habilitarBtnServer(bool state1, bool state2){
+            btn_Server.Enabled = state1;
+            btn_Ver_Server.Enabled = state2;
+            btn_Modi_Server.Enabled = state2;    
         }
 
         private void cargarTablaEstraPoli() {
@@ -650,7 +662,7 @@ namespace politica_y_estrategias
         }
 
 
-        private List<Tarea> getTareaServer() {
+        public List<Tarea> getTareaServer() {
             List<Tarea> ta = new List<Tarea>();
             tareas.ForEach(delegate(Tarea t)
             {
@@ -674,8 +686,8 @@ namespace politica_y_estrategias
             Estrategia es = getEstrategiasServer().Find(x => x.getNombre().ToUpper() == be.ToUpper());
             Politica po = getPoliticasServer().Find(x => x.getNombre().ToUpper() == bp.ToUpper());
            
-              Estrategias_Politicas ve = new Estrategias_Politicas(this, es, po);
-              ve.Show();
+            Estrategias_Politicas ve = new Estrategias_Politicas(this, es, po,true);
+            ve.Show();
        
         }
 
@@ -693,6 +705,7 @@ namespace politica_y_estrategias
    
         private void Modi_Status(bool state1, bool state2) {
             btn_Modificar.Enabled = state1;
+            btn_ver.Enabled = state1;
             btn_Status.Enabled = state1;
             btn_CrearEstra.Enabled = state2;
         }
@@ -766,9 +779,41 @@ namespace politica_y_estrategias
             }
         }
 
-        private void label1_Click(object sender, EventArgs e)
-        {
+        
 
+        private void btn_ver_Click(object sender, EventArgs e)
+        {
+            // Nombre de la estretegia seleccionada
+            string be = dataGridView2.CurrentRow.Cells["Column3"].Value.ToString();
+            // Nombre de la politica seleccionada
+            string bp = dataGridView2.CurrentRow.Cells["Column4"].Value.ToString();
+            Estrategia es = getEstrategiasServer().Find(x => x.getNombre().ToUpper() == be.ToUpper());
+            Politica po = getPoliticasServer().Find(x => x.getNombre().ToUpper() == bp.ToUpper());
+
+            Estrategias_Politicas ve = new Estrategias_Politicas(this, es, po, false);
+            ve.Show();
+        }
+
+        private void btn_Ver_Server_Click(object sender, EventArgs e)
+        {
+            // Nombre de la estretegia seleccionada
+            string bs = dataGridView1.CurrentRow.Cells["Column1"].Value.ToString();
+
+            Server ser = servidores.Find(x => x.getNombre().ToUpper() == bs.ToUpper());
+
+            Servidores servi = new Servidores(this, ser, false);
+            servi.Show();
+        }
+
+        private void btn_Modi_Server_Click(object sender, EventArgs e)
+        {
+            // Nombre de la estretegia seleccionada
+            string bs = dataGridView1.CurrentRow.Cells["Column1"].Value.ToString();
+
+            Server ser = servidores.Find(x => x.getNombre().ToUpper() == bs.ToUpper());
+            
+            Servidores servi = new Servidores(this, ser, true);
+            servi.Show();
         }
         /*private void checkedList_Politicas_ItemCheck(object sender, ItemCheckEventArgs e)
         {*/
