@@ -18,7 +18,7 @@ namespace politica_y_estrategias
     public partial class ventanaPrincipal : Form
     {
         //-------- Variables ---------------------------------------
-        string ConexionOracle = "User id= system; Password=root; Data Source= XE;"; //////cambiar password
+       
         Server g = new Server();
         OracleConnection con = new OracleConnection();
         private readonly SynchronizationContext syncC;
@@ -34,10 +34,10 @@ namespace politica_y_estrategias
         {
             InitializeComponent();
             this.CenterToScreen();
-            con.ConnectionString = Globals.ConexionOracle;//ConexionOracle;
+           // con.ConnectionString = Globals.ConexionOracle;//ConexionOracle; // VER
             syncC = SynchronizationContext.Current; // obtiene el contexto de syncronizacion del hilo de ui
             
-            ArchiveLog();
+           // ArchiveLog();
           //  panel1.Enabled=false;
            // panel2.Enabled =false;
           //  panel4.Enabled = false;
@@ -102,80 +102,51 @@ namespace politica_y_estrategias
 
         public void ResuperaServidorTxT()
         {
-              // Auxiliares para crear Server
-            string nom_Server = "";
-            string dbLink="";
-            string usuario = "";
-            string contrasenia = "";
-            string ip = "";
-            string puerto = "";
-            string baseDatos = "";
-
-            //Auxiliares para crear Politica
-            string nom_P_Server = "";
-            string nomP = "";
-            List<string>frecuencia = new List<string>();
-           DateTime fecha;
-            int repeti = 0;
-
-            //Auxiliares para crear Estrategia
-            string nom_E_Server = "";
-            string nom = "";
-            int tr = 0;
-            int mr = 0;
-            List<string> ts = new List<string>();
-            int[] p = new int[3];
-            p[0] = 0;
-            p[1] = 0;
-
-            // Auxiliares para crear Tarea
-            string nom_T_Server = "";
-            string estra = "";
-            string poli = "";
-            int sta = 0;
-        
-
          StreamReader leido = File.OpenText(Path.GetFullPath("Servidores.txt"));
             //Variable que contendrá el archivo
             string contenido = null;
+            
             //Leemos linea a linea hasta el final.
             while ((contenido = leido.ReadLine()) != null)
             {
                 if (contenido == "%%") {
-                    nom_Server = leido.ReadLine();
-                    dbLink = leido.ReadLine();
-                    usuario = leido.ReadLine();
-                    contrasenia = leido.ReadLine();
-                    ip = leido.ReadLine();
-                    puerto = leido.ReadLine();
-                    baseDatos = leido.ReadLine();
+                    // Auxiliares para crear Server
+                    string nom_Server = leido.ReadLine();
+                    string dbLink = leido.ReadLine();
+                    string usuario = leido.ReadLine();
+                    string contrasenia = leido.ReadLine();
+                    string ip = leido.ReadLine();
+                    string puerto = leido.ReadLine();
+                    string baseDatos = leido.ReadLine();
                     Server ser = new Server(nom_Server,dbLink,usuario,contrasenia,ip,puerto,baseDatos);
                    servidores.Add(ser);
                 }
                 if (contenido == "##")
                 {
-                    nom_E_Server = leido.ReadLine();
-                    nom = leido.ReadLine();
-                    tr = int.Parse(leido.ReadLine());
-                    mr = int.Parse(leido.ReadLine());
+                    //Auxiliares para crear Estrategia
+                    string nom_E_Server = leido.ReadLine();
+                    string nom = leido.ReadLine();
+                    int tr = int.Parse(leido.ReadLine());
+                    int mr = int.Parse(leido.ReadLine());
                     int a = int.Parse(leido.ReadLine());
-                    ts.Clear();
+                    List<string> ts = new List<string>(); ;
                     for (int i = 0; i < a; i++)
                     {
                         ts.Add(leido.ReadLine());
                     }
-                   
+                    int[] p = new int[3];
                     p[0] = int.Parse(leido.ReadLine());
                     p[1] = int.Parse(leido.ReadLine());
                     p[2] = int.Parse(leido.ReadLine());
                     Estrategia est = new Estrategia(nom_E_Server,nom, tr, mr, ts, p);
-                    estrategias.Add(est);
-                    
+                   addEstrategias(est);
                 }
                 if (contenido == "&&") {
-                    nom_P_Server = leido.ReadLine();
-                    nomP = leido.ReadLine();
+                    //Auxiliares para crear Politica
+                    string nom_P_Server = leido.ReadLine();
+                    string nomP = leido.ReadLine();
                     int a = int.Parse(leido.ReadLine());
+                    List<string> frecuencia = new List<string>();
                     for (int i = 0; i < a; i++)
                     {
                         frecuencia.Add(leido.ReadLine());
@@ -187,24 +158,24 @@ namespace politica_y_estrategias
                     int hora= int.Parse(leido.ReadLine());
                     int min= int.Parse(leido.ReadLine());
                     int seg= int.Parse(leido.ReadLine());
-                    fecha = new DateTime(anno,mes,dia,hora,min,seg);
-                     repeti = int.Parse(leido.ReadLine());
+                    DateTime fecha = new DateTime(anno, mes, dia, hora, min, seg);
+                    int repeti = int.Parse(leido.ReadLine());
                      Politica pol = new Politica(nom_P_Server, nomP, frecuencia, fecha, repeti);
-                    politicas.Add(pol);
+                     politicas.Add(pol);
                 }
 
                 if (contenido == "@@") {
-                    nom_T_Server = leido.ReadLine();
-                    estra = leido.ReadLine();
-                    poli = leido.ReadLine();
-                    sta =  int.Parse(leido.ReadLine());
+                    // Auxiliares para crear Tarea
+                    string nom_T_Server = leido.ReadLine();
+                    string estra = leido.ReadLine();
+                    string  poli = leido.ReadLine();
+                    int  sta =  int.Parse(leido.ReadLine());
                     Tarea tarea = new Tarea(nom_T_Server, estra, poli,sta);
                     tareas.Add(tarea);
                 }
+                     
             }
             leido.Close();
-          //  cargarNomServidores();
-          
         }
 
 
@@ -308,12 +279,17 @@ namespace politica_y_estrategias
           //  Console.WriteLine("Valores "+servidores.get.ToString());
         }
 
+        public List<Server> getServidores() {
+            return servidores;
+        }
        
         public List<Estrategia> getEstrategiasServer()
         {
+           
             List<Estrategia> estra = new List<Estrategia>();
             estrategias.ForEach(delegate(Estrategia e)
             {
+              
                 if (e.getServer() == getServer())
                 {
                     estra.Add(e);
@@ -380,7 +356,7 @@ namespace politica_y_estrategias
         }*/
 
         public void addEstrategias(Estrategia e)
-        {
+        {  
             estrategias.Add(e);
         }
 
@@ -603,12 +579,13 @@ namespace politica_y_estrategias
            
         }
 
-        private void llenarTablaServidores() {
+        public void llenarTablaServidores() {
             dataGridView1.Rows.Clear();
             servidores.ForEach(delegate(Server s)
             {
                 dataGridView1.Rows.Add(s.getNombre());
             });
+            dataGridView2.Rows.Clear();
         }
 
         private void desmarcarTablesServer(int e) {
@@ -637,29 +614,36 @@ namespace politica_y_estrategias
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            
-            
-           // Dim Linea As String 
-           // .Rows(0).;
-           // MessageBox.Show(dataGridView1.CurrentRow.Cells[e.ColumnIndex-1].Value.ToString());
-            
-                
-                //llenarTablaServidores();
-            
-                   //  MessageBox.Show("Fuera: " + dataGridView1.Rows[e.RowIndex].Cells["Column1"].Value);
-                  //   MessageBox.Show("Imprimir: " + Convert.ToBoolean(dataGridView1.Rows[e.ColumnIndex].Value));
-            /*if (Convert.ToBoolean(dataGridView1.Rows[e.RowIndex].Cells["Column2"].Value) == true)
+           
+            desmarcarTablesServer(e.RowIndex);
+            if (dataGridView1.Rows[e.RowIndex].Cells["Column2"].EditedFormattedValue.ToString() == "True") // Sabemos si esta seleccionada alguna fila
             {
-                MessageBox.Show("Imprimir: " + Convert.ToBoolean(dataGridView1.Rows[e.RowIndex].Cells["Column2"].Value));
-            }*/
-
-                desmarcarTablesServer(e.RowIndex);
                 label15.Text = "Servidor: " + dataGridView1.CurrentRow.Cells[e.ColumnIndex - 1].Value.ToString();
                 cargarTablaEstraPoli();
+                Modi_Status(false, true);
+                habilitarBtnServer(false,true);
+                
+            }
+
+            else {
+                dataGridView2.Rows.Clear();
+                label15.Text = "Seleccione Servidor a ejecutar";
+                Modi_Status(false, false);
+                habilitarBtnServer(true, false);
+              
+            }
+            
+           
             
            
             //e.RowIndex
               // sender.
+        }
+
+        private void habilitarBtnServer(bool state1, bool state2){
+            btn_Server.Enabled = state1;
+            btn_Ver_Server.Enabled = state2;
+            btn_Modi_Server.Enabled = state2;    
         }
 
         private void cargarTablaEstraPoli() {
@@ -669,16 +653,16 @@ namespace politica_y_estrategias
              ta.ForEach(delegate (Tarea t){
                  string st = "";
                  if(t.getStatus()==1)
-                     st = "Activo";
+                     st = "ACTIVO";
                  else
-                     st = "Inactivo";
+                     st = "INACTIVO";
 
                  dataGridView2.Rows.Add(t.getNom_Estrategia(),t.getNom_Politica(),st);
               }); 
         }
 
 
-        private List<Tarea> getTareaServer() {
+        public List<Tarea> getTareaServer() {
             List<Tarea> ta = new List<Tarea>();
             tareas.ForEach(delegate(Tarea t)
             {
@@ -689,10 +673,115 @@ namespace politica_y_estrategias
             });
             return ta;
         }
-        int posRowsEstra = 0;  // Cambiar
+       
 
         
         private void button1_Click(object sender, EventArgs e)
+        {
+           
+            // Nombre de la estretegia seleccionada
+            string be = dataGridView2.CurrentRow.Cells["Column3"].Value.ToString();
+            // Nombre de la politica seleccionada
+            string bp = dataGridView2.CurrentRow.Cells["Column4"].Value.ToString();
+            Estrategia es = getEstrategiasServer().Find(x => x.getNombre().ToUpper() == be.ToUpper());
+            Politica po = getPoliticasServer().Find(x => x.getNombre().ToUpper() == bp.ToUpper());
+           
+            Estrategias_Politicas ve = new Estrategias_Politicas(this, es, po,true);
+            ve.Show();
+       
+        }
+
+        private void dataGridView2_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            desmarcarEstrategiasPoliticas(e.RowIndex);
+            if (dataGridView2.Rows[e.RowIndex].Cells["Column6"].EditedFormattedValue.ToString() == "True") // Sabemos si esta seleccionada alguna fila
+            {
+                Modi_Status(true,false);
+            }
+            else {
+                Modi_Status(false,true);
+            }
+        }
+   
+        private void Modi_Status(bool state1, bool state2) {
+            btn_Modificar.Enabled = state1;
+            btn_ver.Enabled = state1;
+            btn_Status.Enabled = state1;
+            btn_CrearEstra.Enabled = state2;
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            // Nombre de la estretegia seleccionada
+            string be = dataGridView2.CurrentRow.Cells["Column3"].Value.ToString();
+            string bp = dataGridView2.CurrentRow.Cells["Column4"].Value.ToString();
+            string bs = dataGridView2.CurrentRow.Cells["Column5"].Value.ToString();
+            string bs_Contrario = statusContrario(bs);
+            DialogResult result = MessageBox.Show("Estado actual de la estrategia "+be+" y la politica "+bp+" es "+bs.ToLower()+
+                "\nDesea cambiarlo a "+bs_Contrario.ToLower()+"?", "Cambio Status", MessageBoxButtons.YesNo);
+
+            if (result == DialogResult.Yes)
+            {
+                tareas.Find(x =>
+                {
+                    if (x.getNom_Estrategia() == be && x.getNom_Politica() == bp)
+                    {
+                            x.setStatus(statusContrario(x.getStatus()));
+                            cargarTablaEstraPoli();
+                            sobreescribirDocumento();
+                            return true;
+                    }
+
+                    return false;
+                });
+            }
+
+            else if (result == DialogResult.No){  }
+ 
+        }
+
+        public void sobreescribirDocumento() {
+            System.IO.StreamWriter file = new StreamWriter(Path.GetFullPath("Servidores.txt"),false);
+              servidores.ForEach(delegate(Server s)
+            {
+               s.guardar_Server(file);
+            });
+              estrategias.ForEach(delegate(Estrategia es)
+              {
+                  es.Guardar_Estrategia(file);
+              });
+              politicas.ForEach(delegate(Politica p)
+              {
+                  p.guardar_Politica(file);
+              });
+              tareas.ForEach(delegate(Tarea t)
+              {
+                  t.guardar_Tarea(file);
+              });
+
+              file.Close();
+        }
+        private string statusContrario(string status) {
+            switch (status) {
+                case "ACTIVO":   return   "INACTIVO";
+                case "INACTIVO": return "ACTIVO";
+                default: return "Status no encontrado";
+            }
+        }
+
+        private int statusContrario(int status)
+        {
+            switch (status)
+            {
+                case 0: return 1;
+                case 1: return 0;
+                default: return -1;
+            }
+        }
+
+        
+
+        private void btn_ver_Click(object sender, EventArgs e)
         {
             // Nombre de la estretegia seleccionada
             string be = dataGridView2.CurrentRow.Cells["Column3"].Value.ToString();
@@ -700,20 +789,32 @@ namespace politica_y_estrategias
             string bp = dataGridView2.CurrentRow.Cells["Column4"].Value.ToString();
             Estrategia es = getEstrategiasServer().Find(x => x.getNombre().ToUpper() == be.ToUpper());
             Politica po = getPoliticasServer().Find(x => x.getNombre().ToUpper() == bp.ToUpper());
-         
-              Estrategias_Politicas ve = new Estrategias_Politicas(this, es, po);
-              ve.Show();
-       
+
+            Estrategias_Politicas ve = new Estrategias_Politicas(this, es, po, false);
+            ve.Show();
         }
 
-        private void dataGridView2_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void btn_Ver_Server_Click(object sender, EventArgs e)
         {
-            desmarcarEstrategiasPoliticas(e.RowIndex);
-          
-            MessageBox.Show(dataGridView2.CurrentRow.Cells["Column3" ].Value.ToString());
-     
+            // Nombre de la estretegia seleccionada
+            string bs = dataGridView1.CurrentRow.Cells["Column1"].Value.ToString();
+
+            Server ser = servidores.Find(x => x.getNombre().ToUpper() == bs.ToUpper());
+
+            Servidores servi = new Servidores(this, ser, false);
+            servi.Show();
         }
-    
+
+        private void btn_Modi_Server_Click(object sender, EventArgs e)
+        {
+            // Nombre de la estretegia seleccionada
+            string bs = dataGridView1.CurrentRow.Cells["Column1"].Value.ToString();
+
+            Server ser = servidores.Find(x => x.getNombre().ToUpper() == bs.ToUpper());
+            
+            Servidores servi = new Servidores(this, ser, true);
+            servi.Show();
+        }
         /*private void checkedList_Politicas_ItemCheck(object sender, ItemCheckEventArgs e)
         {*/
             /*if (checkedList_Politicas.GetItemChecked(e.Index) == false)

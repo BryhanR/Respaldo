@@ -7,7 +7,7 @@ namespace Logic
 
     public static class Globals
     {
-        public static String ConexionOracle = "User id= system; Password=root; Data Source= XE;"; //////cambiar password
+        public static String ConexionOracle = "User id= system; Password=admin123; Data Source= XE;"; //////cambiar password
     }
 
 
@@ -82,6 +82,35 @@ namespace Logic
         {
             return this.baseDatos;
         }
+        
+        public void setNombre(string nom)
+        {
+            this.nombre = nom;
+        }
+        public void setDBLink(string dbl)
+        {
+            this.databaseLink = dbl;
+        }
+        public void setUsuario(string u)
+        {
+           this.usuario = u;
+        }
+        public void setContrasenia(string con)
+        {
+            this.contrasenia = con;
+        }
+        public void setIP(string newIp)
+        {
+            this.ip = newIp;
+        }
+        public void setPuerto(string p)
+        {
+            this.puerto = p;
+        }
+        public void setNomBase (string nomB)
+        {
+            this.baseDatos = nomB;
+        }
 
 
         public string ToString() {
@@ -105,7 +134,7 @@ namespace Logic
 
             es.Flush();
             //Cerramos
-            es.Close();
+           // es.Close();
            
         }
     }
@@ -181,6 +210,9 @@ namespace Logic
         {
             this.nom_Server = ns;
         }
+        public void setFrecuencia(List<string> newFrecuencia) {
+            this.frecuencia = newFrecuencia;
+        }
         public void addFrecuencia(String fre)
         {
             frecuencia.Add(fre);
@@ -222,7 +254,7 @@ namespace Logic
             es.Flush();
 
             //Cerramos
-            es.Close();
+           // es.Close();
             //Vaciamos
             //   textBox1.Text = "";
         }
@@ -252,7 +284,7 @@ namespace Logic
             nombre = "";
             tipoRes = 0;
             modoRes = 0;
-            tablespaces = null;
+            tablespaces = new List<string>();
             plus = null;
         }
 
@@ -285,34 +317,47 @@ namespace Logic
         {
             return nom_Server;
         }
-
-        public void Guardar_Estrategia(Estrategia e)
+        public void setNombre(string nom){
+          nombre = nom;
+        }
+        public void setNomServer(string s) {
+            nom_Server = s;
+        }
+        public void setTipoRes(int re) {
+            tipoRes = re;
+        }
+        public void setModoRes(int m)
         {
-
-            //Fijar donde se guardara el archivo txt
-
-            StreamWriter escrito = new StreamWriter(Path.GetFullPath("Servidores.txt"), true); // escribe al final de Servidores.txt
-
+             modoRes = m;
+        }
+     
+        public void setPlus(int [] p)
+        {
+            plus = p;
+        }
+        public void setTablespaces(List<string> newTablespaces) { 
+            tablespaces = newTablespaces;
+        }
+        public void Guardar_Estrategia(StreamWriter escrito)
+        {
 
             //escribimos. 
             escrito.WriteLineAsync("##");//PAra saber que es una estrategia
-            escrito.WriteLine(e.nom_Server); // Nombre del servidor que lo creo
-            escrito.WriteLine(e.nombre);
-            escrito.WriteLine(e.tipoRes);
-            escrito.WriteLine(e.modoRes);
-            escrito.WriteLine(e.tablespaces.Count);
-            e.tablespaces.ForEach(delegate(String tables)
+            escrito.WriteLine(nom_Server); // Nombre del servidor que lo creo
+            escrito.WriteLine(nombre);
+            escrito.WriteLine(tipoRes);
+            escrito.WriteLine(modoRes);
+            escrito.WriteLine(tablespaces.Count);
+            tablespaces.ForEach(delegate(String tables)
             {
                 escrito.WriteLine(tables);
             });
-            escrito.WriteLine(e.plus[0]);
-            escrito.WriteLine(e.plus[1]);
-            escrito.WriteLine(e.plus[2]);
+            escrito.WriteLine(plus[0]);
+            escrito.WriteLine(plus[1]);
+            escrito.WriteLine(plus[2]);
             escrito.Flush();
             //Cerramos
-            escrito.Close();
-            //Vaciamos
-            //   textBox1.Text = "";
+           
         }
 
         public void toString()
@@ -392,7 +437,7 @@ namespace Logic
 
             es.Flush();
             //Cerramos
-            es.Close();
+           // es.Close();
         }
     }
 

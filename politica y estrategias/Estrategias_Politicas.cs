@@ -22,25 +22,89 @@ namespace politica_y_estrategias
 
         private ventanaPrincipal principal;
 
-        public Estrategias_Politicas(ventanaPrincipal p, Estrategia es, Politica po)
+        public Estrategias_Politicas(ventanaPrincipal p, Estrategia es, Politica po, bool editable)
         {
             con.ConnectionString = Globals.ConexionOracle;//ConexionOracle;
             InitializeComponent();
             this.CenterToScreen();
             principal = p;
             llenarCampos(es,po);
+            bloqueo_Desbloqueo_Panel(editable);
+            nomBoton(editable);
+        }
+
+        private void nomBoton(bool editable) {
+            if (editable)
+                btn_CrearEstra.Text = "Modificar";
+            else
+            {
+                btn_CrearEstra.Visible = false;
+                btn_Cancelar.Text = "Cerrar";
+            }
+        }
+
+        private void bloqueo_Desbloqueo_Panel(bool editable) {
+            panel1.Enabled = editable;
+            panel2.Enabled = editable;    
         }
 
         private void llenarCampos(Estrategia es, Politica p) {
-            nom_estra.Text = es.getNombre();
+            llenarCamposEstrategia(es);
+            llenarCamposPolitica(p);
+        }
+       private void  llenarCamposPolitica(Politica p){
+           nom_Politica.Text = p.getNombre();
+           dateTimePicker1.Value = p.getFecha();
+           num_Hora.Value = dateTimePicker1.Value.Hour;
+           num_Minutos.Value = dateTimePicker1.Value.Minute;
+           num_Segundos.Value = dateTimePicker1.Value.Second;
+           marcarRepeticion(p.getRepeticion());
+           marcarFrecuencia(p.getListFrecuencia());
+        }
+
+       private void marcarFrecuencia(List<string> l)
+       { // Terminar
+           l.ForEach(delegate(String dia)
+           {
+               int pos = checkedList_Dias.FindStringExact(dia);
+               if (pos != -1)
+               {
+                   checkedList_Dias.SetItemChecked(pos, true);
+               }
+           });
+          
+        
+       }
+
+       private void marcarRepeticion(int op) {
+           switch (op) {
+               case 30: radioB_30.Checked = true; break;
+               case 60: radioB_60.Checked = true; break;
+               case 120: radioB_120.Checked = true; break;
+               default: radioB_Otro.Checked = true; num_Tiempo.Value = op; break;
+           }
+       }
+        private void llenarCamposEstrategia(Estrategia es){
+              nom_estra.Text = es.getNombre();
             marcarTipoRespaldo(es.getTipoRes());
             if (es.getModoRes() == 1)
                 radioButton6.Checked = true;
             else
                 radioButton5.Checked = true;
             marcarTablespace(es.getTablespaces());
+            marcarIncuir(es.getPlus());
+            // Terminar falta tablespaces
         }
-        private void marcarTipoRespaldo(int op) {
+        private void marcarIncuir(int[] op) {
+            if (op[0] == 1)
+                check_Archive.Checked = true;
+            if (op[1] == 1)
+                check_ControlF.Checked = true;
+            if (op[2] == 1)
+                check_IniitF.Checked = true;
+        }
+        private void marcarTipoRespaldo(int op)
+        {
             switch (op) {
                 case 1: radioButton1.Checked = true; break;
                 case 2: radioButton2.Checked = true; break;
@@ -50,17 +114,20 @@ namespace politica_y_estrategias
         }
 
         private void marcarTablespace(List<string> l) { // Terminar
+
             if (l.Count != 0) {
                 check_Tablespaces.Checked = true;
             }
-          /*  for (int i =0; i< checkedList_Tablespaces.Items.Count; i++)
+
+            l.ForEach(delegate(String tablespace)
             {
-                if (checList_Tablespaces[i].toString() == l.ToString()) { }
-                string e = l.Find(x => x == item.ToString());
-                if (e != null)
-               
-                tablespaces.Add(item.ToString());
-            }*/
+                int pos = checkedList_Tablespaces.FindStringExact(tablespace);
+                if (pos != -1)
+                {
+                    checkedList_Tablespaces.SetItemChecked(pos, true);
+                }
+            });
+
         }
         public Estrategias_Politicas(ventanaPrincipal p)
         {
@@ -68,52 +135,59 @@ namespace politica_y_estrategias
             InitializeComponent();
             this.CenterToScreen();
             principal = p;
+            nom_estra.Text = p.getServer()+"E"+p.getEstrategiasServer().Count;
+            nom_Politica.Text = p.getServer() + "P" + p.getPoliticasServer().Count;
         }
 
         //------ METODOS---------//
-        private void Guardar_Estrategia()
-        {
+        private Estrategia construirEstrategia() {
+            Estrategia estrategia = new Estrategia();
 
-            string nombre;
-            int tipoRes = 0;
-            int modoRes = 0;
-            List<string> tablespaces = new List<string>();
+            estrategia.setNomServer(principal.getServer());
+
+            estrategia.setNombre(this.nom_estra.Text.ToUpper());
+
+
+            foreach (object itemChecked in checkedList_Tablespaces.CheckedItems)
+            {
+                estrategia.addTablespace(itemChecked.ToString());
+            }
             int[] plus = new int[3];
             plus[0] = 0;
             plus[1] = 0;
             plus[2] = 0;
 
-            nombre = this.nom_estra.Text.ToUpper();
-
-
-            foreach (object itemChecked in checkedList_Tablespaces.CheckedItems)
-            {
-                tablespaces.Add(itemChecked.ToString());
-            }
-
             if (check_Archive.Checked)
                 plus[0] = 1;
             if (check_ControlF.Checked)
                 plus[1] = 1;
-            if (checkBox2.Checked)
+            if (check_IniitF.Checked)
                 plus[2] = 1;
+
+            estrategia.setPlus(plus);
+
             if (radioButton1.Checked)
-                tipoRes = 1;
+                estrategia.setTipoRes(1);
             if (radioButton2.Checked)
-                tipoRes = 2;
+                estrategia.setTipoRes(2);
             if (radioButton3.Checked)
-                tipoRes = 3;
+                estrategia.setTipoRes(3);
+
             if (radioButton6.Checked)
-                modoRes = 1;
+                estrategia.setModoRes(1);
             if (radioButton5.Checked)
-                modoRes = 2;
+                estrategia.setModoRes(2);
 
-            Estrategia estrategia = new Estrategia(principal.getServer(), nombre, tipoRes, modoRes, tablespaces, plus);
+            return estrategia;
+        }
+        private void Guardar_Estrategia()
+        {
+            Estrategia estrategia = construirEstrategia();
+            StreamWriter escrito = new StreamWriter(Path.GetFullPath("Servidores.txt"), true); // escribe al final de Servidores.txt
+            estrategia.Guardar_Estrategia(escrito);
+            escrito.Close();
             principal.addEstrategias(estrategia);
-            estrategia.Guardar_Estrategia(estrategia);
-            principal.add_Check_Estrategia(nombre);
-
-            MessageBox.Show("Estrategia " + nombre + " Creada Con Exito", "Success", MessageBoxButtons.OK);
+            principal.add_Check_Estrategia(estrategia.getNombre());
         }
 
         private void llenarCheckedList_Tablespaces()
@@ -146,7 +220,7 @@ namespace politica_y_estrategias
             }
             checkedList_Tablespaces.Enabled = state1;
             check_Archive.Checked = state2;
-            checkBox2.Checked = state2;
+            check_IniitF.Checked = state2;
             check_ControlF.Checked = state2;
             // btn_Cancelar.Enabled = state2;
         }
@@ -208,8 +282,7 @@ namespace politica_y_estrategias
         }
 
         //------ METODOS -------//
-        private void Guardar_Politica()
-        {
+        private Politica construirPolitica() {
             Politica p = new Politica();
 
             p.setServer(principal.getServer());
@@ -224,49 +297,96 @@ namespace politica_y_estrategias
             p.setFecha(getDate());
 
             // Repeticion
-            if (radioB_30.Checked)
-                p.setRepeticion(30);
-            if (radioB_60.Checked)
-                p.setRepeticion(60);
-            if (radioB_120.Checked)
-                p.setRepeticion(120);
-            if (radioB_Otro.Checked)
-                p.setRepeticion((int)num_Tiempo.Value);
-
+            p.setRepeticion(getCanRepeticion());
+            return p;
+        }
+        private void Guardar_Politica()
+        {
             //Abrimos el archivo txt
             StreamWriter escrito = new StreamWriter(Path.GetFullPath("Servidores.txt"), true); // escribe al final de Servidores.txt
+            Politica p = construirPolitica();
             principal.addPolitica(p);
             p.guardar_Politica(escrito);
-           
-
-            MessageBox.Show("Politica " + p.getNombre() + " Creada Con Exito", "Success", MessageBoxButtons.OK);
-            
+            escrito.Close();   
+        }
+        private int getCanRepeticion() { 
+         if (radioB_30.Checked)
+                return 30;
+            if (radioB_60.Checked)
+               return 60;
+            if (radioB_120.Checked)
+                return 120;
+            if (radioB_Otro.Checked)
+            return (int)num_Tiempo.Value;
+            return 0;
         }
 
-        private void btn_CrearEstra_Click_1(object sender, EventArgs e)
-        {
-            Guardar_Estrategia();
-            Guardar_Politica();
-            Guardar_Tarea();
-           // MessageBox.Show("Creado... ");
-            this.Close();
-        }
 
         private void Guardar_Tarea(){
             Tarea t = new Tarea(principal.getServer(), nom_estra.Text, nom_Politica.Text,1);
-            StreamWriter escrito = new StreamWriter(Path.GetFullPath("Servidores.txt"), true); // escribe al final de Servidores.txt
+            StreamWriter escrito = new StreamWriter(Path.GetFullPath("Servidores.txt"),true); // escribe al final de Servidores.txt
             t.guardar_Tarea(escrito);
             principal.guardar_Tarea(t);
+            escrito.Close();
         }
 
         private void btn_CrearEstra_Click_2(object sender, EventArgs e)
         {
-            Guardar_Estrategia();
-            Guardar_Politica();
-            Guardar_Tarea();
+            crear_o_Modificar();
             this.Close();
         }
 
+        private void crear_o_Modificar() {
+            Politica existeP = modificarPolitica();
+            Estrategia existeE = modificarEstrategia();
+          if (existeP != null && existeE!= null)
+          {
+              MessageBox.Show("Modificacion realizada con exito...!", "Success", MessageBoxButtons.OK);
+          }
+          else {
+              Guardar_Estrategia();
+              Guardar_Politica();
+              Guardar_Tarea();
+              MessageBox.Show("Creacion realizada con exito....!", "Success", MessageBoxButtons.OK);
+          }
+        }
+
+        private Politica modificarPolitica() {
+           return  principal.getPoliticasServer().Find(x =>
+            {
+                if (x.getNombre() == nom_Politica.Text)
+                {
+                    Politica p = construirPolitica();
+                    x.setFecha(p.getFecha());
+                    x.setFrecuencia(p.getListFrecuencia());
+                    x.setRepeticion(p.getRepeticion());
+                    //Sobreescribimos todo el documento
+                    principal.sobreescribirDocumento();
+                    return true;
+                }
+
+                return false;
+            });
+        }
+
+        private Estrategia modificarEstrategia() {
+            return principal.getEstrategiasServer().Find(x =>
+            {
+                if (x.getNombre() == nom_estra.Text)
+                {
+                    Estrategia e = construirEstrategia();
+                    x.setModoRes(e.getModoRes());
+                    x.setTablespaces(e.getTablespaces());
+                    x.setPlus(e.getPlus());
+                    x.setTipoRes(e.getTipoRes());
+                    // Sobreescribimos todo el documento.
+                    principal.sobreescribirDocumento();
+                    return true;
+                }
+
+                return false;
+            });
+        }
         private void groupBox4_Enter(object sender, EventArgs e)
         {
 
@@ -276,6 +396,28 @@ namespace politica_y_estrategias
         {
             this.Close();
         }
+
+        private void radioB_30_CheckedChanged(object sender, EventArgs e)
+        {
+            num_Tiempo.Enabled = false;
+        }
+
+        private void radioB_60_CheckedChanged(object sender, EventArgs e)
+        {
+            num_Tiempo.Enabled = false;
+        }
+
+        private void radioB_120_CheckedChanged(object sender, EventArgs e)
+        {
+            num_Tiempo.Enabled = false;
+        }
+
+        private void radioB_Otro_CheckedChanged(object sender, EventArgs e)
+        {
+            num_Tiempo.Enabled = true;
+        }
+
+      
         /*  private void button1_Click(object sender, EventArgs e)
 {
 this.Close();

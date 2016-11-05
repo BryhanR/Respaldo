@@ -40,7 +40,7 @@
             this.checkedList_Tablespaces = new System.Windows.Forms.CheckedListBox();
             this.label11 = new System.Windows.Forms.Label();
             this.panel5 = new System.Windows.Forms.Panel();
-            this.checkBox2 = new System.Windows.Forms.CheckBox();
+            this.check_IniitF = new System.Windows.Forms.CheckBox();
             this.check_Archive = new System.Windows.Forms.CheckBox();
             this.check_ControlF = new System.Windows.Forms.CheckBox();
             this.label6 = new System.Windows.Forms.Label();
@@ -106,7 +106,7 @@
             this.panel1.Controls.Add(this.label3);
             this.panel1.Location = new System.Drawing.Point(20, 23);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(580, 201);
+            this.panel1.Size = new System.Drawing.Size(580, 254);
             this.panel1.TabIndex = 24;
             // 
             // check_Tablespaces
@@ -209,14 +209,14 @@
             this.checkedList_Tablespaces.FormattingEnabled = true;
             this.checkedList_Tablespaces.Location = new System.Drawing.Point(259, 121);
             this.checkedList_Tablespaces.Name = "checkedList_Tablespaces";
-            this.checkedList_Tablespaces.Size = new System.Drawing.Size(269, 36);
+            this.checkedList_Tablespaces.Size = new System.Drawing.Size(269, 84);
             this.checkedList_Tablespaces.TabIndex = 10;
             // 
             // label11
             // 
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.Location = new System.Drawing.Point(11, 169);
+            this.label11.Location = new System.Drawing.Point(11, 217);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(45, 15);
             this.label11.TabIndex = 22;
@@ -224,24 +224,24 @@
             // 
             // panel5
             // 
-            this.panel5.Controls.Add(this.checkBox2);
+            this.panel5.Controls.Add(this.check_IniitF);
             this.panel5.Controls.Add(this.check_Archive);
             this.panel5.Controls.Add(this.check_ControlF);
-            this.panel5.Location = new System.Drawing.Point(152, 163);
+            this.panel5.Location = new System.Drawing.Point(152, 211);
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(316, 27);
             this.panel5.TabIndex = 11;
             // 
-            // checkBox2
+            // check_IniitF
             // 
-            this.checkBox2.AutoSize = true;
-            this.checkBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkBox2.Location = new System.Drawing.Point(202, 6);
-            this.checkBox2.Name = "checkBox2";
-            this.checkBox2.Size = new System.Drawing.Size(65, 19);
-            this.checkBox2.TabIndex = 14;
-            this.checkBox2.Text = "Init File";
-            this.checkBox2.UseVisualStyleBackColor = true;
+            this.check_IniitF.AutoSize = true;
+            this.check_IniitF.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.check_IniitF.Location = new System.Drawing.Point(202, 6);
+            this.check_IniitF.Name = "check_IniitF";
+            this.check_IniitF.Size = new System.Drawing.Size(65, 19);
+            this.check_IniitF.TabIndex = 14;
+            this.check_IniitF.Text = "Init File";
+            this.check_IniitF.UseVisualStyleBackColor = true;
             // 
             // check_Archive
             // 
@@ -277,6 +277,7 @@
             // 
             // nom_estra
             // 
+            this.nom_estra.Enabled = false;
             this.nom_estra.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.nom_estra.Location = new System.Drawing.Point(152, 13);
             this.nom_estra.Name = "nom_estra";
@@ -319,14 +320,14 @@
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(655, 241);
+            this.groupBox1.Size = new System.Drawing.Size(655, 292);
             this.groupBox1.TabIndex = 23;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Estrategia";
             // 
             // btn_Cancelar
             // 
-            this.btn_Cancelar.Location = new System.Drawing.Point(364, 569);
+            this.btn_Cancelar.Location = new System.Drawing.Point(369, 594);
             this.btn_Cancelar.Name = "btn_Cancelar";
             this.btn_Cancelar.Size = new System.Drawing.Size(75, 23);
             this.btn_Cancelar.TabIndex = 26;
@@ -336,7 +337,7 @@
             // 
             // btn_CrearEstra
             // 
-            this.btn_CrearEstra.Location = new System.Drawing.Point(226, 569);
+            this.btn_CrearEstra.Location = new System.Drawing.Point(231, 594);
             this.btn_CrearEstra.Name = "btn_CrearEstra";
             this.btn_CrearEstra.Size = new System.Drawing.Size(75, 23);
             this.btn_CrearEstra.TabIndex = 25;
@@ -348,7 +349,7 @@
             // 
             this.groupBox2.Controls.Add(this.panel2);
             this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox2.Location = new System.Drawing.Point(12, 272);
+            this.groupBox2.Location = new System.Drawing.Point(12, 310);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(655, 264);
             this.groupBox2.TabIndex = 27;
@@ -422,6 +423,7 @@
             this.radioB_30.TabStop = true;
             this.radioB_30.Text = "30 min";
             this.radioB_30.UseVisualStyleBackColor = true;
+            this.radioB_30.CheckedChanged += new System.EventHandler(this.radioB_30_CheckedChanged);
             // 
             // panel8
             // 
@@ -444,6 +446,7 @@
             // 
             // num_Tiempo
             // 
+            this.num_Tiempo.Enabled = false;
             this.num_Tiempo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.num_Tiempo.Location = new System.Drawing.Point(60, 5);
             this.num_Tiempo.Name = "num_Tiempo";
@@ -461,6 +464,7 @@
             this.radioB_60.TabStop = true;
             this.radioB_60.Text = "60 min";
             this.radioB_60.UseVisualStyleBackColor = true;
+            this.radioB_60.CheckedChanged += new System.EventHandler(this.radioB_60_CheckedChanged);
             // 
             // radioB_120
             // 
@@ -473,6 +477,7 @@
             this.radioB_120.TabStop = true;
             this.radioB_120.Text = "120 min";
             this.radioB_120.UseVisualStyleBackColor = true;
+            this.radioB_120.CheckedChanged += new System.EventHandler(this.radioB_120_CheckedChanged);
             // 
             // radioB_Otro
             // 
@@ -485,6 +490,7 @@
             this.radioB_Otro.TabStop = true;
             this.radioB_Otro.Text = "Otro";
             this.radioB_Otro.UseVisualStyleBackColor = true;
+            this.radioB_Otro.CheckedChanged += new System.EventHandler(this.radioB_Otro_CheckedChanged);
             // 
             // groupBox3
             // 
@@ -593,6 +599,7 @@
             // 
             // nom_Politica
             // 
+            this.nom_Politica.Enabled = false;
             this.nom_Politica.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.nom_Politica.Location = new System.Drawing.Point(150, 25);
             this.nom_Politica.Name = "nom_Politica";
@@ -608,6 +615,8 @@
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.btn_Cancelar);
             this.Controls.Add(this.btn_CrearEstra);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
             this.Name = "Estrategias_Politicas";
             this.Text = "Diseño de estrategia y politica";
             this.panel1.ResumeLayout(false);
@@ -644,7 +653,7 @@
         private System.Windows.Forms.Panel panel5;
         private System.Windows.Forms.CheckBox check_Archive;
         private System.Windows.Forms.CheckBox check_ControlF;
-        private System.Windows.Forms.CheckBox checkBox2;
+        private System.Windows.Forms.CheckBox check_IniitF;
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.RadioButton radioButton5;
         private System.Windows.Forms.RadioButton radioButton6;
