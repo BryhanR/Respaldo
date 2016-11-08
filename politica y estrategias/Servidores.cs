@@ -181,5 +181,15 @@ namespace politica_y_estrategias
         this.Close();
       }
     }
-}
+
+        private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
+        {
+
+        }
+
+        private void Servidores_Load(object sender, EventArgs e)
+        {
+
+        }
+    }
 }

@@ -35,11 +35,23 @@ namespace politica_y_estrategias
 
         private void nomBoton(bool editable) {
             if (editable)
+            {
                 btn_CrearEstra.Text = "Modificar";
+                button1.Visible = false;
+                button2.Visible = false;
+                button3.Visible = false;
+                button4.Visible = false;
+                btn_Cancelar.Text = "Cerrar";
+            }
             else
             {
                 btn_CrearEstra.Visible = false;
-                btn_Cancelar.Text = "Cerrar";
+                btn_Cancelar.Visible = false;
+                button1.Visible = true;
+                button2.Visible = true;
+                button3.Visible = true;
+                button4.Visible = true;
+               
             }
         }
 
@@ -244,6 +256,8 @@ namespace politica_y_estrategias
             if (radioButton3.Checked == false)
             {
                 fullBackup(true, false);
+                radioButton5.Enabled = false;
+                radioButton6.Enabled = false;
             }
         }
 
@@ -252,6 +266,8 @@ namespace politica_y_estrategias
             if (radioButton3.Checked == false)
             {
                 fullBackup(true, false);
+                radioButton5.Enabled = true;
+                radioButton6.Enabled = true;
             }
         }
 
@@ -417,7 +433,118 @@ namespace politica_y_estrategias
             num_Tiempo.Enabled = true;
         }
 
-      
+        private void button3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            DialogResult result = MessageBox.Show("Las sentencias RMAN ejecutadas para esta "+
+                "estrategia son:"+"\n\n"+ rmanEstrategia(), "RMAN de la Estrategia" ,MessageBoxButtons.OK);
+
+           
+
+        }
+
+
+        public string elementosBackup()
+        { //Hace las sentencias para le backup de archivelog, controlfile e init(falta)
+            string salida = "";
+            if (check_Archive.Checked ==true)
+                salida += "backup archivelog all;\n";
+            if (check_ControlF.Checked == true)
+                salida += "backup current controlfile;\n";
+            if (check_IniitF.Checked == true)
+                salida += "";
+            return salida;
+        }
+
+        private string modoRespaldo()
+        { // Modo de respaldo (incremental, total)
+            string comandos = "";
+            if (radioButton6.Checked == true)      // FALTA son respaldos incrementales
+            {
+                foreach (object itemChecked in checkedList_Tablespaces.CheckedItems)
+                {
+                    comandos += "backup incremental level 1 tablespace " + itemChecked.ToString() + ";\n";
+                }
+            }
+            else
+            {
+                foreach (object itemChecked in checkedList_Tablespaces.CheckedItems)
+              {
+                    
+                    comandos += "backup incremental level 0 tablespace " + itemChecked.ToString() + ";\n";
+                   
+                }
+               
+            }
+            return comandos;
+        }
+
+        //Recibe el nombe de la estrategia a buscar y devuelve las sentencias correspondientes
+        public string rmanEstrategia()
+        { // Tipo de respaldo (inconsistente = 1, consistente = 2, fullbackup = 3)
+
+            string comandos = "";
+
+            if (radioButton1.Checked == true) {
+                comandos += modoRespaldo();
+                comandos += elementosBackup();
+            }
+            if (radioButton2.Checked==true) {
+                comandos = modoRespaldo() + elementosBackup();
+                }
+
+            if (radioButton3.Checked==true) {
+                comandos = "backup database; \n" + elementosBackup();
+            }
+                            
+                       
+            Console.Write(comandos);
+            return comandos;
+        }
+
+        private void button2_Click_1(object sender, EventArgs e)
+        {
+            // System.Diagnostics.Process.Start(@"C:\oraclexe\app\oracle\fast_recovery_area\XE\ARCHIVELOG");
+            DialogResult result = MessageBox.Show("La ruta de acceso a los logs es: " +
+                "C:/oraclexe/app/oracle/fast_recovery_area/XE/ARCHIVELOG", "Ruta de Logs", MessageBoxButtons.OK);
+
+
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         /*  private void button1_Click(object sender, EventArgs e)
 {
 this.Close();
