@@ -29,6 +29,8 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             this.check_Tablespaces = new System.Windows.Forms.CheckBox();
             this.panel4 = new System.Windows.Forms.Panel();
             this.radioButton5 = new System.Windows.Forms.RadioButton();
@@ -53,9 +55,12 @@
             this.btn_CrearEstra = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.label5 = new System.Windows.Forms.Label();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.label9 = new System.Windows.Forms.Label();
             this.checkedList_Dias = new System.Windows.Forms.CheckedListBox();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.label7 = new System.Windows.Forms.Label();
             this.radioB_30 = new System.Windows.Forms.RadioButton();
             this.panel8 = new System.Windows.Forms.Panel();
             this.label16 = new System.Windows.Forms.Label();
@@ -96,6 +101,8 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.label8);
+            this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.check_Tablespaces);
             this.panel1.Controls.Add(this.panel4);
             this.panel1.Controls.Add(this.panel3);
@@ -111,6 +118,29 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(580, 254);
             this.panel1.TabIndex = 24;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.ForeColor = System.Drawing.Color.Red;
+            this.label8.Location = new System.Drawing.Point(336, 82);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(169, 13);
+            this.label8.TabIndex = 24;
+            this.label8.Text = "* Seleccione un modo de respaldo";
+            this.label8.Visible = false;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.ForeColor = System.Drawing.Color.Red;
+            this.label1.Location = new System.Drawing.Point(243, 119);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(15, 18);
+            this.label1.TabIndex = 23;
+            this.label1.Text = "*";
+            this.label1.Visible = false;
             // 
             // check_Tablespaces
             // 
@@ -144,6 +174,8 @@
             this.radioButton5.TabStop = true;
             this.radioButton5.Text = "Total";
             this.radioButton5.UseVisualStyleBackColor = true;
+            this.radioButton5.CheckedChanged += new System.EventHandler(this.radioButton5_CheckedChanged);
+            this.radioButton5.Enter += new System.EventHandler(this.radioButton5_CheckedChanged);
             // 
             // radioButton6
             // 
@@ -156,6 +188,8 @@
             this.radioButton6.TabStop = true;
             this.radioButton6.Text = "Incremental";
             this.radioButton6.UseVisualStyleBackColor = true;
+            this.radioButton6.CheckedChanged += new System.EventHandler(this.radioButton6_CheckedChanged);
+            this.radioButton6.Enter += new System.EventHandler(this.radioButton6_CheckedChanged);
             // 
             // panel3
             // 
@@ -214,6 +248,8 @@
             this.checkedList_Tablespaces.Name = "checkedList_Tablespaces";
             this.checkedList_Tablespaces.Size = new System.Drawing.Size(269, 84);
             this.checkedList_Tablespaces.TabIndex = 10;
+            this.checkedList_Tablespaces.SelectedIndexChanged += new System.EventHandler(this.checkedList_Tablespaces_SelectedIndexChanged);
+            this.checkedList_Tablespaces.Enter += new System.EventHandler(this.checkedList_Tablespaces_SelectedIndexChanged);
             // 
             // label11
             // 
@@ -361,6 +397,7 @@
             // 
             // panel2
             // 
+            this.panel2.Controls.Add(this.label5);
             this.panel2.Controls.Add(this.groupBox5);
             this.panel2.Controls.Add(this.groupBox4);
             this.panel2.Controls.Add(this.groupBox3);
@@ -368,11 +405,23 @@
             this.panel2.Controls.Add(this.nom_Politica);
             this.panel2.Location = new System.Drawing.Point(20, 23);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(617, 235);
+            this.panel2.Size = new System.Drawing.Size(629, 235);
             this.panel2.TabIndex = 26;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.ForeColor = System.Drawing.Color.Red;
+            this.label5.Location = new System.Drawing.Point(603, 183);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(15, 18);
+            this.label5.TabIndex = 35;
+            this.label5.Text = "*";
+            this.label5.Visible = false;
             // 
             // groupBox5
             // 
+            this.groupBox5.Controls.Add(this.label9);
             this.groupBox5.Controls.Add(this.checkedList_Dias);
             this.groupBox5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox5.Location = new System.Drawing.Point(3, 74);
@@ -381,6 +430,17 @@
             this.groupBox5.TabIndex = 34;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Frecuencia de aplicación";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.ForeColor = System.Drawing.Color.Red;
+            this.label9.Location = new System.Drawing.Point(109, 0);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(13, 15);
+            this.label9.TabIndex = 36;
+            this.label9.Text = "*";
+            this.label9.Visible = false;
             // 
             // checkedList_Dias
             // 
@@ -398,9 +458,12 @@
             this.checkedList_Dias.Name = "checkedList_Dias";
             this.checkedList_Dias.Size = new System.Drawing.Size(123, 100);
             this.checkedList_Dias.TabIndex = 12;
+            this.checkedList_Dias.SelectedIndexChanged += new System.EventHandler(this.checkedList_Dias_SelectedIndexChanged);
+            this.checkedList_Dias.Enter += new System.EventHandler(this.checkedList_Dias_SelectedIndexChanged);
             // 
             // groupBox4
             // 
+            this.groupBox4.Controls.Add(this.label7);
             this.groupBox4.Controls.Add(this.radioB_30);
             this.groupBox4.Controls.Add(this.panel8);
             this.groupBox4.Controls.Add(this.radioB_60);
@@ -409,11 +472,23 @@
             this.groupBox4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox4.Location = new System.Drawing.Point(433, 74);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(181, 147);
+            this.groupBox4.Size = new System.Drawing.Size(193, 147);
             this.groupBox4.TabIndex = 33;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Repeticiones";
             this.groupBox4.Enter += new System.EventHandler(this.groupBox4_Enter);
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.ForeColor = System.Drawing.Color.Red;
+            this.label7.Location = new System.Drawing.Point(6, 21);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(186, 13);
+            this.label7.TabIndex = 36;
+            this.label7.Text = "* Selecione un opción de repeticiones";
+            this.label7.Visible = false;
             // 
             // radioB_30
             // 
@@ -427,6 +502,7 @@
             this.radioB_30.Text = "30 min";
             this.radioB_30.UseVisualStyleBackColor = true;
             this.radioB_30.CheckedChanged += new System.EventHandler(this.radioB_30_CheckedChanged);
+            this.radioB_30.Enter += new System.EventHandler(this.radioB_30_CheckedChanged);
             // 
             // panel8
             // 
@@ -451,10 +527,12 @@
             // 
             this.num_Tiempo.Enabled = false;
             this.num_Tiempo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.num_Tiempo.Location = new System.Drawing.Point(60, 5);
+            this.num_Tiempo.Location = new System.Drawing.Point(55, 5);
             this.num_Tiempo.Name = "num_Tiempo";
             this.num_Tiempo.Size = new System.Drawing.Size(36, 21);
             this.num_Tiempo.TabIndex = 4;
+            this.num_Tiempo.ValueChanged += new System.EventHandler(this.num_Tiempo_ValueChanged);
+            this.num_Tiempo.Enter += new System.EventHandler(this.num_Tiempo_ValueChanged);
             // 
             // radioB_60
             // 
@@ -468,6 +546,7 @@
             this.radioB_60.Text = "60 min";
             this.radioB_60.UseVisualStyleBackColor = true;
             this.radioB_60.CheckedChanged += new System.EventHandler(this.radioB_60_CheckedChanged);
+            this.radioB_60.Enter += new System.EventHandler(this.radioB_60_CheckedChanged);
             // 
             // radioB_120
             // 
@@ -481,6 +560,7 @@
             this.radioB_120.Text = "120 min";
             this.radioB_120.UseVisualStyleBackColor = true;
             this.radioB_120.CheckedChanged += new System.EventHandler(this.radioB_120_CheckedChanged);
+            this.radioB_120.Enter += new System.EventHandler(this.radioB_120_CheckedChanged);
             // 
             // radioB_Otro
             // 
@@ -494,6 +574,7 @@
             this.radioB_Otro.Text = "Otro";
             this.radioB_Otro.UseVisualStyleBackColor = true;
             this.radioB_Otro.CheckedChanged += new System.EventHandler(this.radioB_Otro_CheckedChanged);
+            this.radioB_Otro.Enter += new System.EventHandler(this.radioB_Otro_CheckedChanged);
             // 
             // groupBox3
             // 
@@ -683,6 +764,7 @@
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             this.groupBox5.ResumeLayout(false);
+            this.groupBox5.PerformLayout();
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
             this.panel8.ResumeLayout(false);
@@ -748,5 +830,10 @@
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label label9;
     }
 }

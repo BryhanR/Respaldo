@@ -21,7 +21,7 @@ namespace politica_y_estrategias
         OracleConnection con = new OracleConnection();
 
         private ventanaPrincipal principal;
-
+       
         public Estrategias_Politicas(ventanaPrincipal p, Estrategia es, Politica po, bool editable)
         {
             con.ConnectionString = Globals.ConexionOracle;//ConexionOracle;
@@ -149,6 +149,11 @@ namespace politica_y_estrategias
             principal = p;
             nom_estra.Text = p.getServer()+"E"+p.getEstrategiasServer().Count;
             nom_Politica.Text = p.getServer() + "P" + p.getPoliticasServer().Count;
+            label1.Visible = false;
+            label7.Visible = false;
+            label5.Visible = false;
+            label9.Visible = false;
+            label8.Visible = false;
         }
 
         //------ METODOS---------//
@@ -348,9 +353,67 @@ namespace politica_y_estrategias
 
         private void btn_CrearEstra_Click_2(object sender, EventArgs e)
         {
-            crear_o_Modificar();
-            this.Close();
+            if (validar())
+            {
+                crear_o_Modificar();
+                this.Close();
+            }
+            else
+                MessageBox.Show("Pro favor llenar los espacios que aparecen con * !", "Error", MessageBoxButtons.OK);
         }
+
+        private bool validar() {
+            bool b = false; bool d = false;  bool final = true;
+            if (radioButton1.Checked == true) {
+                if (radioButton5.Checked == false && radioButton6.Checked == false) {
+                    final = false;
+                    label8.Visible = true;
+                }
+                else
+                    label8.Visible = false;
+
+            }
+            if (radioButton2.Checked == true) {
+                label8.Visible = false;
+            }
+                if (check_Tablespaces.Checked == true) {
+                    foreach (object itemChecked in checkedList_Tablespaces.CheckedItems)
+                    {
+                        b = true;
+                    }
+                    if (b == false)
+                    {
+                        label1.Visible = true;
+                        final = false;
+                    }
+                }
+            
+            foreach (object itemChecked in checkedList_Dias.CheckedItems)
+            {
+                d = true;
+            }
+            if (d == false)
+            {
+                final = false;
+                label9.Visible = true;
+            }
+            else
+                label9.Visible = false;
+            if (radioB_30.Checked == false && radioB_60.Checked == false && radioB_120.Checked == false && radioB_Otro.Checked == false)
+            {
+                final = false;
+                label7.Visible = true;
+            }
+            else {
+                label7.Visible = false;
+            }
+            if (radioB_Otro.Checked == true && num_Tiempo.Value == 0)
+                label5.Visible = true;
+            else
+                label5.Visible = false;
+            return final;
+        }
+        
 
         private void crear_o_Modificar() {
             Politica existeP = modificarPolitica();
@@ -416,22 +479,27 @@ namespace politica_y_estrategias
         private void radioB_30_CheckedChanged(object sender, EventArgs e)
         {
             num_Tiempo.Enabled = false;
+            label7.Visible = false;
         }
 
         private void radioB_60_CheckedChanged(object sender, EventArgs e)
         {
             num_Tiempo.Enabled = false;
+            label7.Visible = false;
         }
 
         private void radioB_120_CheckedChanged(object sender, EventArgs e)
         {
             num_Tiempo.Enabled = false;
+            label7.Visible = false;
         }
 
         private void radioB_Otro_CheckedChanged(object sender, EventArgs e)
         {
             num_Tiempo.Enabled = true;
+            label7.Visible = false;
         }
+
 
         private void button3_Click(object sender, EventArgs e)
         {
@@ -446,7 +514,7 @@ namespace politica_y_estrategias
         private void button1_Click_1(object sender, EventArgs e)
         {
             DialogResult result = MessageBox.Show("Las sentencias RMAN ejecutadas para esta "+
-                "estrategia son:"+"\n\n"+ rmanEstrategia(), "RMAN de la Estrategia" ,MessageBoxButtons.OK);
+                "estrategia son:"+"\n\n"+"run {\n"+ rmanEstrategia()+"}", "RMAN de la Estrategia" ,MessageBoxButtons.OK);
 
            
 
@@ -518,6 +586,31 @@ namespace politica_y_estrategias
                 "C:/oraclexe/app/oracle/fast_recovery_area/XE/ARCHIVELOG", "Ruta de Logs", MessageBoxButtons.OK);
 
 
+        }
+
+        private void radioButton5_CheckedChanged(object sender, EventArgs e)
+        {
+            label8.Visible = false;
+        }
+
+        private void radioButton6_CheckedChanged(object sender, EventArgs e)
+        {
+            label8.Visible = false;
+        }
+
+        private void checkedList_Dias_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            label9.Visible = false;
+        }
+
+        private void num_Tiempo_ValueChanged(object sender, EventArgs e)
+        {
+            label5.Visible = false;
+        }
+
+        private void checkedList_Tablespaces_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            label1.Visible = false;
         }
 
 
