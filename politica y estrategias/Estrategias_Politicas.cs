@@ -537,7 +537,7 @@ namespace politica_y_estrategias
         { // Modo de respaldo (incremental, total)
             string comandos = "";
             if (radioButton6.Checked == true)      // FALTA son respaldos incrementales
-            {
+            {   
                 foreach (object itemChecked in checkedList_Tablespaces.CheckedItems)
                 {
                     comandos += "backup incremental level 1 tablespace " + itemChecked.ToString() + ";\n";
