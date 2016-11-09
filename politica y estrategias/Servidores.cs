@@ -20,6 +20,13 @@ namespace politica_y_estrategias
         {
             principal = p;
             InitializeComponent();
+            label8.Visible=false;
+            label9.Visible = false;
+            label10.Visible = false;
+            label11.Visible = false;
+            label12.Visible = false;
+            label13.Visible = false;
+            label14.Visible = false;
             this.CenterToScreen();
         }
 
@@ -32,6 +39,7 @@ namespace politica_y_estrategias
             llenarCampos(s);
             nomBoton(editable);
             bloqueo_Desbloqueo_Panel(editable);
+           
         }
 
         private void bloqueo_Desbloqueo_Panel(bool editable)
@@ -68,8 +76,7 @@ namespace politica_y_estrategias
 
         public void GuardarServer()
         {
-            
-
+                  
             StreamWriter escrito = new StreamWriter(Path.GetFullPath("Servidores.txt"), true); // escribe al final de Servidores.txt
             Server s = construirServer();
             s.guardar_Server(escrito);
@@ -79,14 +86,68 @@ namespace politica_y_estrategias
         }
 
         private Server construirServer() {
-            string nom = nombre_txt.Text.ToUpper();
-            string datbalink = txt_DataBaseLink.Text.ToUpper();
-            string usuario = txt_NomUsuario.Text.ToUpper();
-            string contra = txt_Contraseña.Text.ToUpper();
-            string ip = txt_IP.Text.ToUpper();
-            string puerto = txt_Puerto.Text.ToUpper();
-            string nomBase = txt_NombeBase.Text.ToUpper();
-            return new Server(nom, datbalink, usuario, contra, ip, puerto, nomBase);
+          
+                string nom = nombre_txt.Text.ToUpper();
+                string datbalink = txt_DataBaseLink.Text.ToUpper();
+                string usuario = txt_NomUsuario.Text.ToUpper();
+                string contra = txt_Contraseña.Text.ToUpper();
+                string ip = txt_IP.Text.ToUpper();
+                string puerto = txt_Puerto.Text.ToUpper();
+                string nomBase = txt_NombeBase.Text.ToUpper();
+                return new Server(nom, datbalink, usuario, contra, ip, puerto, nomBase);
+           
+        }
+        private bool validacion() {
+            bool b = true;
+            if (nombre_txt.Text == ""){
+                label8.Visible = true;
+                b = false;
+            }
+            else 
+                label8.Visible = false;
+            
+            if (txt_DataBaseLink.Text == "") {
+                label9.Visible = true;
+                b = false;
+            }
+            else 
+                label9.Visible = false;
+           
+            if (txt_NomUsuario.Text == ""){
+                label10.Visible = true;
+                b = false;
+            }
+            else 
+                label10.Visible = false; 
+
+            if (txt_Contraseña.Text == ""){
+                label11.Visible = true;
+                b = false;            }
+            else
+                label11.Visible = false;
+           
+            if (txt_IP.Text == "") {
+                label12.Visible = true;
+                b = false;}
+            else
+                label12.Visible = false;
+           
+            if (txt_Puerto.Text == "" || txt_Puerto.Text.Length != 4){
+                label13.Visible = true;
+                b = false;
+            }
+            else            
+                label13.Visible = false;
+           
+            if (txt_NombeBase.Text == ""){
+                label14.Visible = true;
+                b = false;
+            }
+            else 
+                label14.Visible = false;
+            
+               
+            return b;
         }
 
         private void btn_Cancelar_Click(object sender, EventArgs e)
@@ -96,8 +157,10 @@ namespace politica_y_estrategias
 
         private void btn_Crear_Click(object sender, EventArgs e)
         {
-
-            crear_o_Modificar();
+            if (validacion())
+            {
+                crear_o_Modificar();
+            }
          
             
         }
@@ -190,6 +253,50 @@ namespace politica_y_estrategias
         private void Servidores_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void txt_Puerto_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!(char.IsNumber(e.KeyChar)) && (e.KeyChar != (char)Keys.Back)) {
+                MessageBox.Show("Solo se permiten números", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    e.Handled = true;
+                return;
+            }
+        }
+
+        private void nombre_txt_Enter(object sender, EventArgs e)
+        {
+            label8.Visible = false;
+        }
+
+        private void txt_DataBaseLink_Enter(object sender, EventArgs e)
+        {
+            label9.Visible = false;
+        }
+
+        private void txt_NomUsuario_Enter(object sender, EventArgs e)
+        {
+            label10.Visible = false;
+        }
+
+        private void txt_Contraseña_Enter(object sender, EventArgs e)
+        {
+            label11.Visible = false;
+        }
+
+        private void txt_IP_Enter(object sender, EventArgs e)
+        {
+            label12.Visible = false;
+        }
+
+        private void txt_Puerto_Enter(object sender, EventArgs e)
+        {
+            label13.Visible = false;
+        }
+
+        private void txt_NombeBase_Enter(object sender, EventArgs e)
+        {
+            label14.Visible = false;
         }
     }
 }

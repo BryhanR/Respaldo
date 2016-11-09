@@ -31,7 +31,6 @@
             this.btn_Cancelar = new System.Windows.Forms.Button();
             this.btn_Crear = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.panel1 = new System.Windows.Forms.Panel();
             this.txt_NombeBase = new System.Windows.Forms.TextBox();
             this.nombre_txt = new System.Windows.Forms.TextBox();
@@ -47,6 +46,14 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
+            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
+            this.label13 = new System.Windows.Forms.Label();
+            this.label14 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -82,12 +89,15 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Registro de Servidores";
             // 
-            // backgroundWorker1
-            // 
-            this.backgroundWorker1.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorker1_DoWork);
-            // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.label14);
+            this.panel1.Controls.Add(this.label13);
+            this.panel1.Controls.Add(this.label12);
+            this.panel1.Controls.Add(this.label11);
+            this.panel1.Controls.Add(this.label10);
+            this.panel1.Controls.Add(this.label9);
+            this.panel1.Controls.Add(this.label8);
             this.panel1.Controls.Add(this.txt_NombeBase);
             this.panel1.Controls.Add(this.nombre_txt);
             this.panel1.Controls.Add(this.label1);
@@ -114,14 +124,17 @@
             this.txt_NombeBase.Name = "txt_NombeBase";
             this.txt_NombeBase.Size = new System.Drawing.Size(162, 20);
             this.txt_NombeBase.TabIndex = 34;
+            this.txt_NombeBase.Enter += new System.EventHandler(this.txt_NombeBase_Enter);
             // 
             // nombre_txt
             // 
             this.nombre_txt.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.nombre_txt.ForeColor = System.Drawing.SystemColors.WindowText;
             this.nombre_txt.Location = new System.Drawing.Point(171, 11);
             this.nombre_txt.Name = "nombre_txt";
             this.nombre_txt.Size = new System.Drawing.Size(162, 20);
             this.nombre_txt.TabIndex = 26;
+            this.nombre_txt.Enter += new System.EventHandler(this.nombre_txt_Enter);
             // 
             // label1
             // 
@@ -147,9 +160,12 @@
             // 
             this.txt_Puerto.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txt_Puerto.Location = new System.Drawing.Point(171, 150);
+            this.txt_Puerto.MaxLength = 4;
             this.txt_Puerto.Name = "txt_Puerto";
             this.txt_Puerto.Size = new System.Drawing.Size(72, 20);
             this.txt_Puerto.TabIndex = 32;
+            this.txt_Puerto.Enter += new System.EventHandler(this.txt_Puerto_Enter);
+            this.txt_Puerto.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txt_Puerto_KeyPress);
             // 
             // txt_DataBaseLink
             // 
@@ -158,6 +174,7 @@
             this.txt_DataBaseLink.Name = "txt_DataBaseLink";
             this.txt_DataBaseLink.Size = new System.Drawing.Size(162, 20);
             this.txt_DataBaseLink.TabIndex = 27;
+            this.txt_DataBaseLink.Enter += new System.EventHandler(this.txt_DataBaseLink_Enter);
             // 
             // txt_IP
             // 
@@ -166,6 +183,7 @@
             this.txt_IP.Name = "txt_IP";
             this.txt_IP.Size = new System.Drawing.Size(162, 20);
             this.txt_IP.TabIndex = 31;
+            this.txt_IP.Enter += new System.EventHandler(this.txt_IP_Enter);
             // 
             // label3
             // 
@@ -184,6 +202,7 @@
             this.txt_Contraseña.Name = "txt_Contraseña";
             this.txt_Contraseña.Size = new System.Drawing.Size(162, 20);
             this.txt_Contraseña.TabIndex = 30;
+            this.txt_Contraseña.Enter += new System.EventHandler(this.txt_Contraseña_Enter);
             // 
             // label4
             // 
@@ -202,6 +221,7 @@
             this.txt_NomUsuario.Name = "txt_NomUsuario";
             this.txt_NomUsuario.Size = new System.Drawing.Size(162, 20);
             this.txt_NomUsuario.TabIndex = 28;
+            this.txt_NomUsuario.Enter += new System.EventHandler(this.txt_NomUsuario_Enter);
             // 
             // label5
             // 
@@ -232,6 +252,81 @@
             this.label6.Size = new System.Drawing.Size(38, 13);
             this.label6.TabIndex = 37;
             this.label6.Text = "Puerto";
+            // 
+            // backgroundWorker1
+            // 
+            this.backgroundWorker1.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorker1_DoWork);
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.ForeColor = System.Drawing.Color.Red;
+            this.label8.Location = new System.Drawing.Point(339, 11);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(15, 18);
+            this.label8.TabIndex = 39;
+            this.label8.Text = "*";
+            this.label8.Visible = false;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.ForeColor = System.Drawing.Color.Red;
+            this.label9.Location = new System.Drawing.Point(339, 41);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(15, 18);
+            this.label9.TabIndex = 40;
+            this.label9.Text = "*";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.ForeColor = System.Drawing.Color.Red;
+            this.label10.Location = new System.Drawing.Point(339, 68);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(15, 18);
+            this.label10.TabIndex = 41;
+            this.label10.Text = "*";
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.ForeColor = System.Drawing.Color.Red;
+            this.label11.Location = new System.Drawing.Point(339, 95);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(15, 18);
+            this.label11.TabIndex = 42;
+            this.label11.Text = "*";
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.ForeColor = System.Drawing.Color.Red;
+            this.label12.Location = new System.Drawing.Point(339, 122);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(15, 18);
+            this.label12.TabIndex = 43;
+            this.label12.Text = "*";
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.ForeColor = System.Drawing.Color.Red;
+            this.label13.Location = new System.Drawing.Point(246, 150);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(15, 18);
+            this.label13.TabIndex = 44;
+            this.label13.Text = "*";
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.ForeColor = System.Drawing.Color.Red;
+            this.label14.Location = new System.Drawing.Point(339, 178);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(15, 18);
+            this.label14.TabIndex = 45;
+            this.label14.Text = "*";
             // 
             // Servidores
             // 
@@ -273,5 +368,12 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label label8;
     }
 }
