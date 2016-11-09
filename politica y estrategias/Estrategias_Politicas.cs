@@ -147,7 +147,7 @@ namespace politica_y_estrategias
             InitializeComponent();
             this.CenterToScreen();
             principal = p;
-            nom_estra.Text = p.getServer()+"E"+p.getEstrategiasServer().Count;
+            nom_estra.Text =    p.getServer()+"E"+   p.getEstrategiasServer().Count;
             nom_Politica.Text = p.getServer() + "P" + p.getPoliticasServer().Count;
             label1.Visible = false;
             label7.Visible = false;
@@ -427,9 +427,26 @@ namespace politica_y_estrategias
               Guardar_Politica();
               Guardar_Tarea();
               MessageBox.Show("Creacion realizada con exito....!", "Success", MessageBoxButtons.OK);
+              try
+              {
+                  guardar_en_Server();
+
+              }
+              catch (Exception e) {
+                  MessageBox.Show("No se pudo establecer comunicacion con el server!", "ERROR", MessageBoxButtons.OK);
+              }
           }
         }
 
+         private void guardar_en_Server(){
+             Estrategia e= construirEstrategia();
+             Politica p = construirPolitica();
+            Tarea t = new Tarea(principal.getServer(), nom_estra.Text, nom_Politica.Text,1);
+            Server s = principal.getServerEspecifico();
+            ClientDemo cl = new ClientDemo(s.getIP(),s.getPuerto());
+
+            cl.HandleCommunication(e,p,t);
+         }
         private Politica modificarPolitica() {
            return  principal.getPoliticasServer().Find(x =>
             {
@@ -612,6 +629,8 @@ namespace politica_y_estrategias
         {
             label1.Visible = false;
         }
+
+        
 
 
 

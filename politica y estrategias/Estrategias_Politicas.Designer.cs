@@ -322,6 +322,7 @@
             this.nom_estra.Name = "nom_estra";
             this.nom_estra.Size = new System.Drawing.Size(195, 21);
             this.nom_estra.TabIndex = 1;
+          
             // 
             // label4
             // 
