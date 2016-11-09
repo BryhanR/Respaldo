@@ -116,7 +116,7 @@ namespace politica_y_estrategias
                     string usuario = leido.ReadLine();
                     string contrasenia = leido.ReadLine();
                     string ip = leido.ReadLine();
-                    string puerto = leido.ReadLine();
+                    int puerto = Int32.Parse(leido.ReadLine());
                     string baseDatos = leido.ReadLine();
                     Server ser = new Server(nom_Server,dbLink,usuario,contrasenia,ip,puerto,baseDatos);
                    servidores.Add(ser);
@@ -281,6 +281,13 @@ namespace politica_y_estrategias
 
         public List<Server> getServidores() {
             return servidores;
+        }
+
+        public Server getServerEspecifico()
+        {
+            Server se = servidores.Find(x => x.getNombre().ToUpper() == getServer());
+
+            return se;
         }
        
         public List<Estrategia> getEstrategiasServer()
