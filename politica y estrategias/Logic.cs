@@ -376,6 +376,9 @@ namespace Logic
         private string politica;
         private int status;
 
+        public string getPolitica() {
+            return politica;
+        }
         public Tarea(string ns, string e, string p, int st) {
             this.nom_Server = ns;
             this.estrategia = e;

@@ -31,20 +31,19 @@ namespace politica_y_estrategias
 
         //-------- METODOS DEL FORM1 ---------//
         public ventanaPrincipal()
-        {
+        {   
             InitializeComponent();
             this.CenterToScreen();
            // con.ConnectionString = Globals.ConexionOracle;//ConexionOracle; // VER
             syncC = SynchronizationContext.Current; // obtiene el contexto de syncronizacion del hilo de ui
-            
+          
            // ArchiveLog();
           //  panel1.Enabled=false;
            // panel2.Enabled =false;
           //  panel4.Enabled = false;
 
             ResuperaServidorTxT();
-      
-            
+        // hilo();
             
         }
 
@@ -391,6 +390,49 @@ namespace politica_y_estrategias
             }
               respaldar(restaurarEstrategia(t.text));
         }
+
+        public void hilo() {
+
+
+            while (true) {
+                Thread.Sleep(1000);
+              //  Console.WriteLine("esperando");
+                for (int i = 0; i < tareas.Count; i++) {
+                    Console.WriteLine(i);
+                    Tarea t = tareas[i];
+                   Politica p= politicas.Find(x => x.getNombre().Contains(t.getNom_Politica()));
+                    Console.WriteLine(t.getNom_Estrategia());
+                    if (p != null)
+                    {
+                        
+                      
+                        int result = DateTime.Compare(DateTime.Now, p.getFecha());
+                        Console.WriteLine(DateTime.Now);
+                        Console.WriteLine(p.getFecha());
+                        if (result > 0)
+                        {
+                            Console.WriteLine(restaurarEstrategia(t.getNom_Estrategia()));
+                            p.setFecha(p.getFecha().AddMinutes(p.getRepeticion()));
+                            Console.WriteLine(p.getFecha());
+                        }
+                       
+                    }
+            }
+
+            }
+
+        }
+
+
+
+        public void ajustarFecha(Politica p) {
+            DateTime hoy = DateTime.Now;
+            DateTime nuevaFecha;
+            
+            
+
+        }
+
         //------ EVENTOS DEL FORM1 ------//
 
         private void button3_Click(object sender, EventArgs e)
