@@ -43,7 +43,8 @@ namespace politica_y_estrategias
           //  panel4.Enabled = false;
 
             ResuperaServidorTxT();
-        // hilo();
+          Task.Factory.StartNew(()=>hilo());
+         
             
         }
 
@@ -94,7 +95,7 @@ namespace politica_y_estrategias
             proc.Start();
             StreamWriter writter = proc.StandardInput;
             writter.WriteLine("connect target /;");
-            writter.WriteLine("run {" + /*backups"*/"Backup database;" + "}");
+            writter.WriteLine("run {" + backups+ "}");
             writter.WriteLine("quit");
 
         }
@@ -169,7 +170,8 @@ namespace politica_y_estrategias
                     string estra = leido.ReadLine();
                     string  poli = leido.ReadLine();
                     int  sta =  int.Parse(leido.ReadLine());
-                    Tarea tarea = new Tarea(nom_T_Server, estra, poli,sta);
+                    DateTime ue = DateTime.Parse(leido.ReadLine());
+                    Tarea tarea = new Tarea(nom_T_Server, estra, poli,sta,ue);
                     tareas.Add(tarea);
                 }
                      
@@ -194,12 +196,18 @@ namespace politica_y_estrategias
             if (modo == 1)      // FALTA son respaldos incrementales
             {
 
+                tablespaces.ForEach(delegate (String table)
+                {
+
+                    comandos += "backup incremental level 1 tablespace " + table + ";\n";
+                });
             }
             else
             {
                 tablespaces.ForEach(delegate(String table)
                 {
-                    comandos += "backup tablespace " + table + ";\n";
+                    
+                    comandos += "backup incremental level 0 tablespace " + table + ";\n";
                 });
             }
             return comandos;
@@ -221,7 +229,7 @@ namespace politica_y_estrategias
                         break;
 
                     case 2:
-                        comandos = " backup database; \n" + elementosBackup(e.getPlus());
+                        comandos = modoRespaldo(e.getModoRes(), e.getTablespaces())+"\n "+ elementosBackup(e.getPlus());
                         break;
 
                     case 3:
@@ -236,6 +244,7 @@ namespace politica_y_estrategias
 
             }
             Console.Write(comandos);
+            
             return comandos;
         }
 
@@ -418,8 +427,10 @@ namespace politica_y_estrategias
                         Console.WriteLine(p.getFecha());
                         if (result > 0)
                         {
-                            Console.WriteLine(restaurarEstrategia(t.getNom_Estrategia()));
-                            p.setFecha(p.getFecha().AddMinutes(p.getRepeticion()));
+                            string u = restaurarEstrategia(t.getNom_Estrategia());
+                            Console.WriteLine(u);
+                            respaldar(u);
+                            p.setFecha(p.getFecha().AddMinutes(30));
                             Console.WriteLine(p.getFecha());
                         }
                        
@@ -432,11 +443,12 @@ namespace politica_y_estrategias
 
 
 
-        public void ajustarFecha(Politica p) {
+        public void ajustarFecha(Tarea t) {
             DateTime hoy = DateTime.Now;
-            DateTime nuevaFecha;
-            
-            
+            DateTime Fechat=t.getUltiEjecucion();
+           string.Format("{0:d dd ddd dddd}", Fechat);
+
+
 
         }
 

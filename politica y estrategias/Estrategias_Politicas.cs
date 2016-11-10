@@ -344,7 +344,7 @@ namespace politica_y_estrategias
 
 
         private void Guardar_Tarea(){
-            Tarea t = new Tarea(principal.getServer(), nom_estra.Text, nom_Politica.Text,1);
+            Tarea t = new Tarea(principal.getServer(), nom_estra.Text, nom_Politica.Text,1,DateTime.Today);
             StreamWriter escrito = new StreamWriter(Path.GetFullPath("Servidores.txt"),true); // escribe al final de Servidores.txt
             t.guardar_Tarea(escrito);
             principal.guardar_Tarea(t);
@@ -399,7 +399,7 @@ namespace politica_y_estrategias
             }
             else
                 label9.Visible = false;
-            if (radioB_30.Checked == false && radioB_60.Checked == false && radioB_120.Checked == false && radioB_Otro.Checked == false)
+           /* if (radioB_30.Checked == false && radioB_60.Checked == false && radioB_120.Checked == false && radioB_Otro.Checked == false)
             {
                 final = false;
                 label7.Visible = true;
@@ -410,7 +410,7 @@ namespace politica_y_estrategias
             if (radioB_Otro.Checked == true && num_Tiempo.Value == 0)
                 label5.Visible = true;
             else
-                label5.Visible = false;
+                label5.Visible = false;*/
             return final;
         }
         
@@ -441,7 +441,7 @@ namespace politica_y_estrategias
          private void guardar_en_Server(){
              Estrategia e= construirEstrategia();
              Politica p = construirPolitica();
-            Tarea t = new Tarea(principal.getServer(), nom_estra.Text, nom_Politica.Text,1);
+            Tarea t = new Tarea(principal.getServer(), nom_estra.Text, nom_Politica.Text,1,p.getFecha());
             Server s = principal.getServerEspecifico();
             ClientDemo cl = new ClientDemo(s.getIP(),s.getPuerto());
 

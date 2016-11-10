@@ -9,7 +9,7 @@ namespace Logic
 
     public static class Globals
     {
-        public static String ConexionOracle = "User id= system; Password=admin123; Data Source= XE;"; //////cambiar password
+        public static String ConexionOracle = "User id= system; Password=root; Data Source= XE;"; //////cambiar password
     }
 
 
@@ -417,15 +417,17 @@ namespace Logic
         private string estrategia;
         private string politica;
         private int status;
-
+        public DateTime ultimaEjecucion;
         public string getPolitica() {
             return politica;
         }
-        public Tarea(string ns, string e, string p, int st) {
+        public Tarea(string ns, string e, string p, int st,DateTime y) {
             this.nom_Server = ns;
             this.estrategia = e;
             this.politica = p;
             this.status = st;
+            this.ultimaEjecucion = y;
+            
         }
 
         public Tarea()
@@ -434,6 +436,7 @@ namespace Logic
             this.estrategia = "";
             this.politica = "";
             this.status = 0;
+            
         }
 
         public string getNom_Estrategia(){
@@ -465,7 +468,12 @@ namespace Logic
         {
             nom_Server = s;
         }
-
+        public DateTime getUltiEjecucion() {
+            return ultimaEjecucion;
+        }
+        public void setUltiEjecucion(DateTime t) {
+            ultimaEjecucion = t;
+        }
         public void guardar_Tarea(StreamWriter es)
         {
             //escribimos. 
@@ -479,6 +487,7 @@ namespace Logic
             es.WriteLine(politica);
             // Guarda el status 0 no activo, 1 activo
             es.WriteLine(status);
+            es.WriteLine(ultimaEjecucion);
 
             es.Flush();
             //Cerramos
@@ -490,7 +499,8 @@ namespace Logic
             return "@@" + "\n" +
                      estrategia + "\n" +
                      politica + "\n" +
-                     status;
+                     status+"\n"+
+                     ultimaEjecucion;
 
         }
     }
