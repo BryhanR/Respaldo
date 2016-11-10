@@ -65,7 +65,7 @@ namespace politica_y_estrategias
             txt_NomUsuario.Text = s.getUsuario();
             txt_Contraseña.Text = s.getContrasenia();
             txt_IP.Text = s.getIP();
-            txt_Puerto.Text = s.getPuerto();
+            txt_Puerto.Text = ""+s.getPuerto();
             txt_NombeBase.Text = s.getNomBase();
         }
         private void button2_Click(object sender, EventArgs e)
@@ -92,7 +92,7 @@ namespace politica_y_estrategias
                 string usuario = txt_NomUsuario.Text.ToUpper();
                 string contra = txt_Contraseña.Text.ToUpper();
                 string ip = txt_IP.Text.ToUpper();
-                string puerto = txt_Puerto.Text.ToUpper();
+                int puerto = Int32.Parse(txt_Puerto.Text.ToUpper());
                 string nomBase = txt_NombeBase.Text.ToUpper();
                 return new Server(nom, datbalink, usuario, contra, ip, puerto, nomBase);
            

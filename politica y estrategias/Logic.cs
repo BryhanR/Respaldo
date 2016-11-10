@@ -1,13 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Net.Sockets;
+using System.Text;
 
 namespace Logic
 {
 
     public static class Globals
     {
-        public static String ConexionOracle = "User id= system; Password=root; Data Source= XE;"; //////cambiar password
+        public static String ConexionOracle = "User id= system; Password=admin123; Data Source= XE;"; //////cambiar password
     }
 
 
@@ -30,7 +32,7 @@ namespace Logic
         string usuario;
         string contrasenia;
         string ip;
-        string puerto;
+        int  puerto;
         string baseDatos;
 
         public Server()
@@ -40,12 +42,12 @@ namespace Logic
             usuario = "";
             contrasenia = "";
             ip = "";
-            puerto = "";
+            puerto = 0;
             baseDatos = "";
             Console.Out.WriteLine("Logic creado");
         }
 
-        public Server(string nom,string dbLink,string u, string c, string numip,string p, string nbase) {
+        public Server(string nom,string dbLink,string u, string c, string numip,int p, string nbase) {
             this.nombre = nom;
             this.databaseLink = dbLink;
             this.usuario = u;
@@ -74,7 +76,7 @@ namespace Logic
         {
             return this.ip;
         }
-        public string getPuerto()
+        public int getPuerto()
         {
             return this.puerto;
         }
@@ -103,7 +105,7 @@ namespace Logic
         {
             this.ip = newIp;
         }
-        public void setPuerto(string p)
+        public void setPuerto(int p)
         {
             this.puerto = p;
         }
@@ -258,6 +260,26 @@ namespace Logic
             //Vaciamos
             //   textBox1.Text = "";
         }
+
+        public string convierteString()
+        {     // NUEVO 
+            string aux = "&&" + "\n" +
+                   nombre + "\n" +
+                   frecuencia.Count + "\n";
+            frecuencia.ForEach(delegate(String frec)
+            {
+                aux += frec + "\n";
+            });
+            aux += fecha.Day + "\n" +
+                   fecha.Month + "\n" +
+                   fecha.Year + "\n" +
+                   fecha.Hour + "\n" +
+                   fecha.Minute + "\n" +
+                   fecha.Second + "\n" +
+                   repeticion;
+
+            return aux;
+        }
     }
     public class Estrategia
     {
@@ -367,6 +389,26 @@ namespace Logic
             Console.WriteLine("tipo: " + tipoRes);
             Console.WriteLine("modo: " + modoRes);
         }
+
+        public string convierteString()
+        {     // NUEVO 
+            string aux = "##" + "\n" +
+                   nombre + "\n" +
+                   tipoRes + "\n" +
+                   modoRes + "\n" +
+                   tablespaces.Count + "\n";
+            tablespaces.ForEach(delegate(String table)
+            {
+                aux += table + "\n";
+            });
+
+            aux += plus[0] + "\n" +
+                   plus[1] + "\n" +
+                   plus[2];
+
+            return aux;
+
+        }
     }
 
     public class Tarea
@@ -442,6 +484,95 @@ namespace Logic
             //Cerramos
            // es.Close();
         }
+
+        public string convierteString() // NUEVO
+        {
+            return "@@" + "\n" +
+                     estrategia + "\n" +
+                     politica + "\n" +
+                     status;
+
+        }
     }
+
+
+    class ClientDemo
+    {
+        private TcpClient _client;
+
+        private StreamReader _sReader;
+        private StreamWriter _sWriter;
+
+        private Boolean _isConnected;
+
+        public ClientDemo(String ipAddress, int portNum)
+        {
+            _client = new TcpClient();
+            _client.Connect(ipAddress, portNum);
+
+           // HandleCommunication();
+        }
+
+        public void HandleCommunication(Estrategia e, Politica p, Tarea t)
+        {
+            _sReader = new StreamReader(_client.GetStream(), Encoding.ASCII);
+            _sWriter = new StreamWriter(_client.GetStream(), Encoding.ASCII);
+
+            _isConnected = true;
+            String sData = null;
+
+
+
+            // INICIO 
+           /* List<string> s = new List<string>();
+            s.Add("User");
+            s.Add("System");
+            int[] er = new int[3];
+            er[0] = 1;
+            er[1] = 0;
+            er[2] = 0;
+            Estrategia e = new Estrategia("S1", "S1E0", 1, 2, s, er);
+
+
+            List<string> fre = new List<string>();
+            fre.Add("Lunes");
+            fre.Add("Martes");
+            DateTime fecha = new DateTime(2016, 9, 11, 11, 5, 42);
+            Politica p = new Politica("S1", "S1P0", fre, fecha, 30);
+
+            Tarea t = new Tarea("S1", "S1E0", "S1P0", 1);
+
+            */
+            // FIN
+
+
+            while (_isConnected)
+            {
+               // Console.Write("&gt; ");
+              //  sData = Console.ReadLine();
+
+                // write data and make sure to flush, or the buffer will continue to 
+                // grow, and your data might not be sent when you want it, and will
+                // only be sent once the buffer is filled.
+                sData = e.convierteString() + "\n" + p.convierteString() + "\n" + t.convierteString() /*+ "\n22"+"\nbackup database;"*/;
+                //        sData = ;
+                
+                _sWriter.WriteLine(sData);
+
+                _sWriter.Flush();
+               /* string contenido = _sReader.ReadLine();
+                while (contenido != "FIN&&")
+                {
+                    Console.WriteLine(contenido);
+                    contenido = _sReader.ReadLine();
+                    
+                }*/
+                _isConnected = false;
+                // if you want to receive anything
+                // String sDataIncomming = _sReader.ReadLine();
+            }
+        }
+    }
+
 
 }
